@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Furama</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+</head>
+<body>
+<div class="container-fluid" style="padding: 0">
+    <div class="header-top p-2 border-bottom">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col">
+                    <span>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                             class="bi bi-brightness-high" viewBox="0 0 16 16">
+                            <path d="M8 11a3 3 0 1 1 0-6 3 3 0 0 1 0 6zm0 1a4 4 0 1 0 0-8 4 4 0 0 0 0 8zM8 0a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 0zm0 13a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 13zm8-5a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2a.5.5 0 0 1 .5.5zM3 8a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2A.5.5 0 0 1 3 8zm10.657-5.657a.5.5 0 0 1 0 .707l-1.414 1.415a.5.5 0 1 1-.707-.708l1.414-1.414a.5.5 0 0 1 .707 0zm-9.193 9.193a.5.5 0 0 1 0 .707L3.05 13.657a.5.5 0 0 1-.707-.707l1.414-1.414a.5.5 0 0 1 .707 0zm9.193 2.121a.5.5 0 0 1-.707 0l-1.414-1.414a.5.5 0 0 1 .707-.707l1.414 1.414a.5.5 0 0 1 0 .707zM4.464 4.465a.5.5 0 0 1-.707 0L2.343 3.05a.5.5 0 1 1 .707-.707l1.414 1.414a.5.5 0 0 1 0 .708z"/>
+                        </svg>
+                    </span>
+                    <span>Thời tiết: 28 °C / 82 °F</span>
+                </div>
+                <div class="col">
+                    <span>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                             class="bi bi-clock" viewBox="0 0 16 16">
+                             <path d="M8 3.5a.5.5 0 0 0-1 0V9a.5.5 0 0 0 .252.434l3.5 2a.5.5 0 0 0 .496-.868L8 8.71V3.5z"/>
+                            <path d="M8 16A8 8 0 1 0 8 0a8 8 0 0 0 0 16zm7-8A7 7 0 1 1 1 8a7 7 0 0 1 14 0z"/>
+                        </svg>
+                    </span>
+                    <span>Giờ địa phương: 09:27 am</span>
+                </div>
+                <div class="col">
+                    <span>EN VI JA KR RU CN</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="header-bottom p-2 border-top">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-2 ps-5">
+                    <img src="../image/logo@2x.png" height="110" width="70"/></div>
+                <div class="col-4 card-center">
+                    <div class="card" style="width: 15rem; border-top: 5px solid seagreen">
+                        <div class="card-body">
+                            <a href="#" class="card-link">
+                                <img src="../image/widget-tripadvisor-logo.png" height="20" width="50%"/>
+                            </a>
+                            <h6 class="card-title"></h6>
+                            <a href="#" class="card-link">
+                                <img src="../image/widget-tripadvisor-rating.png" height="20" width="33%"/>
+                            </a>
+                            <p>2,746 Reviews</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-3">
+                    <div class="row">
+                        <div class="col-2">
+                            <span>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                                     class="bi bi-geo-alt-fill" viewBox="0 0 16 16"><path
+                                        d="M8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10zm0-7a3 3 0 1 1 0-6 3 3 0 0 1 0 6z"/>
+                                </svg>
+                            </span>
+                        </div>
+                        <div class="col-10">
+                            <p>103 – 105 Đường Võ Nguyên Giáp, Phường Khuê Mỹ, Quận Ngũ hành Sơn, Tp. Đà Nẵng, Việt
+                                Nam</p>
+                            <p>7.0 km từ Sân bay Quốc tế Đà Nẵng</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-3">
+                    <span>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                                     class="bi bi-telephone-fill" viewBox="0 0 16 16"><path fill-rule="evenodd"
+                                                                                            d="M1.885.511a1.745 1.745 0 0 1 2.61.163L6.29 2.98c.329.423.445.974.315 1.494l-.547 2.19a.678.678 0 0 0 .178.643l2.457 2.457a.678.678 0 0 0 .644.178l2.189-.547a1.745 1.745 0 0 1 1.494.315l2.306 1.794c.829.645.905 1.87.163 2.611l-1.034 1.034c-.74.74-1.846 1.065-2.877.702a18.634 18.634 0 0 1-7.01-4.42 18.634 18.634 0 0 1-4.42-7.009c-.362-1.03-.037-2.137.703-2.877L1.885.511z"/>
+                                </svg>
+                            </span>
+                    <span>84-236-3847 333/888</span>
+                    </br>
+                    <span>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                             class="bi bi-envelope-fill" viewBox="0 0 16 16">
+                             <path d="M.05 3.555A2 2 0 0 1 2 2h12a2 2 0 0 1 1.95 1.555L8 8.414.05 3.555ZM0 4.697v7.104l5.803-3.558L0 4.697ZM6.761 8.83l-6.57 4.027A2 2 0 0 0 2 14h12a2 2 0 0 0 1.808-1.144l-6.57-4.027L8 9.586l-1.239-.757Zm3.436-.586L16 11.801V4.697l-5.803 3.546Z"/>
+                        </svg>
+                    </span>
+                    <span><a href="#" class="text-decoration-none text-dark">reservation@furamavietnam.com</a></span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="navigation">
+        <div class="container-fluid" style="padding: 0">
+            <nav class="navbar navbar-expand-lg navbar-dark fw-light">
+                <div class="container-fluid mt-1">
+                    <a class="navbar-brand" href="#"></a>
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                            data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                            aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                            <li class="nav-item" style="margin-left: 50px">
+                                <a class="nav-link active" aria-current="page" href="#">Trang Chủ</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">Khách Hàng</a>
+                            </li>
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                                   data-bs-toggle="dropdown" aria-expanded="false">
+                                    Dịch vụ
+                                </a>
+                                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                    <li><a class="dropdown-item" href="#">Danh sách</a></li>
+                                    <li>
+                                        <hr class="dropdown-divider">
+                                    </li>
+                                    <li><a class="dropdown-item" href="#">Căn Hộ</a></li>
+                                    <li><a class="dropdown-item" href="#">Phòng</a></li>
+                                    <li><a class="dropdown-item" href="#">Biệt thự</a></li>
+                                </ul>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">Hợp Đồng</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="text-center">
+                        <a class="btn btn-success btn-sm">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person-plus"
+                                 viewBox="0 0 16 16">
+                                <path d="M6 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm2-3a2 2 0 1 1-4 0 2 2 0 0 1 4 0zm4 8c0 1-1 1-1 1H1s-1 0-1-1 1-4 6-4 6 3 6 4zm-1-.004c-.001-.246-.154-.986-.832-1.664C9.516 10.68 8.289 10 6 10c-2.29 0-3.516.68-4.168 1.332-.678.678-.83 1.418-.832 1.664h10z"/>
+                                <path fill-rule="evenodd"
+                                      d="M13.5 5a.5.5 0 0 1 .5.5V7h1.5a.5.5 0 0 1 0 1H14v1.5a.5.5 0 0 1-1 0V8h-1.5a.5.5 0 0 1 0-1H13V5.5a.5.5 0 0 1 .5-.5z"/>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+            </nav>
+        </div>
+    </div>
+
+    <div class="content">
+        <div class="container-fluid" style="padding: 0">
+            <img src="../image/banner01.jpg" height="301" width="100%"/>
+        </div>
+        <div class="container-fluid" style="font-size: 13px; padding: 75px">
+            <table class="table table-bordered ">
+                <thead class="bg-primary text-center text-light">
+                <tr>
+                    <th>STT</th>
+                    <th>Dịch Vụ</th>
+                    <th>Khách Hàng</th>
+                    <th>Ngày Thuê</th>
+                    <th>Ngày Trả</th>
+                    <th>Tiền Trả Trước</th>
+                    <th>Tổng Tiền</th>
+                    <th>Dịch Vụ Đi Kèm</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td>1</td>
+                    <td>Villa Beach Front</td>
+                    <td>Nguyễn Thị Hào</td>
+                    <td>2020-12-08 00:00:00</td>
+                    <td>2020-12-08 00:00:00</td>
+                    <td>200000</td>
+                    <td>10000000</td>
+                    <td>
+                        <button type="button" class="btn btn-primary btn-sm" data-bs-toggle="modal"
+                                data-bs-target="#modelIdCreate">+
+                        </button>
+                        <!-- Button trigger modal -->
+                        <a href="#" class="btn btn-primary btn-sm">
+                            Danh sách dịch vụ đi kèm
+                        </a>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="container d-flex flex-column align-items-center" style="font-size: 12px">
+            <h3 style="font-family: 'Playfair Display', serif; color: #cbbe73; margin-bottom: 20px">DỊCH VỤ & CƠ SỞ VẬT
+                CHẤT</h3>
+            <p>Có nhiều những gói nghỉ dưỡng phù hợp cho cả những kỳ nghỉ ngắn hay dài ngày</p>
+        </div>
+
+        <div class="container-fluid">
+            <div id="carouselExampleInterval" class="carousel slide" data-bs-ride="carousel" style="margin: 80px 0;">
+                <div class="carousel-inner">
+                    <div class="carousel-item active" data-bs-interval="3000">
+                        <div class="container-fluid">
+                            <div class="row">
+                                <div class="col p-5">
+                                    <h3 style="font-family: 'Playfair Display', serif; color: #cbbe73;">DỊCH VỤ ĐÓN TIỄN
+                                        SÂN BAY</h3>
+                                    <p style="float: none; position: static; font-size: 13px">Tận hưởng những sự thoải
+                                        mái, tiện lợi và
+                                        hoàn hảo ngay từ những giây phút đầu tiên của kỳ nghỉ khi hạ cánh tại Sân bay
+                                        Quốc tế Đà Nẵng với dịch đón tiễn sân bay chuyên nghiệp, thân thiện và sang
+                                        trọng từ Khu nghỉ. Có nhiều lựa chọn phù hợp với nhu cầu di chuyển từ một người
+                                        cho đến cả gia đình hay du lịch nhóm. Vui lòng liên hệ: +84 236 3847 333/ +84
+                                        236 3847 888 để đặt dịch vụ.</p>
+                                    <div class="btn-group">
+                                        <a href="#" class="btn btn-primary" style="font-size: 13px">Đặt Lịch</a>
+                                    </div>
+                                </div>
+                                <div class="col">
+                                    <img src="../image/FRD_Airport_Staff_Service_-2.jpeg" width="219" height="418"
+                                         class="d-block w-100" alt="...">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="carousel-item" data-bs-interval="3000">
+                        <div class="container-fluid">
+                            <div class="row">
+                                <div class="col p-5">
+                                    <h3 style="font-family: 'Playfair Display', serif; color: #cbbe73;">DỊCH VỤ VĂN
+                                        PHÒNG</h3>
+                                    <p style="float: none; position: static; font-size: 13px">Nằm tại sảnh đón khách của
+                                        Khu nghỉ mát Furama Resort Đà Nẵng, Trung Tâm Dịch Vụ Văn Phòng cung cấp nhiều
+                                        dịch vụ và thiết bị văn phòng cũng như nhu cầu thông tin cần thiết cho Qúy khách
+                                        bao gồm in ấn, quét và sao lưu tài liệu, thư tín, chuyển phát, fax cũng như
+                                        nhiều dịch vụ trợ giúp khác bao gồm khu vực máy tính để bàn kết nối internet
+                                        miễn phí. Gọi hội đàm, hội thảo kết nối video có thể được sắp xếp dựa trên yêu
+                                        cầu.</p>
+                                    <div class="btn-group">
+                                        <a href="#" class="btn btn-primary" style="font-size: 13px">YÊU CẦU DỊCH VỤ</a>
+                                    </div>
+                                </div>
+                                <div class="col">
+                                    <img src="../image/DSC_5851.jpeg" width="219" height="418"
+                                         class="d-block w-100" alt="...">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="carousel-item" data-bs-interval="3000">
+                        <div class="container-fluid">
+                            <div class="row">
+                                <div class="col p-5">
+                                    <h3 style="font-family: 'Playfair Display', serif; color: #cbbe73;">XE BUÝT DỊCH VỤ
+                                        THEO LỊCH TRÌNH CÓ SẴN</h3>
+                                    <p style="float: none; position: static; font-size: 13px">Khu nghỉ có dịch vụ xe đưa
+                                        đón tham quan phố cổ Hội An theo lịch trình hàng ngày với xe buýt 29 chỗ thoải
+                                        mái, thuận tiện và an toàn.</p>
+                                    <p>Đặt dịch vụ, Vui lòng liên hệ: <strong>+84 236 3847 333</strong> /<strong>+84 236
+                                        3847 888</strong></p>
+                                    <div class="btn-group">
+                                        <a href="#" class="btn btn-primary" style="font-size: 13px">LỊCH TRÌNH</a>
+                                    </div>
+                                </div>
+                                <div class="col">
+                                    <img src="../image/Shuttle_Bus_Furama_Danang-1.jpeg" width="219" height="418"
+                                         class="d-block w-100" alt="...">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="footer">
+        <div class="container-fluid">
+            <div class="row pe-5 ps-5" style="font-size: 13px;">
+                <div class="col-4 bg-light p-3 left">
+                    <h3 style="font-family: 'Playfair Display', serif; color: #cbbe73;">Hướng Dẫn Di Chuyển</h3>
+                    <p>Khu nghỉ dưỡng Furama là cơ sở hàng đầu để khám phá một trong những điểm đến hấp dẫn nhất
+                        Châu Á. Chỉ cách Đà Nẵng một quãng lái xe ngắn là bốn Di sản Văn hóa Thế giới được
+                        UNESCO công nhận:</p>
+                    <a href="#" class="border p-3 text-decoration-none text-light map">
+                                <span>
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                                         class="bi bi-geo-alt-fill" viewBox="0 0 16 16">
+                                        <path d="M8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10zm0-7a3 3 0 1 1 0-6 3 3 0 0 1 0 6z"/>
+                                    </svg>
+                                </span>
+                        <span>Xem Trên Bản Đồ ></span>
+                    </a>
+                    <h4 class="mt-4" style="font-family: 'Playfair Display', serif; color: #cbbe73;">Địa Điểm</h4>
+                    <ol>
+                        <li>Cố đô Huế</li>
+                        <li>Phố cổ Hội An</li>
+                        <li>Thánh địa Mỹ Sơn</li>
+                        <li>Động Phong Nha</li>
+                    </ol>
+                </div>
+                <div class="col-8" id="footer-address">
+                    <div class="row">
+                        <div class="col-4 lh-lg p-4 footer-list">
+                            <ul style="line-height: 35px;">
+                                <li><a href="#">Giá Công Bố</a></li>
+                                <li><a href="#">Lifestyle Blog</a></li>
+                                <li><a href="#">Tuyển Dụng</a></li>
+                                <li><a href="#">Liên Hệ</a></li>
+                            </ul>
+                        </div>
+                        <div class="col-8 p-3">
+                            <h3 style="font-family: 'Playfair Display', serif; color: #cbbe73;">Liên hệ</h3>
+                            <div class="d-flex">
+                                <div>
+                                     <span class="pt-3">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                             fill="currentColor" class="bi bi-geo-alt-fill" viewBox="0 0 16 16">
+                                            <path d="M8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10zm0-7a3 3 0 1 1 0-6 3 3 0 0 1 0 6z"/>
+                                        </svg>
+                                    </span>
+                                </div>
+                                <ul class="border-bottom p-2"
+                                    style="list-style-type: none; font-size: 11px; color: #747575">
+                                    <li>103 - 105 Vo Nguyen Giap Street, Khue My Ward, Ngu Hanh Son District, Danang
+                                        City, Vietnam
+                                    </li>
+                                    <li>Tel.: 84-236-3847 333/888 * Fax: 84-236-3847 666</li>
+                                    <li>Email: reservation@furamavietnam.com * www.furamavietnam.com</li>
+                                    <li>GDS Codes: Amadeus-GD DADFUR, Galileo/Apollo-GD 16236, Sabre-GD 032771,
+                                        Worldspan- GD DADFU
+                                    </li>
+                                </ul>
+                            </div>
+                            <span class="p-1">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor"
+                                     class="bi bi-facebook" viewBox="0 0 16 16">
+                                    <path d="M16 8.049c0-4.446-3.582-8.05-8-8.05C3.58 0-.002 3.603-.002 8.05c0 4.017 2.926 7.347 6.75 7.951v-5.625h-2.03V8.05H6.75V6.275c0-2.017 1.195-3.131 3.022-3.131.876 0 1.791.157 1.791.157v1.98h-1.009c-.993 0-1.303.621-1.303 1.258v1.51h2.218l-.354 2.326H9.25V16c3.824-.604 6.75-3.934 6.75-7.951z"/>
+                                </svg>
+                            </span>
+                            <span class="p-1">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor"
+                                     class="bi bi-camera-fill" viewBox="0 0 16 16">
+                                     <path d="M10.5 8.5a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0z"/>
+                                    <path d="M2 4a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2h-1.172a2 2 0 0 1-1.414-.586l-.828-.828A2 2 0 0 0 9.172 2H6.828a2 2 0 0 0-1.414.586l-.828.828A2 2 0 0 1 3.172 4H2zm.5 2a.5.5 0 1 1 0-1 .5.5 0 0 1 0 1zm9 2.5a3.5 3.5 0 1 1-7 0 3.5 3.5 0 0 1 7 0z"/>
+                                </svg>
+                            </span>
+                            <span class="p-1">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor"
+                                     class="bi bi-youtube" viewBox="0 0 16 16">
+                                  <path d="M8.051 1.999h.089c.822.003 4.987.033 6.11.335a2.01 2.01 0 0 1 1.415 1.42c.101.38.172.883.22 1.402l.01.104.022.26.008.104c.065.914.073 1.77.074 1.957v.075c-.001.194-.01 1.108-.082 2.06l-.008.105-.009.104c-.05.572-.124 1.14-.235 1.558a2.007 2.007 0 0 1-1.415 1.42c-1.16.312-5.569.334-6.18.335h-.142c-.309 0-1.587-.006-2.927-.052l-.17-.006-.087-.004-.171-.007-.171-.007c-1.11-.049-2.167-.128-2.654-.26a2.007 2.007 0 0 1-1.415-1.419c-.111-.417-.185-.986-.235-1.558L.09 9.82l-.008-.104A31.4 31.4 0 0 1 0 7.68v-.123c.002-.215.01-.958.064-1.778l.007-.103.003-.052.008-.104.022-.26.01-.104c.048-.519.119-1.023.22-1.402a2.007 2.007 0 0 1 1.415-1.42c.487-.13 1.544-.21 2.654-.26l.17-.007.172-.006.086-.003.171-.007A99.788 99.788 0 0 1 7.858 2h.193zM6.4 5.209v4.818l4.157-2.408L6.4 5.209z"/>
+                                </svg>
+                            </span>
+                        </div>
+                    </div>
+                    <div class="row" style="align-items: baseline; margin-top: 65px">
+                        <div class="col">
+                            <img src="../image/Ariyana-Tourism-Complex-02-2.png" height="62px" width="100%"/>
+                        </div>
+                        <div class="col" style="color: #747575;">
+                            <span> © 2018 Furama Resort Danang.</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+        crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script>
+    var popoverTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="popover"]'))
+    var popoverList = popoverTriggerList.map(function (popoverTriggerEl) {
+        return new bootstrap.Popover(popoverTriggerEl)
+    })
+
+    $(document).ready(function(){
+        $(".myPopover").popover({
+            content: '<ul style="list-style-type: none">' +
+                '<li>Thang Máy Riêng</li>' +
+                '<li>Truy Cập Internet Miễn Phí</li>' +
+                '<li>Toàn Cảnh Hướng Biển</li>' +
+                '</ul>',
+            html: true
+        });
+    });
+</script>
+</html>

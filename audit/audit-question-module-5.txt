@@ -1,0 +1,41 @@
+1	Trình bày được ý nghĩa và khái niệm Observer
+2	Trình bày được ý nghĩa và khái niệm Observable
+3	Phân biệt sự khác nhau giữa var, let, const
+4	File angular.json và package.json sử dụng để làm gì?
+5	Kể tên các directive được hỗ trợ trong angular
+6	Trình bày được ý nghĩa và khái niệm subscribe
+7	Trình bày khái niệm Single page application
+8	Trình bày về Data binding trong component
+9	Trình bày sự khác nhau giữa navigateByUrl và navigate? 
+10	TypeScript là gì?
+11	Tại sao nên sử dụng Typescript, Ưu điểm của Typescript
+12	Làm thế nào để lấy được dữ liệu từ component cha
+13	Làm thế nào để lấy được dữ liệu từ component con
+14	Sự khác biệt giữa RouterModule.forChild và RouterModule.forRoot là gì?
+15	Tại sao nên sử dụng Angular (điểm mạnh)?
+16	Nhược điểm của Angular là gì?
+17	Angular Cli là gì? Làm sao để sử dụng nó ?
+18	Directive trong angular là gì ?
+19	Trình bày được khái niệm template trong angular
+20	Giải thích kiến trúc của Angular
+21	Hãy mô tả khái niệm Databinding One Way & two way phân biệt sự khác nhau?
+22	ngModel là gì?
+23	Component là gì ? các thành phần của component
+24	Có thể chuyển mã TypeScript thành mã Javascript không, bằng cách nào?
+25	Mô tả vòng đời component?
+26	Pipe là gì?
+27	Phân biệt sự khác nhau giữa Promise và Observable
+28	Biên dịch AOT là gì? Những lợi thế của AOT?
+29	Trình bày khái niệm Front-end & backend?
+30	Làm sao để cài đặt TypeScript?
+31	Để khởi tạo một dự án angular sử dụng câu lệnh nào
+32	Để chạy một dự án angular sử dụng câu lệnh nào
+33	Kể tên các kiểu dữ liệu trong Typescript
+34	Kể tên các vòng lặp được typescript hỗ trợ
+35	ngFor là gì? Cách sử dụng
+36	ngIf là gì? Cách sử dụng
+37	Các cách tạo form trong Angular
+38	router trong angular dùng để làm gì?
+39	Cách để lấy tham số trên URL trong angular
+40	làm sao để kiểm tra người dùng có quyền truy cập vào 1 route?
+41	lazy-loading là gì?
