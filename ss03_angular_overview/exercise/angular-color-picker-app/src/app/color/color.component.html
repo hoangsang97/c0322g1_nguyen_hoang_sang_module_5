@@ -1,0 +1,14 @@
+<h2>Font Color editor</h2>
+
+<div>
+  <label>Enter color: </label>
+  <select [(ngModel)]= "fontColor">
+    <option value="red" selected>red</option>
+    <option value="blue">blue</option>
+    <option value="aqua">aqua</option>
+  </select>
+</div>
+
+<p class="output" [style.color]="fontColor">
+  This is a paragraph.
+</p>

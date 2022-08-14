@@ -1,0 +1,15 @@
+<label>First Number: </label>
+<input type="number" [(ngModel)]="firstNumber">
+<br>
+<br>
+<label>Last Number: </label>
+<input type="number" [(ngModel)]="lastNumber">
+<br>
+<br>
+<button (click)="add()" value="+">+</button>
+<button (click)="subtract()" value="-">-</button>
+<button (click)="multiply()" value="x">*</button>
+<button (click)="divide()" value="/">/</button>
+<br>
+<br>
+<div>result: {{ result }}</div>
