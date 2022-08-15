@@ -1,0 +1,27 @@
+<div class="mb-3">
+  <label for="formGroupExampleInput" class="form-label">Name: </label>
+  <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Example input placeholder"
+         [(ngModel)]="name">
+</div>
+<table class="table">
+  <thead>
+  <tr>
+    <th>Stt</th>
+    <th>Name</th>
+    <th>Age</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr *ngFor="let item of customer">
+    <td>{{ item }}</td>
+  </tr>
+  </tbody>
+</table>
+<p class="text-danger">{{ name }}</p>
+<input type="text" [value]="name">
+<p href="" [ngStyle]="currentStyle" *ngIf="true">sadasd</p>
+
+<div *ngFor="let word of arrWords">
+  <h3 [ngStyle]="{color: word.memorized? 'green' : 'red'}">{{word.en}}</h3>
+  <p>{{word.vn}}</p>
+</div>

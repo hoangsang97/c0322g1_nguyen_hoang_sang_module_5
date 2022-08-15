@@ -7,13 +7,15 @@ import { AppComponent } from './app.component';
 import { WordComponent } from './word/word.component';
 import { BookComponent } from './book/book.component';
 import { UserFromComponent } from './user-from/user-from.component';
+import { CustomerComponent } from './customer/customer.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     WordComponent,
     BookComponent,
-    UserFromComponent
+    UserFromComponent,
+    CustomerComponent
   ],
   imports: [
     BrowserModule,
