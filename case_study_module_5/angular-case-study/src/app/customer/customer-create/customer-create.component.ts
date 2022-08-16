@@ -6,10 +6,15 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./customer-create.component.css']
 })
 export class CustomerCreateComponent implements OnInit {
+  name: number;
+  gender: any;
 
   constructor() { }
 
   ngOnInit(): void {
   }
 
+  createCustomer(customer: any) {
+    console.log(customer.value);
+  }
 }

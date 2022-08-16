@@ -1,5 +1,6 @@
 import {BrowserModule} from '@angular/platform-browser';
 import {NgModule} from '@angular/core';
+import {FormsModule} from '@angular/forms';
 import {Routes, RouterModule} from '@angular/router';
 
 import {AppRoutingModule} from './app-routing.module';
@@ -12,9 +13,11 @@ import {CustomerUpdateComponent} from './customer/customer-update/customer-updat
 import {HomeComponent} from './home/home.component';
 import {FacilityListComponent} from './facility/facility-list/facility-list.component';
 import {ContractListComponent} from './contract/contract-list/contract-list.component';
+import { FacilityCreateComponent } from './facility/facility-create/facility-create.component';
+import { FacilityUpdateComponent } from './facility/facility-update/facility-update.component';
 
 const routes: Routes = [{
-  path: 'home',
+  path: '',
   component: HomeComponent
 }, {
   path: 'customer/list',
@@ -28,6 +31,12 @@ const routes: Routes = [{
 }, {
   path: 'facility/list',
   component: FacilityListComponent
+}, {
+  path: 'facility/create',
+  component: FacilityCreateComponent
+}, {
+  path: 'facility/update',
+  component: FacilityUpdateComponent
 }, {
   path: 'contract/list',
   component: ContractListComponent
@@ -43,11 +52,14 @@ const routes: Routes = [{
     CustomerUpdateComponent,
     HomeComponent,
     FacilityListComponent,
-    ContractListComponent
+    ContractListComponent,
+    FacilityCreateComponent,
+    FacilityUpdateComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
+    FormsModule,
     RouterModule.forRoot(routes)
   ],
   providers: [],

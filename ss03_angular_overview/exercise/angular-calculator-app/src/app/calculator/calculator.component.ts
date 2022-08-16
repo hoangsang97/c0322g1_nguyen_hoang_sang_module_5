@@ -14,19 +14,20 @@ export class CalculatorComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  add() {
-    return this.result = this.firstNumber + this.lastNumber;
-  }
-
-  subtract() {
-    return this.result = this.firstNumber - this.lastNumber;
-  }
-
-  multiply() {
-    return this.result = this.firstNumber * this.lastNumber;
-  }
-
-  divide() {
-    return this.result = this.firstNumber / this.lastNumber;
+  calculator(value: any) {
+    switch (value) {
+      case '+':
+        return this.result = this.firstNumber + this.lastNumber;
+      case '-':
+        return this.result = this.firstNumber - this.lastNumber;
+      case '*':
+        return this.result = this.firstNumber * this.lastNumber;
+      case '/':
+        if (this.lastNumber !== 0) {
+          return this.result = this.firstNumber / this.lastNumber;
+        } else {
+          return this.result = 0;
+        }
+    }
   }
 }

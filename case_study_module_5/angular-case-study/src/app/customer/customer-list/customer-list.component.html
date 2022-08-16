@@ -1,6 +1,20 @@
 <div class="content">
   <div class="container-fluid" style="padding: 0">
-    <img src="../../../assets/image/banner01.jpg" height="301" width="100%"/>
+    <img src="../../../assets/image/banner01.jpg" style="position: absolute" height="301" width="100%"/>
+    <div class="content-header">
+      <h3>Danh Sách Khách Hàng</h3>
+      <div class="text-center">
+        <a routerLink="../../customer/create" class="btn btn-primary btn-sm">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person-plus"
+               viewBox="0 0 16 16">
+            <path
+              d="M6 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm2-3a2 2 0 1 1-4 0 2 2 0 0 1 4 0zm4 8c0 1-1 1-1 1H1s-1 0-1-1 1-4 6-4 6 3 6 4zm-1-.004c-.001-.246-.154-.986-.832-1.664C9.516 10.68 8.289 10 6 10c-2.29 0-3.516.68-4.168 1.332-.678.678-.83 1.418-.832 1.664h10z"/>
+            <path fill-rule="evenodd"
+                  d="M13.5 5a.5.5 0 0 1 .5.5V7h1.5a.5.5 0 0 1 0 1H14v1.5a.5.5 0 0 1-1 0V8h-1.5a.5.5 0 0 1 0-1H13V5.5a.5.5 0 0 1 .5-.5z"/>
+          </svg>
+        </a>
+      </div>
+    </div>
   </div>
   <div class="container-fluid" style="font-size: 13px; padding: 75px">
     <table class="table table-bordered">
@@ -19,17 +33,18 @@
       </tr>
       </thead>
       <tbody>
-      <tr>
-        <td>1</td>
-        <td>Nguyễn Văn A</td>
-        <td>1993/02/10</td>
-        <td>Nam</td>
-        <td>096492721</td>
-        <td>VanA@gamil.com</td>
-        <td>Đà Nẵng</td>
-        <td>Diamond</td>
+      <tr *ngFor="let item of customerList">
+        <td>{{item.id}}</td>
+        <td>{{item.name}}</td>
+        <td>{{item.dateOfBirth}}</td>
+        <td *ngIf="item.gender === true">Nam</td>
+        <td *ngIf="item.gender === false">Nữ</td>
+        <td>{{item.phoneNumber}}</td>
+        <td>{{item.email}}</td>
+        <td>{{item.address}}</td>
+        <td>{{item.customerType.name}}</td>
         <td>
-          <a class="btn btn-outline-primary btn-sm">
+          <a routerLink="../../customer/update" class="btn btn-outline-primary btn-sm">
             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pen"
                  viewBox="0 0 16 16">
               <path
@@ -53,84 +68,22 @@
     </table>
   </div>
 
-  <div class="container d-flex flex-column align-items-center" style="font-size: 12px">
-    <h3 style="font-family: 'Playfair Display', serif; color: #cbbe73; margin-bottom: 20px">DỊCH VỤ & CƠ SỞ VẬT
-      CHẤT</h3>
-    <p>Có nhiều những gói nghỉ dưỡng phù hợp cho cả những kỳ nghỉ ngắn hay dài ngày</p>
-  </div>
-
-  <div class="container-fluid">
-    <div id="carouselExampleInterval" class="carousel slide" data-bs-ride="carousel" style="margin: 80px 0;">
-      <div class="carousel-inner">
-        <div class="carousel-item active" data-bs-interval="3000">
-          <div class="container-fluid">
-            <div class="row">
-              <div class="col p-5">
-                <h3 style="font-family: 'Playfair Display', serif; color: #cbbe73;">DỊCH VỤ ĐÓN TIỄN
-                  SÂN BAY</h3>
-                <p style="float: none; position: static; font-size: 13px">Tận hưởng những sự thoải
-                  mái, tiện lợi và
-                  hoàn hảo ngay từ những giây phút đầu tiên của kỳ nghỉ khi hạ cánh tại Sân bay
-                  Quốc tế Đà Nẵng với dịch đón tiễn sân bay chuyên nghiệp, thân thiện và sang
-                  trọng từ Khu nghỉ. Có nhiều lựa chọn phù hợp với nhu cầu di chuyển từ một người
-                  cho đến cả gia đình hay du lịch nhóm. Vui lòng liên hệ: +84 236 3847 333/ +84
-                  236 3847 888 để đặt dịch vụ.</p>
-                <div class="btn-group">
-                  <a href="#" class="btn btn-primary" style="font-size: 13px">Đặt Lịch</a>
-                </div>
-              </div>
-              <div class="col">
-                <img src="../../../assets/image/FRD_Airport_Staff_Service_-2.jpeg" width="219" height="418"
-                     class="d-block w-100" alt="...">
-              </div>
-            </div>
-          </div>
+  <div class="modal fade" id="modelId" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h4 class="modal-title" id="modelTitleId">Xoá Khách Hàng</h4>
+          <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
         </div>
-        <div class="carousel-item" data-bs-interval="3000">
-          <div class="container-fluid">
-            <div class="row">
-              <div class="col p-5">
-                <h3 style="font-family: 'Playfair Display', serif; color: #cbbe73;">DỊCH VỤ VĂN
-                  PHÒNG</h3>
-                <p style="float: none; position: static; font-size: 13px">Nằm tại sảnh đón khách của
-                  Khu nghỉ mát Furama Resort Đà Nẵng, Trung Tâm Dịch Vụ Văn Phòng cung cấp nhiều
-                  dịch vụ và thiết bị văn phòng cũng như nhu cầu thông tin cần thiết cho Qúy khách
-                  bao gồm in ấn, quét và sao lưu tài liệu, thư tín, chuyển phát, fax cũng như
-                  nhiều dịch vụ trợ giúp khác bao gồm khu vực máy tính để bàn kết nối internet
-                  miễn phí. Gọi hội đàm, hội thảo kết nối video có thể được sắp xếp dựa trên yêu
-                  cầu.</p>
-                <div class="btn-group">
-                  <a href="#" class="btn btn-primary" style="font-size: 13px">YÊU CẦU DỊCH VỤ</a>
-                </div>
-              </div>
-              <div class="col">
-                <img src="../../../assets/image/DSC_5851.jpeg" width="219" height="418"
-                     class="d-block w-100" alt="...">
-              </div>
-            </div>
-          </div>
+        <div class="modal-body">
+          <span>Bạn có muốn xoá? <span class="text-danger" id="nameDelete"></span></span>
+          <input type="text" id="idDelete" name="id" hidden>
         </div>
-        <div class="carousel-item" data-bs-interval="3000">
-          <div class="container-fluid">
-            <div class="row">
-              <div class="col p-5">
-                <h3 style="font-family: 'Playfair Display', serif; color: #cbbe73;">XE BUÝT DỊCH VỤ
-                  THEO LỊCH TRÌNH CÓ SẴN</h3>
-                <p style="float: none; position: static; font-size: 13px">Khu nghỉ có dịch vụ xe đưa
-                  đón tham quan phố cổ Hội An theo lịch trình hàng ngày với xe buýt 29 chỗ thoải
-                  mái, thuận tiện và an toàn.</p>
-                <p>Đặt dịch vụ, Vui lòng liên hệ: <strong>+84 236 3847 333</strong> /<strong>+84 236
-                  3847 888</strong></p>
-                <div class="btn-group">
-                  <a href="#" class="btn btn-primary" style="font-size: 13px">LỊCH TRÌNH</a>
-                </div>
-              </div>
-              <div class="col">
-                <img src="../../../assets/image/Shuttle_Bus_Furama_Danang-1.jpeg" width="219" height="418"
-                     class="d-block w-100" alt="...">
-              </div>
-            </div>
-          </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          <input type="submit" class="btn btn-outline-danger" value="Delete">
         </div>
       </div>
     </div>

@@ -25,6 +25,20 @@ body {
   margin-right: 20px;
 }
 
+.content-header {
+  position: relative;
+  text-align: center;
+  transform: translateY(40%);
+  height: 301px;
+}
+
+.content-header h3 {
+  font-size: 40px;
+  color: #ffffff;
+  font-weight: 200;
+  font-style: italic;
+}
+
 .card {
   margin: 0 auto;
   width: 100%;

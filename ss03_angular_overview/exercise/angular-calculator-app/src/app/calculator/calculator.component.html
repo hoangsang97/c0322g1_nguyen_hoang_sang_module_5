@@ -6,10 +6,10 @@
 <input type="number" [(ngModel)]="lastNumber">
 <br>
 <br>
-<button (click)="add()" value="+">+</button>
-<button (click)="subtract()" value="-">-</button>
-<button (click)="multiply()" value="x">*</button>
-<button (click)="divide()" value="/">/</button>
+<button (click)="calculator($event.target.value)" value="+">+</button>
+<button (click)="calculator($event.target.value)" value="-">-</button>
+<button (click)="calculator($event.target.value)" value="*">*</button>
+<button (click)="calculator($event.target.value)" value="/">/</button>
 <br>
 <br>
 <div>result: {{ result }}</div>

@@ -8,6 +8,8 @@ import { WordComponent } from './word/word.component';
 import { BookComponent } from './book/book.component';
 import { UserFromComponent } from './user-from/user-from.component';
 import { CustomerComponent } from './customer/customer.component';
+import { LearnPipeComponent } from './learn-pipe/learn-pipe.component';
+import { PersonComponent } from './person/person.component';
 
 @NgModule({
   declarations: [
@@ -15,7 +17,9 @@ import { CustomerComponent } from './customer/customer.component';
     WordComponent,
     BookComponent,
     UserFromComponent,
-    CustomerComponent
+    CustomerComponent,
+    LearnPipeComponent,
+    PersonComponent
   ],
   imports: [
     BrowserModule,
