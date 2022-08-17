@@ -8,65 +8,71 @@
       </svg>
     </a>
   </div>
-  <form class="row g-3" method="post">
-    <input type="text" hidden>
+  <form class="row g-3" [formGroup]="facilityForm" (ngSubmit)="submit()">
     <div class="col-md-3">
       <label class="form-label">Kiểu Dịch Vụ</label>
-      <select class="form-select" aria-label="Default select example"
-              id="sel">
-        <option></option>
+      <select class="form-select" aria-label="Default select example" id="sel" formControlName="facilityType" (change)="selFacility($event)">
+        <option *ngFor="let item of facilityTypeList">{{item.name}}</option>
       </select>
     </div>
+
+    <div class="col-md-3">
+      <label class="form-label">Kiểu Thuê</label>
+      <select class="form-select" aria-label="Default select example" formControlName="rentType">
+        <option *ngFor="let item of rentTypeList" [ngValue]="item.id">{{item.name}}</option>
+      </select>
+    </div>
+
     <div class="col-md-12">
       <label class="form-label">Tên Dịch Vụ</label>
-      <input type="text" class="form-control">
+      <input type="text" class="form-control" formControlName="name">
     </div>
+
     <div class="col-md-4">
       <label class="form-label">Diện Tích</label>
-      <input type="number" class="form-control">
+      <input type="number" class="form-control" formControlName="area">
     </div>
+
     <div class="col-md-4">
       <label class="form-label">Phí Thuê</label>
-      <input type="number" class="form-control">
+      <input type="number" class="form-control" formControlName="cost">
     </div>
+
     <div class="col-md-4">
       <label class="form-label">Số Người Tối Đa</label>
-      <input type="number" class="form-control">
+      <input type="number" class="form-control" formControlName="maxPeople">
     </div>
-    <div id="villa">
+
+    <div id="villa" [hidden]="facilityTypeId === 'Room'">
       <div class="col-12">
         <label class="form-label">Loại Phòng</label>
-        <input type="text" class="form-control">
+        <input type="text" class="form-control" formControlName="standardRoom">
       </div>
       <div class="col-12">
         <label class="form-label">Mô Tả</label>
-        <input type="text" class="form-control">
+        <input type="text" class="form-control" formControlName="descriptionOtherConvenience">
       </div>
       <div class="col-12">
         <label class="form-label">Số Tầng</label>
-        <input type="number" class="form-control">
+        <input type="number" class="form-control" formControlName="numberOfFloors">
       </div>
     </div>
-    <div id="house">
+
+    <div id="house" [hidden]="facilityTypeId === 'Room' || facilityTypeId === 'House'">
       <div class="col-12">
         <label class="form-label">Diện Tích Hồ Bơi</label>
-        <input type="number" class="form-control">
+        <input type="number" class="form-control" formControlName="poolArea">
       </div>
     </div>
-    <div id="room">
+
+    <div [hidden]="facilityTypeId === 'House' || facilityTypeId === 'Villa'">
       <div class="col-12">
         <label class="form-label">Dịch Vụ Miễn Phí</label>
-        <input type="text" class="form-control">
+        <input type="text" class="form-control" formControlName="facilityFree">
       </div>
     </div>
-    <div class="col-md-4">
-      <label class="form-label">Kiểu Thuê</label>
-      <select class="form-select" aria-label="Default select example">
-        <option></option>
-      </select>
-    </div>
     <div class="col-12">
-      <button type="submit" class="btn btn-primary">Thêm Mới</button>
+      <button class="btn btn-primary">Thêm Mới</button>
     </div>
   </form>
 </div>

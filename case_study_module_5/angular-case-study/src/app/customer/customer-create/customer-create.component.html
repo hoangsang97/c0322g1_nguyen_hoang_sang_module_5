@@ -11,7 +11,7 @@
   </div>
   <form class="row g-3" [formGroup]="customerForm" (ngSubmit)="submit()">
     <div class="col-12">
-      <label class="form-label">Tên</label>
+      <label class="form-label">Tên<span class="text-danger">*</span></label>
       <input type="text" class="form-control" formControlName="name">
       <div class="text-danger" *ngFor="let validation of validationMessages.name">
         <div class="error-message"
@@ -37,7 +37,7 @@
     </div>
 
     <div class="col-md-4">
-      <label class="form-label">Ngày Sinh</label>
+      <label class="form-label">Ngày Sinh<span class="text-danger">*</span></label>
       <input type="date" class="form-control" formControlName="dateOfBirth">
       <div class="text-danger" *ngFor="let validation of validationMessages.dateOfBirth">
         <div class="error-message"
@@ -47,7 +47,7 @@
     </div>
 
     <div class="col-md-4">
-      <label class="form-label">Số CMND</label>
+      <label class="form-label">Số CMND<span class="text-danger">*</span></label>
       <input type="text" class="form-control" formControlName="idCard">
       <div class="text-danger" *ngFor="let validation of validationMessages.idCard">
         <div class="error-message"
@@ -57,7 +57,7 @@
     </div>
 
     <div class="col-md-4">
-      <label class="form-label">SĐT</label>
+      <label class="form-label">SĐT<span class="text-danger">*</span></label>
       <input type="text" class="form-control" formControlName="phoneNumber">
       <div class="text-danger" *ngFor="let validation of validationMessages.phoneNumber">
         <div class="error-message"
@@ -67,7 +67,7 @@
     </div>
 
     <div class="col-12">
-      <label class="form-label">Email</label>
+      <label class="form-label">Email<span class="text-danger">*</span></label>
       <input type="text" class="form-control" formControlName="email">
       <div class="text-danger" *ngFor="let validation of validationMessages.email">
         <div class="error-message"

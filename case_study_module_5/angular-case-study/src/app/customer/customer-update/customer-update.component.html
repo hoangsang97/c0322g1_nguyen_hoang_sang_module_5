@@ -12,8 +12,13 @@
   <form class="row g-3" [formGroup]="customerUpdateForm" (ngSubmit)="updateSubmit()">
     <input type="text" hidden formControlName="id">
     <div class="col-12">
-      <label class="form-label">Tên</label>
+      <label class="form-label">Tên<span class="text-danger">*</span></label>
       <input type="text" class="form-control" formControlName="name">
+      <div class="text-danger" *ngFor="let validation of validationMessages.name">
+        <div class="error-message"
+             *ngIf="customerUpdateForm.get('name').hasError(validation.type) && (customerUpdateForm.get('name').dirty || customerUpdateForm.get('name').touched)">
+          {{validation.message}}</div>
+      </div>
     </div>
     <div class="col-12">
       <label class="form-label">Giới Tính</label>
@@ -31,20 +36,40 @@
       </div>
     </div>
     <div class="col-md-4">
-      <label class="form-label">Ngày Sinh</label>
+      <label class="form-label">Ngày Sinh<span class="text-danger">*</span></label>
       <input type="text" class="form-control" formControlName="dateOfBirth">
+      <div class="text-danger" *ngFor="let validation of validationMessages.dateOfBirth">
+        <div class="error-message"
+             *ngIf="customerUpdateForm.get('dateOfBirth').hasError(validation.type) && (customerUpdateForm.get('dateOfBirth').dirty || customerUpdateForm.get('dateOfBirth').touched)">
+          {{validation.message}}</div>
+      </div>
     </div>
     <div class="col-md-4">
-      <label class="form-label">Số CMND</label>
+      <label class="form-label">Số CMND<span class="text-danger">*</span></label>
       <input type="text" class="form-control" formControlName="idCard">
+      <div class="text-danger" *ngFor="let validation of validationMessages.idCard">
+        <div class="error-message"
+             *ngIf="customerUpdateForm.get('idCard').hasError(validation.type) && (customerUpdateForm.get('idCard').dirty || customerUpdateForm.get('idCard').touched)">
+          {{validation.message}}</div>
+      </div>
     </div>
     <div class="col-md-4">
-      <label class="form-label">SĐT</label>
+      <label class="form-label">SĐT<span class="text-danger">*</span></label>
       <input type="text" class="form-control" formControlName="phoneNumber">
+      <div class="text-danger" *ngFor="let validation of validationMessages.phoneNumber">
+        <div class="error-message"
+             *ngIf="customerUpdateForm.get('phoneNumber').hasError(validation.type) && (customerUpdateForm.get('phoneNumber').dirty || customerUpdateForm.get('phoneNumber').touched)">
+          {{validation.message}}</div>
+      </div>
     </div>
     <div class="col-12">
-      <label class="form-label">Email</label>
+      <label class="form-label">Email<span class="text-danger">*</span></label>
       <input type="text" class="form-control" formControlName="email">
+      <div class="text-danger" *ngFor="let validation of validationMessages.email">
+        <div class="error-message"
+             *ngIf="customerUpdateForm.get('email').hasError(validation.type) && (customerUpdateForm.get('email').dirty || customerUpdateForm.get('email').touched)">
+          {{validation.message}}</div>
+      </div>
     </div>
     <div class="col-12">
       <label class="form-label">Địa Chỉ</label>
@@ -57,7 +82,7 @@
       </select>
     </div>
     <div class="col-12">
-      <button class="btn btn-primary">Sửa</button>
+      <button class="btn btn-primary" [disabled]="customerUpdateForm.invalid">Sửa</button>
     </div>
   </form>
 </div>

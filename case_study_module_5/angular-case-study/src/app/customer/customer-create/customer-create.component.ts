@@ -3,6 +3,7 @@ import {FormGroup, FormControl, Validators, ValidatorFn} from '@angular/forms';
 import {CustomerType} from '../../module/customer-type';
 import {CustomerService} from '../../service/customer.service';
 import {CustomerTypeService} from '../../service/customer-type.service';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-customer-create',
@@ -22,12 +23,13 @@ export class CustomerCreateComponent implements OnInit {
     ],
     phoneNumber: [
       {type: 'required', message: 'Vui lòng nhập số điện thoại'},
-      // tslint:disable-next-line:max-line-length
-      {type: 'pattern', message: 'Vui lòng nhập số địa thoại đúng định dạng 090xxxxxxx hoặc 091xxxxxxx hoặc (84)+90xxxxxxx hoặc (84)+91xxxxxxx'}
+      {
+        type: 'pattern',
+        message: 'Vui lòng nhập số địa thoại đúng định dạng 090xxxxxxx hoặc 091xxxxxxx hoặc (84)+90xxxxxxx hoặc (84)+91xxxxxxx'
+      }
     ],
     idCard: [
       {type: 'required', message: 'Vui lòng nhập CMND'},
-      // tslint:disable-next-line:max-line-length
       {type: 'pattern', message: 'Vui lòng nhập số địa thoại đúng định dạng XXXXXXXXX hoặc XXXXXXXXXXXX (X là số 0-9).'}
     ],
     email: [
@@ -36,7 +38,9 @@ export class CustomerCreateComponent implements OnInit {
     ]
   };
 
-  constructor(private customerService: CustomerService, private customerTypeService: CustomerTypeService) {
+  constructor(private customerService: CustomerService,
+              private customerTypeService: CustomerTypeService,
+              private router: Router) {
   }
 
   ngOnInit(): void {
@@ -44,25 +48,20 @@ export class CustomerCreateComponent implements OnInit {
     this.customerForm = new FormGroup({
       name: new FormControl('', [
         Validators.required,
-        // tslint:disable-next-line:max-line-length
         Validators.pattern('^[a-zA-Zàáạảãâầấậẩẫăằắặẳẵèéẹẻẽêềếệểễìíịỉĩòóọỏõôồốộổỗơờớợởỡùúụủũưừứựửữỳýỵỷỹđ]+(\\s[a-zA-Zàáạảãâầấậẩẫăằắặẳẵèéẹẻẽêềếệểễìíịỉĩòóọỏõôồốộổỗơờớợởỡùúụủũưừứựửữỳýỵỷỹđ]+)*$')
       ]),
       gender: new FormControl(false),
       dateOfBirth: new FormControl('', [
-        Validators.required,
-        Validators.pattern('^(0?[1-9]|[12][0-9]|3[01])[\\/\\-](0?[1-9]|1[012])[\\/\\-]\\d{4}$')
+        Validators.required
       ]),
       idCard: new FormControl('', [
-        Validators.required,
-        Validators.pattern('^-?(0|[1-9]\\d*)?$')
+        Validators.required
       ]),
       phoneNumber: new FormControl('', [
-        Validators.required,
-        Validators.pattern('^-?(0|[1-9]\\d*)?$')
+        Validators.required
       ]),
       email: new FormControl('', [
         Validators.required,
-        // tslint:disable-next-line:max-line-length
         Validators.pattern('[a-z0-9]+@[a-z]+\\.[a-z]{2,3}')
       ]),
       address: new FormControl(),
@@ -74,6 +73,7 @@ export class CustomerCreateComponent implements OnInit {
     const customer = this.customerForm.value;
     this.customerService.saveCustomer(customer);
     this.customerForm.reset();
+    this.router.navigate(['../customer/list']);
   }
 
   getAllCustomerType() {
