@@ -1,5 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {Customer} from '../../module/customer';
+import {CustomerService} from '../../service/customer.service';
 
 @Component({
   selector: 'app-customer-list',
@@ -7,23 +8,30 @@ import {Customer} from '../../module/customer';
   styleUrls: ['./customer-list.component.css']
 })
 export class CustomerListComponent implements OnInit {
+  valueDelete = [];
   customerList: Customer[] = [];
 
-  constructor() {
-    this.customerList.push({
-      id: 1,
-      name: 'Nguyễn Văn An',
-      dateOfBirth: '1998-08-09',
-      gender: false,
-      idCard: '9894739372',
-      phoneNumber: '3184434343',
-      email: 'hoang@gmail.com',
-      address: 'ĐN',
-      customerType: {id: 1, name: 'Vip'}
-    });
-  }
+  constructor(private customerService: CustomerService) { }
 
   ngOnInit(): void {
+    this.getAll();
   }
 
+  getAll() {
+    this.customerList = this.customerService.customerList;
+  }
+
+  elementDelete(id: number, name: string) {
+    this.valueDelete.push(id);
+    this.valueDelete.push(name);
+    return this.valueDelete;
+  }
+
+  resetModal() {
+    this.valueDelete = [];
+  }
+
+  deleteCustomer(id: number) {
+    this.customerService.removeCustomer(id);
+  }
 }

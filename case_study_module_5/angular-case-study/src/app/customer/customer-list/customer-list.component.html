@@ -1,6 +1,6 @@
 <div class="content">
   <div class="container-fluid" style="padding: 0">
-    <img src="../../../assets/image/banner01.jpg" style="position: absolute" height="301" width="100%"/>
+    <img src="../../../assets/image/banner01.jpg" style="position: absolute" height="351" width="100%"/>
     <div class="content-header">
       <h3>Danh Sách Khách Hàng</h3>
       <div class="text-center">
@@ -25,6 +25,7 @@
         <th>Ngày Sinh</th>
         <th>Giới Tính</th>
         <th>SĐT</th>
+        <th>CMND</th>
         <th>Email</th>
         <th>Địa chỉ</th>
         <th>Loại Khách Hàng</th>
@@ -40,11 +41,13 @@
         <td *ngIf="item.gender === true">Nam</td>
         <td *ngIf="item.gender === false">Nữ</td>
         <td>{{item.phoneNumber}}</td>
+        <td>{{item.idCard}}</td>
         <td>{{item.email}}</td>
         <td>{{item.address}}</td>
-        <td>{{item.customerType.name}}</td>
+        <td *ngIf="item.customerType !== null">{{item.customerType.name}}</td>
+        <td *ngIf="item.customerType == null"></td>
         <td>
-          <a routerLink="../../customer/update" class="btn btn-outline-primary btn-sm">
+          <a [routerLink]="['../../customer/update', item.id]" class="btn btn-outline-primary btn-sm">
             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pen"
                  viewBox="0 0 16 16">
               <path
@@ -55,7 +58,7 @@
         <td>
           <!-- Button trigger modal -->
           <button type="button" class="btn btn-outline-danger btn-sm" data-bs-toggle="modal"
-                  data-bs-target="#modelId">
+                  data-bs-target="#modelId" (click)="elementDelete(item.id, item.name)">
             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
                  class="bi bi-trash3" viewBox="0 0 16 16">
               <path
@@ -73,17 +76,13 @@
       <div class="modal-content">
         <div class="modal-header">
           <h4 class="modal-title" id="modelTitleId">Xoá Khách Hàng</h4>
-          <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
         </div>
         <div class="modal-body">
-          <span>Bạn có muốn xoá? <span class="text-danger" id="nameDelete"></span></span>
-          <input type="text" id="idDelete" name="id" hidden>
+          <span>Bạn có muốn xoá? <span class="text-danger">{{valueDelete[1]}}</span></span>
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-          <input type="submit" class="btn btn-outline-danger" value="Delete">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" (click)="resetModal()">Đóng</button>
+          <button type="button" class="btn btn-outline-danger" (click)="deleteCustomer(valueDelete[0])" data-bs-dismiss="modal">Xoá</button>
         </div>
       </div>
     </div>
