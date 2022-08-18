@@ -5,6 +5,7 @@ import {Customer} from '../../module/customer';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {CustomerTypeService} from '../../service/customer-type.service';
 import {CustomerType} from '../../module/customer-type';
+import {ToastrService} from 'ngx-toastr';
 
 @Component({
   selector: 'app-customer-update',
@@ -43,7 +44,8 @@ export class CustomerUpdateComponent implements OnInit {
   constructor(private customerService: CustomerService,
               private activatedRoute: ActivatedRoute,
               private customerTypeService: CustomerTypeService,
-              private router: Router) {
+              private router: Router,
+              private toastr: ToastrService) {
   }
 
   ngOnInit(): void {
@@ -83,6 +85,6 @@ export class CustomerUpdateComponent implements OnInit {
     const customer = this.customerUpdateForm.value;
     this.customerService.editCustomer(customer);
     this.router.navigate(['../customer/list']);
-    // this.toastr.success('Sửa Thông Tin Thành Công !', 'Thông Báo!');
+    this.toastr.success('Sửa Thông Tin Thành Công !', 'Thông Báo!');
   }
 }

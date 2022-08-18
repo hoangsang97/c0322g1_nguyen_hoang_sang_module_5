@@ -6,6 +6,7 @@ import {RentType} from '../../module/rent-type';
 import {FacilityType} from '../../module/facility-type';
 import {FacilityService} from '../../service/facility.service';
 import {Router} from '@angular/router';
+import {ToastrService} from 'ngx-toastr';
 
 @Component({
   selector: 'app-facility-create',
@@ -16,12 +17,13 @@ export class FacilityCreateComponent implements OnInit {
   facilityForm: FormGroup;
   rentTypeList: RentType[] = [];
   facilityTypeList: FacilityType[] = [];
-  facilityTypeId = 'Villa';
+  facilityTypeId = '0: 1';
 
   constructor(private rentType: RentTypeService,
               private facilityType: FacilityTypeService,
               private facility: FacilityService,
-              private router: Router) {
+              private router: Router,
+              private toastr: ToastrService) {
     this.rentTypeList = rentType.rentTypeList;
     this.facilityTypeList = facilityType.facilityTypeList;
   }
@@ -45,10 +47,12 @@ export class FacilityCreateComponent implements OnInit {
   submit() {
     const facility = this.facilityForm.value;
     this.facility.save(facility);
-    this.router.navigate(['../facility/list']);
+    this.router.navigate(['../facility/list/0']);
+    this.toastr.success('Thêm mới thông tin thành công', 'Thông Báo!');
   }
 
   selFacility(event) {
     this.facilityTypeId = event.target.value;
+    console.log(this.facilityTypeId);
   }
 }

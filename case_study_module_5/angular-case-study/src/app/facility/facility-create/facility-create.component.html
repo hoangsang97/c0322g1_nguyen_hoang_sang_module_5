@@ -1,74 +1,76 @@
 <div class="container p-3">
   <div class="text-center">
     <h3>Thêm Mới Dịch Vụ</h3>
-    <a routerLink="../../facility/list" class="btn btn-outline-primary">
+    <a [routerLink]="['../list', 0]" class="btn btn-outline-primary">
       <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
            class="bi bi-skip-backward" viewBox="0 0 16 16">
-        <path d="M.5 3.5A.5.5 0 0 1 1 4v3.248l6.267-3.636c.52-.302 1.233.043 1.233.696v2.94l6.267-3.636c.52-.302 1.233.043 1.233.696v7.384c0 .653-.713.998-1.233.696L8.5 8.752v2.94c0 .653-.713.998-1.233.696L1 8.752V12a.5.5 0 0 1-1 0V4a.5.5 0 0 1 .5-.5zm7 1.133L1.696 8 7.5 11.367V4.633zm7.5 0L9.196 8 15 11.367V4.633z"/>
+        <path
+          d="M.5 3.5A.5.5 0 0 1 1 4v3.248l6.267-3.636c.52-.302 1.233.043 1.233.696v2.94l6.267-3.636c.52-.302 1.233.043 1.233.696v7.384c0 .653-.713.998-1.233.696L8.5 8.752v2.94c0 .653-.713.998-1.233.696L1 8.752V12a.5.5 0 0 1-1 0V4a.5.5 0 0 1 .5-.5zm7 1.133L1.696 8 7.5 11.367V4.633zm7.5 0L9.196 8 15 11.367V4.633z"/>
       </svg>
     </a>
   </div>
   <form class="row g-3" [formGroup]="facilityForm" (ngSubmit)="submit()">
     <div class="col-md-3">
       <label class="form-label">Kiểu Dịch Vụ</label>
-      <select class="form-select" aria-label="Default select example" id="sel" formControlName="facilityType" (change)="selFacility($event)">
-        <option *ngFor="let item of facilityTypeList">{{item.name}}</option>
+      <select class="form-select" aria-label="Default select example" name="facilityType" formControlName="facilityType"
+              (change)="selFacility($event)">
+        <option *ngFor="let item of facilityTypeList" [ngValue]="item.id">{{item.name}}</option>
       </select>
     </div>
 
     <div class="col-md-3">
       <label class="form-label">Kiểu Thuê</label>
-      <select class="form-select" aria-label="Default select example" formControlName="rentType">
+      <select class="form-select" aria-label="Default select example" name="facilityType" formControlName="rentType">
         <option *ngFor="let item of rentTypeList" [ngValue]="item.id">{{item.name}}</option>
       </select>
     </div>
 
     <div class="col-md-12">
       <label class="form-label">Tên Dịch Vụ</label>
-      <input type="text" class="form-control" formControlName="name">
+      <input type="text" class="form-control" name="name" formControlName="name">
     </div>
 
     <div class="col-md-4">
       <label class="form-label">Diện Tích</label>
-      <input type="number" class="form-control" formControlName="area">
+      <input type="number" class="form-control" name="area" formControlName="area">
     </div>
 
     <div class="col-md-4">
       <label class="form-label">Phí Thuê</label>
-      <input type="number" class="form-control" formControlName="cost">
+      <input type="number" class="form-control" name="cost" formControlName="cost">
     </div>
 
     <div class="col-md-4">
       <label class="form-label">Số Người Tối Đa</label>
-      <input type="number" class="form-control" formControlName="maxPeople">
+      <input type="number" class="form-control" name="maxPeople" formControlName="maxPeople">
     </div>
 
-    <div id="villa" [hidden]="facilityTypeId === 'Room'">
+    <div id="villa" [hidden]="facilityTypeId === '2: 3'">
       <div class="col-12">
         <label class="form-label">Loại Phòng</label>
-        <input type="text" class="form-control" formControlName="standardRoom">
+        <input type="text" class="form-control" name="standardRoom" formControlName="standardRoom">
       </div>
       <div class="col-12">
         <label class="form-label">Mô Tả</label>
-        <input type="text" class="form-control" formControlName="descriptionOtherConvenience">
+        <input type="text" class="form-control" name="descriptionOtherConvenience" formControlName="descriptionOtherConvenience">
       </div>
       <div class="col-12">
         <label class="form-label">Số Tầng</label>
-        <input type="number" class="form-control" formControlName="numberOfFloors">
+        <input type="number" class="form-control" name="numberOfFloors" formControlName="numberOfFloors">
       </div>
     </div>
 
-    <div id="house" [hidden]="facilityTypeId === 'Room' || facilityTypeId === 'House'">
+    <div id="house" [hidden]="facilityTypeId === '2: 3' || facilityTypeId === '1: 2'">
       <div class="col-12">
         <label class="form-label">Diện Tích Hồ Bơi</label>
-        <input type="number" class="form-control" formControlName="poolArea">
+        <input type="number" class="form-control" name="poolArea" formControlName="poolArea">
       </div>
     </div>
 
-    <div [hidden]="facilityTypeId === 'House' || facilityTypeId === 'Villa'">
+    <div [hidden]="facilityTypeId === '1: 2' || facilityTypeId === '0: 1'">
       <div class="col-12">
         <label class="form-label">Dịch Vụ Miễn Phí</label>
-        <input type="text" class="form-control" formControlName="facilityFree">
+        <input type="text" class="form-control" name="facilityFree" formControlName="facilityFree">
       </div>
     </div>
     <div class="col-12">

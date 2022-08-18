@@ -23,13 +23,13 @@ const routes: Routes = [{
   path: 'customer/update/:id',
   component: CustomerUpdateComponent,
 }, {
-  path: 'facility/list',
+  path: 'facility/list/:id',
   component: FacilityListComponent
 }, {
   path: 'facility/create',
   component: FacilityCreateComponent
 }, {
-  path: 'facility/update',
+  path: 'facility/update/:id',
   component: FacilityUpdateComponent
 }, {
   path: 'contract/list',

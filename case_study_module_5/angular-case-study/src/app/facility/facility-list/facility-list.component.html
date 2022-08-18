@@ -5,7 +5,7 @@
     <div class="content-header">
       <h3>Danh Sách Dịch Vụ</h3>
       <div class="text-center">
-        <a routerLink="../../facility/create" class="btn btn-primary btn-sm">
+        <a routerLink="../../create" class="btn btn-primary btn-sm">
           <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person-plus"
                viewBox="0 0 16 16">
             <path
@@ -27,23 +27,44 @@
             <div class="card-body" style="background-color: #F7F7F7">
               <h6 class="card-text">PHÒNG SUITE {{ item.descriptionOtherConvenience | uppercase }}.</h6>
               <div class="d-flex justify-content-between">
+
                 <p>Diện tích phòng: {{item.area}} m²</p>
+
+                <div class="align-items-center">
+                 <span tabindex="0" class="myPopover" data-bs-trigger="hover focus" data-toggle="popover" data-bs-placement="bottom">
+
+                   <span class="text-success">
+                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-exclamation-circle" viewBox="0 0 16 16">
+                        <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
+                        <path d="M7.002 11a1 1 0 1 1 2 0 1 1 0 0 1-2 0zM7.1 4.995a.905.905 0 1 1 1.8 0l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 4.995z"/>
+                     </svg>
+                   </span>
+
+                   <span>
+                     <a data-bs-toggle="modal" data-bs-target="#modelIdDetail" class="text-decoration-none text-success" (click)="facilityDetail(item.id)">Xem thêm</a>
+                   </span>
+                 </span>
+                </div>
               </div>
+
               <div class="d-flex justify-content-evenly">
-                <a routerLink="../../facility/update" class="btn btn-outline-primary btn-sm">
+
+                <a [routerLink]="['../../update', item.facilityType.id]" class="btn btn-outline-primary btn-sm">
                   <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pen"
                        viewBox="0 0 16 16">
                     <path
                       d="m13.498.795.149-.149a1.207 1.207 0 1 1 1.707 1.708l-.149.148a1.5 1.5 0 0 1-.059 2.059L4.854 14.854a.5.5 0 0 1-.233.131l-4 1a.5.5 0 0 1-.606-.606l1-4a.5.5 0 0 1 .131-.232l9.642-9.642a.5.5 0 0 0-.642.056L6.854 4.854a.5.5 0 1 1-.708-.708L9.44.854A1.5 1.5 0 0 1 11.5.796a1.5 1.5 0 0 1 1.998-.001zm-.644.766a.5.5 0 0 0-.707 0L1.95 11.756l-.764 3.057 3.057-.764L14.44 3.854a.5.5 0 0 0 0-.708l-1.585-1.585z"/>
                   </svg>
                 </a>
-                <button type="button" class="btn btn-outline-danger btn-sm" data-bs-toggle="modal" data-bs-target="#modelId">
+
+                <button type="button" class="btn btn-outline-danger btn-sm" data-bs-toggle="modal" data-bs-target="#modelId" (click)="valueDelete(item.id, item.name)">
                   <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
                        class="bi bi-trash3" viewBox="0 0 16 16">
                     <path
                       d="M6.5 1h3a.5.5 0 0 1 .5.5v1H6v-1a.5.5 0 0 1 .5-.5ZM11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3A1.5 1.5 0 0 0 5 1.5v1H2.506a.58.58 0 0 0-.01 0H1.5a.5.5 0 0 0 0 1h.538l.853 10.66A2 2 0 0 0 4.885 16h6.23a2 2 0 0 0 1.994-1.84l.853-10.66h.538a.5.5 0 0 0 0-1h-.995a.59.59 0 0 0-.01 0H11Zm1.958 1-.846 10.58a1 1 0 0 1-.997.92h-6.23a1 1 0 0 1-.997-.92L3.042 3.5h9.916Zm-7.487 1a.5.5 0 0 1 .528.47l.5 8.5a.5.5 0 0 1-.998.06L5 5.03a.5.5 0 0 1 .47-.53Zm5.058 0a.5.5 0 0 1 .47.53l-.5 8.5a.5.5 0 1 1-.998-.06l.5-8.5a.5.5 0 0 1 .528-.47ZM8 4.5a.5.5 0 0 1 .5.5v8.5a.5.5 0 0 1-1 0V5a.5.5 0 0 1 .5-.5Z"/>
                   </svg>
                 </button>
+
               </div>
             </div>
           </div>
@@ -62,12 +83,92 @@
           </button>
         </div>
         <div class="modal-body">
-          <span>do you want to delete? <span class="text-danger" id="nameDelete"></span></span>
-          <input type="text" id="idDelete" name="id" hidden>
+          <span>do you want to delete? <span class="text-danger">{{valueD[1]}}</span></span>
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-secondary btn-sm" data-bs-dismiss="modal">Đóng</button>
-          <button type="button" class="btn btn-outline-danger btn-sm">Xoá</button>
+          <button type="button" class="btn btn-secondary btn-sm" data-bs-dismiss="modal" (click)="resetModal()">Đóng</button>
+          <button type="button" class="btn btn-outline-danger btn-sm" data-bs-dismiss="modal" (click)="deleteFacility(valueD[0])">Xoá</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal fade" id="modelIdDetail" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
+    <div class="modal-dialog" role="document" style="font-size: 13px">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h4 class="modal-title" id="modelTitleIdDetail">Thông Tin Dịch Vụ</h4>
+        </div>
+        <div class="modal-body">
+          <div class="row mb-3">
+            <label class="col-sm-3">Tên Dịch Vụ: </label>
+            <div class="col-sm-4">
+              {{facilityById.name}}
+            </div>
+          </div>
+          <div class="row mb-3">
+            <label class="col-sm-3">Diện Tích: </label>
+            <div class="col-sm-4">
+              {{facilityById.area}}
+            </div>
+          </div>
+          <div class="row mb-3">
+            <label class="col-sm-3">Phí Thuê: </label>
+            <div class="col-sm-4">
+              {{facilityById.cost}}
+            </div>
+          </div>
+          <div class="row mb-3">
+            <label class="col-sm-3">Số Người Tối Đa: </label>
+            <div class="col-sm-4">
+              {{facilityById.maxPeople}}
+            </div>
+          </div>
+          <div class="row mb-3">
+            <label class="col-sm-3">Loại Phòng: </label>
+            <div class="col-sm-4">
+              {{facilityById.standardRoom}}
+            </div>
+          </div>
+          <div class="row mb-3">
+            <label class="col-sm-3">Mô Tả: </label>
+            <div class="col-sm-4">
+              {{facilityById.descriptionOtherConvenience}}
+            </div>
+          </div>
+          <div class="row mb-3">
+            <label class="col-sm-3">Số Tầng: </label>
+            <div class="col-sm-4">
+              {{facilityById.numberOfFloors}}
+            </div>
+          </div>
+          <div class="row mb-3">
+            <label class="col-sm-3">Diện Tích Hồ Bơi: </label>
+            <div class="col-sm-4">
+              {{facilityById.poolArea}}
+            </div>
+          </div>
+          <div class="row mb-3">
+            <label class="col-sm-3">Dịch Vụ Miễn Phí: </label>
+            <div class="col-sm-4">
+              {{facilityById.facilityFree}}
+            </div>
+          </div>
+          <div class="row mb-3">
+            <label class="col-sm-3">Kiểu Dịch Vụ: </label>
+            <div class="col-sm-4">
+              {{facilityById.facilityType.name}}
+            </div>
+          </div>
+          <div class="row mb-3">
+            <label class="col-sm-3">Kiểu Thuê: </label>
+            <div class="col-sm-4">
+              {{facilityById.rentType.name}}
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Đóng</button>
         </div>
       </div>
     </div>

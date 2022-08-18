@@ -12,8 +12,10 @@ import {CustomerUpdateComponent} from './customer/customer-update/customer-updat
 import {HomeComponent} from './home/home.component';
 import {FacilityListComponent} from './facility/facility-list/facility-list.component';
 import {ContractListComponent} from './contract/contract-list/contract-list.component';
-import { FacilityCreateComponent } from './facility/facility-create/facility-create.component';
-import { FacilityUpdateComponent } from './facility/facility-update/facility-update.component';
+import {FacilityCreateComponent} from './facility/facility-create/facility-create.component';
+import {FacilityUpdateComponent} from './facility/facility-update/facility-update.component';
+import {ToastrModule} from 'ngx-toastr';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -29,12 +31,14 @@ import { FacilityUpdateComponent } from './facility/facility-update/facility-upd
     FacilityCreateComponent,
     FacilityUpdateComponent
   ],
-    imports: [
-        BrowserModule,
-        AppRoutingModule,
-        FormsModule,
-        ReactiveFormsModule
-    ],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    FormsModule,
+    ReactiveFormsModule,
+    BrowserAnimationsModule,
+    ToastrModule.forRoot()
+  ],
   providers: [],
   bootstrap: [AppComponent],
 })

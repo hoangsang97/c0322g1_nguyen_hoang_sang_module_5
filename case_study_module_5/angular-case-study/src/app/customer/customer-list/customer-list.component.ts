@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {Customer} from '../../module/customer';
 import {CustomerService} from '../../service/customer.service';
+import {ToastrService} from 'ngx-toastr';
 
 @Component({
   selector: 'app-customer-list',
@@ -11,7 +12,8 @@ export class CustomerListComponent implements OnInit {
   valueDelete = [];
   customerList: Customer[] = [];
 
-  constructor(private customerService: CustomerService) { }
+  constructor(private customerService: CustomerService,
+              private toastr: ToastrService) { }
 
   ngOnInit(): void {
     this.getAll();
@@ -33,5 +35,6 @@ export class CustomerListComponent implements OnInit {
 
   deleteCustomer(id: number) {
     this.customerService.removeCustomer(id);
+    this.toastr.success('Xoá thông tin thành công', 'Thông báo!');
   }
 }

@@ -111,13 +111,13 @@
                 Dịch vụ
               </a>
               <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                <li><a class="dropdown-item" routerLink="facility/list">Danh Sách</a></li>
+                <li><a class="dropdown-item" [routerLink]="['facility/list', 0]">Danh Sách</a></li>
                 <li>
                   <hr class="dropdown-divider">
                 </li>
-                <li><a class="dropdown-item" routerLink="facility/list">Căn Hộ</a></li>
-                <li><a class="dropdown-item" routerLink="facility/list">Phòng</a></li>
-                <li><a class="dropdown-item" routerLink="facility/list">Biệt thự</a></li>
+                <li><a class="dropdown-item" [routerLink]="['facility/list', 1]">Biệt thự</a></li>
+                <li><a class="dropdown-item" [routerLink]="['facility/list', 2]">Căn Hộ</a></li>
+                <li><a class="dropdown-item" [routerLink]="['facility/list', 3]">Phòng</a></li>
               </ul>
             </li>
             <li class="nav-item">
