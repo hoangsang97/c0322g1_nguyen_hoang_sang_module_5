@@ -1,0 +1,127 @@
+<form [formGroup]="registerForm" (ngSubmit)="submitRegister()">
+  <table>
+    <tr>
+      <td>email:</td>
+      <td><input type="text" formControlName="email"></td>
+      <td>
+        <p style="color: red" *ngIf="registerForm.controls.email.hasError('required') && registerForm.controls.email.dirty">
+          Email Khong duoc de trong!
+        </p>
+        <p style="color: red" *ngIf="registerForm.controls.email.hasError('email') && registerForm.controls.email.dirty">
+          Email Khong dung ding dang!
+        </p>
+      </td>
+    </tr>
+    <tr>
+      <td>password:</td>
+      <td><input type="text" formControlName="password"></td>
+      <td>
+        <p style="color: red" *ngIf="registerForm.controls.password.hasError('required') && registerForm.controls.password.dirty">
+          Password Khong duoc de trong!
+        </p>
+        <p style="color: red" *ngIf="registerForm.controls.password.hasError('minlength') && registerForm.controls.password.dirty">
+          Password phai lon hon 6 ki tu!
+        </p>
+      </td>
+    </tr>
+    <tr>
+      <td>confirmPassword:</td>
+      <td><input type="text" formControlName="confirmPassword"></td>
+      <td>
+        <p style="color: red" *ngIf="registerForm.controls.confirmPassword.hasError('required') && registerForm.controls.confirmPassword.dirty">
+          confirmPassword Khong duoc de trong!
+        </p>
+        <p style="color: red" *ngIf="registerForm.controls.confirmPassword.hasError('minlength') && registerForm.controls.confirmPassword.dirty">
+          confirmPassword phai lon hon 6 ki tu!
+        </p>
+      </td>
+    </tr>
+    <tr>
+      <td>country:</td>
+      <td>
+        <select formControlName="country">
+          <option value="vietnam" [ngValue]="'vietnam'">Viet Nam</option>
+          <option value="myanmar">Myanmar</option>
+        </select>
+      </td>
+      <td>
+        <p style="color: red" *ngIf="registerForm.controls.country.hasError('required') && registerForm.controls.country.dirty">
+          Country Khong duoc de trong!
+        </p>
+      </td>
+    </tr>
+    <tr>
+      <td>age:</td>
+      <td><input type="text" formControlName="age"></td>
+      <td>
+        <p style="color: red" *ngIf="registerForm.controls.age.hasError('required') && registerForm.controls.age.dirty">
+          age Khong duoc de trong!
+        </p>
+        <p style="color: red" *ngIf="registerForm.controls.age.hasError('regexAge') && registerForm.controls.age.dirty">
+          age phai lon hon 18!
+        </p>
+      </td>
+    </tr>
+    <tr>
+      <td>gender:</td>
+      <td><input type="radio" formControlName="gender" [value]="'male'">Male</td>
+      <td><input type="radio" formControlName="gender" [value]="'female'">FeMale</td>
+      <td>
+        <p style="color: red" *ngIf="registerForm.controls.age.hasError('required') && registerForm.controls.age.dirty">
+          gender Khong duoc de trong!
+        </p>
+      </td>
+    </tr>
+    <tr>
+      <td>phone:</td>
+      <td><input type="text" formControlName="phone"></td>
+      <td>
+        <p style="color: red" *ngIf="registerForm.controls.phone.hasError('required') && registerForm.controls.phone.dirty">
+          phone Khong duoc de trong!
+        </p>
+        <p style="color: red" *ngIf="registerForm.controls.phone.hasError('pattern') && registerForm.controls.phone.dirty">
+          phone bắt đầu với +84, và theo sau là 9 đến 10 chữ số!
+        </p>
+      </td>
+    </tr>
+    <tr>
+      <td></td>
+      <td>
+        <button [disabled]="registerForm.invalid">Submit</button>
+      </td>
+    </tr>
+  </table>
+</form>
+<br>
+<div>
+  <table>
+    <tr>
+      <td>email:</td>
+      <td>{{register.email}}</td>
+    </tr>
+    <tr>
+      <td>password:</td>
+      <td>{{register.password}}</td>
+    </tr>
+    <tr>
+      <td>confirmPassword:</td>
+      <td>{{register.confirmPassword}}</td>
+    </tr>
+    <tr>
+      <td>country:</td>
+      <td>{{register.country}}</td>
+    </tr>
+    <tr>
+      <td>age:</td>
+      <td>{{register.age}}</td>
+    </tr>
+    <tr>
+      <td>gender:</td>
+      <td>{{register.gender}}</td>
+    </tr>
+    <tr>
+      <td>phone:</td>
+      <td>{{register.phone}}</td>
+    </tr>
+  </table>
+</div>
