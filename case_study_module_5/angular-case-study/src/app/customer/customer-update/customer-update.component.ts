@@ -28,7 +28,7 @@ export class CustomerUpdateComponent implements OnInit {
       {type: 'required', message: 'Vui lòng nhập số điện thoại'},
       {
         type: 'pattern',
-        message: 'Vui lòng nhập số địa thoại đúng định dạng 090xxxxxxx hoặc 091xxxxxxx hoặc (84)+90xxxxxxx hoặc (84)+91xxxxxxx'
+        message: 'Vui lòng nhập số địa thoại đúng định dạng 090xxxxxxx hoặc 091xxxxxxx'
       }
     ],
     idCard: [
@@ -61,10 +61,12 @@ export class CustomerUpdateComponent implements OnInit {
         Validators.required
       ]),
       idCard: new FormControl('', [
-        Validators.required
+        Validators.required,
+        Validators.pattern('[0-9]{9,11}')
       ]),
       phoneNumber: new FormControl('', [
-        Validators.required
+        Validators.required,
+        Validators.pattern('(090|091)[0-9]{7}')
       ]),
       email: new FormControl('', [
         Validators.required,

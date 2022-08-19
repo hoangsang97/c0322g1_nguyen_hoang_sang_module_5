@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import {Injectable} from '@angular/core';
 import {Facility} from '../module/facility';
 import {FacilityTypeService} from './facility-type.service';
 import {RentTypeService} from './rent-type.service';
@@ -8,6 +8,7 @@ import {RentTypeService} from './rent-type.service';
 })
 export class FacilityService {
   facilityList: Facility[] = [];
+
   constructor(private facilityType: FacilityTypeService,
               private rentType: RentTypeService) {
     this.facilityList.push({
@@ -64,46 +65,61 @@ export class FacilityService {
       facilityType: facilityType.facilityTypeList[0]
     });
   }
+
   getAll() {
     return this.facilityList;
   }
+
   save(facility) {
     facility.id = this.facilityList.length + 1;
-    if (facility.rentType === 1) {
-      facility.rentType = this.rentType.rentTypeList[0];
-    } else if (facility.rentType === 2) {
-      facility.rentType = this.rentType.rentTypeList[1];
-    } else if (facility.rentType === 3) {
-      facility.rentType = this.rentType.rentTypeList[2];
-    } else if (facility.rentType === 4) {
-      facility.rentType = this.rentType.rentTypeList[3];
+    for (const item of this.facilityType.facilityTypeList) {
+      if (facility.facilityType === item.id) {
+        facility.facilityType = item;
+      }
     }
-    if (facility.facilityType === 1) {
-      facility.facilityType = this.facilityType.facilityTypeList[0];
-    } else if (facility.facilityType === 2) {
-      facility.facilityType = this.facilityType.facilityTypeList[1];
-    } else if (facility.facilityType === 3) {
-      facility.facilityType = this.facilityType.facilityTypeList[2];
+    for (const item of this.rentType.rentTypeList) {
+      if (facility.rentType === item.id) {
+        facility.rentType = item;
+      }
+    }
+    if (facility.facilityType.id === 1) {
+      facility.facilityFree = null;
+    } else if (facility.facilityType.id === 2) {
+      facility.poolArea = 0;
+      facility.facilityFree = null;
+    } else if (facility.facilityType.id === 3) {
+      facility.standardRoom = null;
+      facility.descriptionOtherConvenience = null;
+      facility.numberOfFloors = 0;
+      facility.poolArea = 0;
     }
     this.facilityList.push(facility);
   }
+
   getById(id) {
-    for (const item of this.facilityList) {
-      if (item.id === id) {
-        return item;
+    return this.facilityList.find(facility => facility.id === id);
+  }
+
+  edit(facility) {
+    for (const item of this.facilityType.facilityTypeList) {
+      if (facility.facilityType === item.id) {
+        facility.facilityType = item;
       }
     }
-  }
-  edit(facility) {
+    for (const item of this.rentType.rentTypeList) {
+      if (facility.rentType === item.id) {
+        facility.rentType = item;
+      }
+    }
     for (let i = 0; i < this.facilityList.length; i++) {
       if (this.facilityList[i].id === facility.id) {
-        if (this.facilityList[i].facilityType.id === 1) {
+        if (facility.facilityType.id === 1) {
           facility.facilityFree = null;
-        } else if (this.facilityList[i].facilityType.id === 2) {
+        } else if (facility.facilityType.id === 2) {
           facility.poolArea = 0;
           facility.facilityFree = null;
-        } else if (this.facilityList[i].facilityType.id === 3) {
-          facility.standardRoom = 0;
+        } else if (facility.facilityType.id === 3) {
+          facility.standardRoom = null;
           facility.descriptionOtherConvenience = null;
           facility.numberOfFloors = 0;
           facility.poolArea = 0;
@@ -112,6 +128,7 @@ export class FacilityService {
       }
     }
   }
+
   delete(id) {
     const index = this.facilityList.findIndex(facility => facility.id === id);
     this.facilityList.splice(index, 1);

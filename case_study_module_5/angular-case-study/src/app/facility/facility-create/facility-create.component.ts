@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {FormControl, FormGroup} from '@angular/forms';
+import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {RentTypeService} from '../../service/rent-type.service';
 import {FacilityTypeService} from '../../service/facility-type.service';
 import {RentType} from '../../module/rent-type';
@@ -7,6 +7,7 @@ import {FacilityType} from '../../module/facility-type';
 import {FacilityService} from '../../service/facility.service';
 import {Router} from '@angular/router';
 import {ToastrService} from 'ngx-toastr';
+import {checkPoolAreaAndFloors} from '../../validator/checkPoolAreaAndFloors';
 
 @Component({
   selector: 'app-facility-create',
@@ -18,6 +19,35 @@ export class FacilityCreateComponent implements OnInit {
   rentTypeList: RentType[] = [];
   facilityTypeList: FacilityType[] = [];
   facilityTypeId = '0: 1';
+  validationMessages = {
+    name: [
+      {type: 'required', message: 'Vui lòng nhập tên'}
+    ],
+    area: [
+      {type: 'required', message: 'Vui lòng nhập Diện Tích'}
+    ],
+    cost: [
+      {type: 'required', message: 'Vui lòng nhập Phí Thuê'}
+    ],
+    maxPeople: [
+      {type: 'required', message: 'Vui lòng nhập Số Người Tối Đa'}
+    ],
+    standardRoom: [
+      {type: 'required', message: 'Vui lòng nhập Loại Phòng'}
+    ],
+    descriptionOtherConvenience: [
+      {type: 'required', message: 'Vui lòng nhập Mô Tả'}
+    ],
+    poolArea: [
+      {type: 'required', message: 'Vui lòng nhập Diện Tích Hồ Bơ'}
+    ],
+    numberOfFloors: [
+      {type: 'required', message: 'Vui lòng nhập Số Tầng'}
+    ],
+    facilityFree: [
+      {type: 'required', message: 'Vui lòng nhập Dịch Vụ Miễn Phí'}
+    ]
+  };
 
   constructor(private rentType: RentTypeService,
               private facilityType: FacilityTypeService,
@@ -30,18 +60,39 @@ export class FacilityCreateComponent implements OnInit {
 
   ngOnInit(): void {
     this.facilityForm = new FormGroup({
-      name: new FormControl(),
-      area: new FormControl(),
-      cost: new FormControl(),
-      maxPeople: new FormControl(),
-      standardRoom: new FormControl(),
-      descriptionOtherConvenience: new FormControl(),
-      poolArea: new FormControl(),
-      numberOfFloors: new FormControl(),
-      facilityFree: new FormControl(),
+      name: new FormControl('', [
+        Validators.required
+      ]),
+      area: new FormControl('', [
+        Validators.required
+      ]),
+      cost: new FormControl('', [
+        Validators.required
+      ]),
+      maxPeople: new FormControl('', [
+        Validators.required
+      ]),
+      standardRoom: new FormControl('', [
+        Validators.required
+      ]),
+      descriptionOtherConvenience: new FormControl('', [
+        Validators.required
+      ]),
+      poolArea: new FormControl('', [
+        Validators.required,
+        checkPoolAreaAndFloors
+      ]),
+      numberOfFloors: new FormControl('', [
+        Validators.required,
+        checkPoolAreaAndFloors
+      ]),
+      facilityFree: new FormControl('', [
+        Validators.required
+      ]),
       rentType: new FormControl(1),
       facilityType: new FormControl(1),
     });
+    this.facilityForm.patchValue({facilityFree: NaN});
   }
 
   submit() {
@@ -53,6 +104,16 @@ export class FacilityCreateComponent implements OnInit {
 
   selFacility(event) {
     this.facilityTypeId = event.target.value;
-    console.log(this.facilityTypeId);
+    if (this.facilityTypeId === '0: 1') {
+      this.facilityForm.patchValue({facilityFree: NaN});
+    } else if (this.facilityTypeId === '1: 2') {
+      this.facilityForm.patchValue({poolArea: 0});
+      this.facilityForm.patchValue({facilityFree: NaN});
+    } else if (this.facilityTypeId === '2: 3') {
+      this.facilityForm.patchValue({poolArea: 0});
+      this.facilityForm.patchValue({numberOfFloors: 0});
+      this.facilityForm.patchValue({descriptionOtherConvenience: NaN});
+      this.facilityForm.patchValue({standardRoom: NaN});
+    }
   }
 }

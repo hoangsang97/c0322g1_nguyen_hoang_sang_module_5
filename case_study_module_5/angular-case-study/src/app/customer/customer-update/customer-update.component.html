@@ -13,7 +13,7 @@
     <input type="text" hidden formControlName="id">
     <div class="col-12">
       <label class="form-label">Tên<span class="text-danger">*</span></label>
-      <input type="text" class="form-control" formControlName="name">
+      <input type="text" class="form-control" name="name" formControlName="name">
       <div class="text-danger" *ngFor="let validation of validationMessages.name">
         <div class="error-message"
              *ngIf="customerUpdateForm.get('name').hasError(validation.type) && (customerUpdateForm.get('name').dirty || customerUpdateForm.get('name').touched)">
@@ -23,21 +23,21 @@
     <div class="col-12">
       <label class="form-label">Giới Tính</label>
       <div class="form-check">
-        <input class="form-check-input" type="radio" id="flexRadioDefault1" formControlName="gender" [value]="false">
-        <label class="form-check-label" for="flexRadioDefault1">
+        <input class="form-check-input" type="radio" id="female" name="gender" formControlName="gender" [value]="false">
+        <label class="form-check-label" for="female">
           Nữ
         </label>
       </div>
       <div class="form-check">
-        <input class="form-check-input" type="radio" id="flexRadioDefault2" formControlName="gender" [value]="true">
-        <label class="form-check-label" for="flexRadioDefault2">
+        <input class="form-check-input" type="radio" id="male" name="gender" formControlName="gender" [value]="true">
+        <label class="form-check-label" for="male">
           Nam
         </label>
       </div>
     </div>
     <div class="col-md-4">
       <label class="form-label">Ngày Sinh<span class="text-danger">*</span></label>
-      <input type="text" class="form-control" formControlName="dateOfBirth">
+      <input type="date" class="form-control" name="dateOfBirth" formControlName="dateOfBirth">
       <div class="text-danger" *ngFor="let validation of validationMessages.dateOfBirth">
         <div class="error-message"
              *ngIf="customerUpdateForm.get('dateOfBirth').hasError(validation.type) && (customerUpdateForm.get('dateOfBirth').dirty || customerUpdateForm.get('dateOfBirth').touched)">
@@ -46,7 +46,7 @@
     </div>
     <div class="col-md-4">
       <label class="form-label">Số CMND<span class="text-danger">*</span></label>
-      <input type="text" class="form-control" formControlName="idCard">
+      <input type="text" class="form-control" name="idCard" formControlName="idCard">
       <div class="text-danger" *ngFor="let validation of validationMessages.idCard">
         <div class="error-message"
              *ngIf="customerUpdateForm.get('idCard').hasError(validation.type) && (customerUpdateForm.get('idCard').dirty || customerUpdateForm.get('idCard').touched)">
@@ -55,7 +55,7 @@
     </div>
     <div class="col-md-4">
       <label class="form-label">SĐT<span class="text-danger">*</span></label>
-      <input type="text" class="form-control" formControlName="phoneNumber">
+      <input type="text" class="form-control" name="phoneNumber" formControlName="phoneNumber">
       <div class="text-danger" *ngFor="let validation of validationMessages.phoneNumber">
         <div class="error-message"
              *ngIf="customerUpdateForm.get('phoneNumber').hasError(validation.type) && (customerUpdateForm.get('phoneNumber').dirty || customerUpdateForm.get('phoneNumber').touched)">
@@ -64,7 +64,7 @@
     </div>
     <div class="col-12">
       <label class="form-label">Email<span class="text-danger">*</span></label>
-      <input type="text" class="form-control" formControlName="email">
+      <input type="text" class="form-control" name="email" formControlName="email">
       <div class="text-danger" *ngFor="let validation of validationMessages.email">
         <div class="error-message"
              *ngIf="customerUpdateForm.get('email').hasError(validation.type) && (customerUpdateForm.get('email').dirty || customerUpdateForm.get('email').touched)">
@@ -73,11 +73,11 @@
     </div>
     <div class="col-12">
       <label class="form-label">Địa Chỉ</label>
-      <input type="text" class="form-control" formControlName="address">
+      <input type="text" class="form-control" name="address" formControlName="address">
     </div>
     <div class="col-3">
       <label class="form-label">Loại Khách Hàng</label>
-      <select class="form-select" aria-label="Default select example" formControlName="customerType">
+      <select class="form-select" aria-label="Default select example" name="customerType" formControlName="customerType">
         <option *ngFor="let item of customerTypeList" [ngValue]="item.id">{{item.name}}</option>
       </select>
     </div>

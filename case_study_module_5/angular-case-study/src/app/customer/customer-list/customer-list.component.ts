@@ -36,5 +36,6 @@ export class CustomerListComponent implements OnInit {
   deleteCustomer(id: number) {
     this.customerService.removeCustomer(id);
     this.toastr.success('Xoá thông tin thành công', 'Thông báo!');
+    this.valueDelete = [];
   }
 }

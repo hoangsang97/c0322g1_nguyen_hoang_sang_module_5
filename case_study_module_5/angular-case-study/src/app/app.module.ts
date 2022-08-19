@@ -16,6 +16,8 @@ import {FacilityCreateComponent} from './facility/facility-create/facility-creat
 import {FacilityUpdateComponent} from './facility/facility-update/facility-update.component';
 import {ToastrModule} from 'ngx-toastr';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import { ContractCreateComponent } from './contract/contract-create/contract-create.component';
+import { ContractUpdateComponent } from './contract/contract-update/contract-update.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +31,9 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
     FacilityListComponent,
     ContractListComponent,
     FacilityCreateComponent,
-    FacilityUpdateComponent
+    FacilityUpdateComponent,
+    ContractCreateComponent,
+    ContractUpdateComponent
   ],
   imports: [
     BrowserModule,

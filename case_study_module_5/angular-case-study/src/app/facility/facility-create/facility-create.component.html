@@ -28,35 +28,71 @@
     <div class="col-md-12">
       <label class="form-label">Tên Dịch Vụ</label>
       <input type="text" class="form-control" name="name" formControlName="name">
+      <div class="text-danger" *ngFor="let validation of validationMessages.name">
+        <div class="error-message"
+             *ngIf="facilityForm.get('name').hasError(validation.type) && (facilityForm.get('name').dirty || facilityForm.get('name').touched)">
+          {{validation.message}}</div>
+      </div>
     </div>
 
     <div class="col-md-4">
       <label class="form-label">Diện Tích</label>
       <input type="number" class="form-control" name="area" formControlName="area">
+      <div class="text-danger" *ngFor="let validation of validationMessages.area">
+        <div class="error-message"
+             *ngIf="facilityForm.get('area').hasError(validation.type) && (facilityForm.get('area').dirty || facilityForm.get('area').touched)">
+          {{validation.message}}</div>
+      </div>
     </div>
 
     <div class="col-md-4">
       <label class="form-label">Phí Thuê</label>
       <input type="number" class="form-control" name="cost" formControlName="cost">
+      <div class="text-danger" *ngFor="let validation of validationMessages.cost">
+        <div class="error-message"
+             *ngIf="facilityForm.get('cost').hasError(validation.type) && (facilityForm.get('cost').dirty || facilityForm.get('cost').touched)">
+          {{validation.message}}</div>
+      </div>
     </div>
 
     <div class="col-md-4">
       <label class="form-label">Số Người Tối Đa</label>
       <input type="number" class="form-control" name="maxPeople" formControlName="maxPeople">
+      <div class="text-danger" *ngFor="let validation of validationMessages.maxPeople">
+        <div class="error-message"
+             *ngIf="facilityForm.get('maxPeople').hasError(validation.type) && (facilityForm.get('maxPeople').dirty || facilityForm.get('maxPeople').touched)">
+          {{validation.message}}</div>
+      </div>
     </div>
 
     <div id="villa" [hidden]="facilityTypeId === '2: 3'">
       <div class="col-12">
         <label class="form-label">Loại Phòng</label>
         <input type="text" class="form-control" name="standardRoom" formControlName="standardRoom">
+        <div class="text-danger" *ngFor="let validation of validationMessages.standardRoom">
+          <div class="error-message"
+               *ngIf="facilityForm.get('standardRoom').hasError(validation.type) && (facilityForm.get('standardRoom').dirty || facilityForm.get('standardRoom').touched)">
+            {{validation.message}}</div>
+        </div>
       </div>
       <div class="col-12">
         <label class="form-label">Mô Tả</label>
         <input type="text" class="form-control" name="descriptionOtherConvenience" formControlName="descriptionOtherConvenience">
+        <div class="text-danger" *ngFor="let validation of validationMessages.descriptionOtherConvenience">
+          <div class="error-message"
+               *ngIf="facilityForm.get('descriptionOtherConvenience').hasError(validation.type) && (facilityForm.get('descriptionOtherConvenience').dirty || facilityForm.get('descriptionOtherConvenience').touched)">
+            {{validation.message}}</div>
+        </div>
       </div>
       <div class="col-12">
         <label class="form-label">Số Tầng</label>
         <input type="number" class="form-control" name="numberOfFloors" formControlName="numberOfFloors">
+        <div class="text-danger" *ngFor="let validation of validationMessages.numberOfFloors">
+          <div class="error-message"
+               *ngIf="facilityForm.get('numberOfFloors').hasError(validation.type) && (facilityForm.get('numberOfFloors').dirty || facilityForm.get('numberOfFloors').touched)">
+            {{validation.message}}</div>
+          <span *ngIf="facilityForm.get('numberOfFloors').hasError('checkNumber')">Số tầng phải là số nguyên dương</span>
+        </div>
       </div>
     </div>
 
@@ -64,6 +100,12 @@
       <div class="col-12">
         <label class="form-label">Diện Tích Hồ Bơi</label>
         <input type="number" class="form-control" name="poolArea" formControlName="poolArea">
+        <div class="text-danger" *ngFor="let validation of validationMessages.poolArea">
+          <div class="error-message"
+               *ngIf="facilityForm.get('poolArea').hasError(validation.type) && (facilityForm.get('poolArea').dirty || facilityForm.get('poolArea').touched)">
+            {{validation.message}}</div>
+          <span *ngIf="facilityForm.get('poolArea').hasError('checkNumber')">Diện tích hồ bơi phải là số nguyên dương</span>
+        </div>
       </div>
     </div>
 
@@ -71,10 +113,15 @@
       <div class="col-12">
         <label class="form-label">Dịch Vụ Miễn Phí</label>
         <input type="text" class="form-control" name="facilityFree" formControlName="facilityFree">
+        <div class="text-danger" *ngFor="let validation of validationMessages.facilityFree">
+          <div class="error-message"
+               *ngIf="facilityForm.get('facilityFree').hasError(validation.type) && (facilityForm.get('facilityFree').dirty || facilityForm.get('facilityFree').touched)">
+            {{validation.message}}</div>
+        </div>
       </div>
     </div>
     <div class="col-12">
-      <button class="btn btn-primary">Thêm Mới</button>
+      <button class="btn btn-primary" [disabled]="facilityForm.invalid">Thêm Mới</button>
     </div>
   </form>
 </div>

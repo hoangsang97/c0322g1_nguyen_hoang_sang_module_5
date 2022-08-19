@@ -8,6 +8,8 @@ import {FacilityListComponent} from './facility/facility-list/facility-list.comp
 import {FacilityCreateComponent} from './facility/facility-create/facility-create.component';
 import {FacilityUpdateComponent} from './facility/facility-update/facility-update.component';
 import {ContractListComponent} from './contract/contract-list/contract-list.component';
+import {ContractCreateComponent} from './contract/contract-create/contract-create.component';
+import {ContractUpdateComponent} from './contract/contract-update/contract-update.component';
 
 
 const routes: Routes = [{
@@ -34,6 +36,12 @@ const routes: Routes = [{
 }, {
   path: 'contract/list',
   component: ContractListComponent
+}, {
+  path: 'contract/create',
+  component: ContractCreateComponent
+}, {
+  path: 'contract/update/:id',
+  component: ContractUpdateComponent
 }];
 
 @NgModule({

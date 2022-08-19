@@ -12,7 +12,7 @@
   <form class="row g-3" [formGroup]="customerForm" (ngSubmit)="submit()">
     <div class="col-12">
       <label class="form-label">Tên<span class="text-danger">*</span></label>
-      <input type="text" class="form-control" formControlName="name">
+      <input type="text" class="form-control" name="name" formControlName="name">
       <div class="text-danger" *ngFor="let validation of validationMessages.name">
         <div class="error-message"
              *ngIf="customerForm.get('name').hasError(validation.type) && (customerForm.get('name').dirty || customerForm.get('name').touched)">
@@ -23,14 +23,14 @@
     <div class="col-12">
       <label class="form-label">Giới Tính</label>
       <div class="form-check">
-        <input class="form-check-input" type="radio" id="flexRadioDefault1" formControlName="gender" [value]="false">
-        <label class="form-check-label" for="flexRadioDefault1">
+        <input class="form-check-input" type="radio" id="female" name="gender" formControlName="gender" [value]="false">
+        <label class="form-check-label" for="female">
           Nữ
         </label>
       </div>
       <div class="form-check">
-        <input class="form-check-input" type="radio" id="flexRadioDefault2" formControlName="gender" [value]="true">
-        <label class="form-check-label" for="flexRadioDefault2">
+        <input class="form-check-input" type="radio" id="male" name="gender" formControlName="gender" [value]="true">
+        <label class="form-check-label" for="male">
           Nam
         </label>
       </div>
@@ -38,7 +38,7 @@
 
     <div class="col-md-4">
       <label class="form-label">Ngày Sinh<span class="text-danger">*</span></label>
-      <input type="date" class="form-control" formControlName="dateOfBirth">
+      <input type="date" class="form-control" name="dateOfBirth" formControlName="dateOfBirth">
       <div class="text-danger" *ngFor="let validation of validationMessages.dateOfBirth">
         <div class="error-message"
              *ngIf="customerForm.get('dateOfBirth').hasError(validation.type) && (customerForm.get('dateOfBirth').dirty || customerForm.get('dateOfBirth').touched)">
@@ -48,7 +48,7 @@
 
     <div class="col-md-4">
       <label class="form-label">Số CMND<span class="text-danger">*</span></label>
-      <input type="text" class="form-control" formControlName="idCard">
+      <input type="text" class="form-control" name="idCard" formControlName="idCard">
       <div class="text-danger" *ngFor="let validation of validationMessages.idCard">
         <div class="error-message"
              *ngIf="customerForm.get('idCard').hasError(validation.type) && (customerForm.get('idCard').dirty || customerForm.get('idCard').touched)">
@@ -58,7 +58,7 @@
 
     <div class="col-md-4">
       <label class="form-label">SĐT<span class="text-danger">*</span></label>
-      <input type="text" class="form-control" formControlName="phoneNumber">
+      <input type="text" class="form-control" name="phoneNumber" formControlName="phoneNumber">
       <div class="text-danger" *ngFor="let validation of validationMessages.phoneNumber">
         <div class="error-message"
              *ngIf="customerForm.get('phoneNumber').hasError(validation.type) && (customerForm.get('phoneNumber').dirty || customerForm.get('phoneNumber').touched)">
@@ -68,7 +68,7 @@
 
     <div class="col-12">
       <label class="form-label">Email<span class="text-danger">*</span></label>
-      <input type="text" class="form-control" formControlName="email">
+      <input type="text" class="form-control" name="email" formControlName="email">
       <div class="text-danger" *ngFor="let validation of validationMessages.email">
         <div class="error-message"
              *ngIf="customerForm.get('email').hasError(validation.type) && (customerForm.get('email').dirty || customerForm.get('email').touched)">
@@ -78,7 +78,7 @@
 
     <div class="col-12">
       <label class="form-label">Địa Chỉ</label>
-      <input type="text" class="form-control" formControlName="address">
+      <input type="text" class="form-control" name="address" formControlName="address">
     </div>
 
     <div class="col-3">

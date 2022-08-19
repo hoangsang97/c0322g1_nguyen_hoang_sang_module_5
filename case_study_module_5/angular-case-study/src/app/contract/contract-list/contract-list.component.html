@@ -3,6 +3,17 @@
     <img src="../../../assets/image/banner01.jpg" style="position: absolute" height="351" width="100%"/>
     <div class="content-header">
       <h3>Danh Sách Hợp Đồng</h3>
+      <div class="text-center">
+        <a routerLink="../../contract/create" class="btn btn-primary btn-sm">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person-plus"
+               viewBox="0 0 16 16">
+            <path
+              d="M6 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm2-3a2 2 0 1 1-4 0 2 2 0 0 1 4 0zm4 8c0 1-1 1-1 1H1s-1 0-1-1 1-4 6-4 6 3 6 4zm-1-.004c-.001-.246-.154-.986-.832-1.664C9.516 10.68 8.289 10 6 10c-2.29 0-3.516.68-4.168 1.332-.678.678-.83 1.418-.832 1.664h10z"/>
+            <path fill-rule="evenodd"
+                  d="M13.5 5a.5.5 0 0 1 .5.5V7h1.5a.5.5 0 0 1 0 1H14v1.5a.5.5 0 0 1-1 0V8h-1.5a.5.5 0 0 1 0-1H13V5.5a.5.5 0 0 1 .5-.5z"/>
+          </svg>
+        </a>
+      </div>
     </div>
   </div>
   <div class="container-fluid" style="font-size: 13px; padding: 75px">
@@ -10,35 +21,61 @@
       <thead class="bg-primary text-center text-light">
       <tr>
         <th>STT</th>
-        <th>Dịch Vụ</th>
-        <th>Khách Hàng</th>
+        <th>Tên Dịch Vụ</th>
+        <th>Tên Khách Hàng</th>
         <th>Ngày Thuê</th>
         <th>Ngày Trả</th>
         <th>Tiền Trả Trước</th>
-        <th>Tổng Tiền</th>
-        <th>Dịch Vụ Đi Kèm</th>
+        <th>Sửa</th>
+        <th>Xóa</th>
       </tr>
       </thead>
       <tbody>
-      <tr *ngFor="let item of contractList">
-        <td>{{item.id}}</td>
+      <tr *ngFor="let item of contractList, index as i">
+        <td>{{i + 1}}</td>
         <td>{{item.facility.name}}</td>
         <td>{{item.customer.name}}</td>
-        <td>{{item.startDate}}</td>
-        <td>{{item.endDate}}</td>
-        <td>{{item.deposit}}</td>
-        <td>đ</td>
+        <td>{{item.startDate | date :'MM/dd/yyyy'}}</td>
+        <td>{{item.endDate | date :'MM/dd/yyyy'}}</td>
+        <td>{{item.deposit | currency}}</td>
         <td>
-          <button type="button" class="btn btn-primary btn-sm me-2" data-bs-toggle="modal"
-                  data-bs-target="#modelIdCreate">+
-          </button>
-          <!-- Button trigger modal -->
-          <a href="#" class="btn btn-primary btn-sm">
-            Danh sách dịch vụ đi kèm
+          <a [routerLink]="['../../contract/update', item.id]" class="btn btn-outline-primary btn-sm">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pen"
+                 viewBox="0 0 16 16">
+              <path
+                d="m13.498.795.149-.149a1.207 1.207 0 1 1 1.707 1.708l-.149.148a1.5 1.5 0 0 1-.059 2.059L4.854 14.854a.5.5 0 0 1-.233.131l-4 1a.5.5 0 0 1-.606-.606l1-4a.5.5 0 0 1 .131-.232l9.642-9.642a.5.5 0 0 0-.642.056L6.854 4.854a.5.5 0 1 1-.708-.708L9.44.854A1.5 1.5 0 0 1 11.5.796a1.5 1.5 0 0 1 1.998-.001zm-.644.766a.5.5 0 0 0-.707 0L1.95 11.756l-.764 3.057 3.057-.764L14.44 3.854a.5.5 0 0 0 0-.708l-1.585-1.585z"/>
+            </svg>
           </a>
+        </td>
+        <td>
+          <button type="button" class="btn btn-outline-danger btn-sm" data-bs-toggle="modal"
+                  data-bs-target="#modelId" (click)="elementDelete(item.id, item.facility.name)">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                 class="bi bi-trash3" viewBox="0 0 16 16">
+              <path
+                d="M6.5 1h3a.5.5 0 0 1 .5.5v1H6v-1a.5.5 0 0 1 .5-.5ZM11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3A1.5 1.5 0 0 0 5 1.5v1H2.506a.58.58 0 0 0-.01 0H1.5a.5.5 0 0 0 0 1h.538l.853 10.66A2 2 0 0 0 4.885 16h6.23a2 2 0 0 0 1.994-1.84l.853-10.66h.538a.5.5 0 0 0 0-1h-.995a.59.59 0 0 0-.01 0H11Zm1.958 1-.846 10.58a1 1 0 0 1-.997.92h-6.23a1 1 0 0 1-.997-.92L3.042 3.5h9.916Zm-7.487 1a.5.5 0 0 1 .528.47l.5 8.5a.5.5 0 0 1-.998.06L5 5.03a.5.5 0 0 1 .47-.53Zm5.058 0a.5.5 0 0 1 .47.53l-.5 8.5a.5.5 0 1 1-.998-.06l.5-8.5a.5.5 0 0 1 .528-.47ZM8 4.5a.5.5 0 0 1 .5.5v8.5a.5.5 0 0 1-1 0V5a.5.5 0 0 1 .5-.5Z"/>
+            </svg>
+          </button>
         </td>
       </tr>
       </tbody>
     </table>
+  </div>
+
+  <div class="modal fade" id="modelId" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h4 class="modal-title" id="modelTitleId">Xoá Hợp Đồng</h4>
+        </div>
+        <div class="modal-body">
+          <span>Bạn có muốn xoá? <span class="text-danger">{{valueDelete[1]}}</span></span>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" (click)="resetModal()">Đóng</button>
+          <button type="button" class="btn btn-outline-danger" (click)="deleteContract(valueDelete[0])" data-bs-dismiss="modal">Xoá</button>
+        </div>
+      </div>
+    </div>
   </div>
 </div>

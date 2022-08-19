@@ -18,8 +18,8 @@ export class FacilityListComponent implements OnInit {
 
   constructor(private facility: FacilityService,
               private activatedRoute: ActivatedRoute,
-              private toastr: ToastrService) {
-  }
+              private toastr: ToastrService,
+              private router: Router) { }
 
   ngOnInit(): void {
     this.facilityById = this.facility.facilityList[0];
@@ -51,6 +51,8 @@ export class FacilityListComponent implements OnInit {
     this.facility.delete(id);
     this.toastr.success('Xoá thông tin thành công', 'Thông Báo');
     this.valueD = [];
+    this.facilityList = this.facility.getAll();
+    this.router.navigateByUrl('facility/list/0');
   }
 
   resetModal() {
