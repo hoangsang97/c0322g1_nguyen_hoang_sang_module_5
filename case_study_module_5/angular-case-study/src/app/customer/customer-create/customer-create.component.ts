@@ -24,7 +24,7 @@ export class CustomerCreateComponent implements OnInit {
     ],
     phoneNumber: [
       {type: 'required', message: 'Vui lòng nhập số điện thoại'},
-      {type: 'pattern', message: 'Vui lòng nhập số địa thoại đúng định dạng 090xxxxxxx hoặc 091xxxxxxx'}
+      {type: 'pattern', message: 'Vui lòng nhập số địa thoại đúng định dạng 090xxxxxxx hoặc 091xxxxxxx hoặc (84)+90xxxxxxx hoặc (84)+91xxxxxxx'}
     ],
     idCard: [
       {type: 'required', message: 'Vui lòng nhập CMND'},
@@ -59,7 +59,7 @@ export class CustomerCreateComponent implements OnInit {
       ]),
       phoneNumber: new FormControl('', [
         Validators.required,
-        Validators.pattern('(090|091)[0-9]{7}')
+        Validators.pattern(/^([\+84]|[\+091]|[\+090])[0-9]{9,11}$/)
       ]),
       email: new FormControl('', [
         Validators.required,
@@ -72,10 +72,10 @@ export class CustomerCreateComponent implements OnInit {
 
   submit() {
     const customer = this.customerForm.value;
-    this.customerService.saveCustomer(customer);
-    this.customerForm.reset();
-    this.router.navigate(['../customer/list']);
-    this.toastr.success('Thêm mới thành công', 'Thông báo!');
+    this.customerService.saveCustomer(customer).subscribe(() => {
+      this.router.navigate(['../customer/list']);
+      this.toastr.success('Thêm mới thành công', 'Thông báo!');
+    });
   }
 
   getAllCustomerType() {

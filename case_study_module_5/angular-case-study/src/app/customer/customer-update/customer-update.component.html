@@ -9,7 +9,7 @@
       </svg>
     </a>
   </div>
-  <form class="row g-3" [formGroup]="customerUpdateForm" (ngSubmit)="updateSubmit()">
+  <form class="row g-3" [formGroup]="customerUpdateForm" (ngSubmit)="updateSubmit(id)">
     <input type="text" hidden formControlName="id">
     <div class="col-12">
       <label class="form-label">Tên<span class="text-danger">*</span></label>

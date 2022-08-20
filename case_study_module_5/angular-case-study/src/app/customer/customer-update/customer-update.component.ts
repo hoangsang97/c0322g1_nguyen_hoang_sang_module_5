@@ -16,6 +16,7 @@ export class CustomerUpdateComponent implements OnInit {
   customer: Customer;
   customerUpdateForm: FormGroup;
   customerTypeList: CustomerType[] = [];
+  id: number;
   validationMessages = {
     name: [
       {type: 'required', message: 'Vui lòng nhập tên'},
@@ -28,7 +29,7 @@ export class CustomerUpdateComponent implements OnInit {
       {type: 'required', message: 'Vui lòng nhập số điện thoại'},
       {
         type: 'pattern',
-        message: 'Vui lòng nhập số địa thoại đúng định dạng 090xxxxxxx hoặc 091xxxxxxx'
+        message: 'Vui lòng nhập số địa thoại đúng định dạng 090xxxxxxx hoặc 091xxxxxxx hoặc (84)+90xxxxxxx hoặc (84)+91xxxxxxx'
       }
     ],
     idCard: [
@@ -66,7 +67,7 @@ export class CustomerUpdateComponent implements OnInit {
       ]),
       phoneNumber: new FormControl('', [
         Validators.required,
-        Validators.pattern('(090|091)[0-9]{7}')
+        Validators.pattern(/^([\+84]|[\+091]|[\+090])[0-9]{9,11}$/)
       ]),
       email: new FormControl('', [
         Validators.required,
@@ -76,17 +77,48 @@ export class CustomerUpdateComponent implements OnInit {
       customerType: new FormControl()
     });
     this.activatedRoute.paramMap.subscribe((paramMap: ParamMap) => {
-      const id = +paramMap.get('id');
-      this.customer = this.customerService.findById(id);
-      this.customerUpdateForm.patchValue(this.customer);
-      this.customerUpdateForm.patchValue({customerType: this.customer.customerType.id});
+      this.id = +paramMap.get('id');
+      this.getCustomer(this.id);
     });
   }
 
-  updateSubmit() {
+  getCustomer(id) {
+    this.customerService.findById(id).subscribe(customer => {
+      this.customerUpdateForm = new FormGroup({
+        id: new FormControl(),
+        name: new FormControl('', [
+          Validators.required,
+          Validators.pattern('^[a-zA-Zàáạảãâầấậẩẫăằắặẳẵèéẹẻẽêềếệểễìíịỉĩòóọỏõôồốộổỗơờớợởỡùúụủũưừứựửữỳýỵỷỹđ]+(\\s[a-zA-Zàáạảãâầấậẩẫăằắặẳẵèéẹẻẽêềếệểễìíịỉĩòóọỏõôồốộổỗơờớợởỡùúụủũưừứựửữỳýỵỷỹđ]+)*$')
+        ]),
+        gender: new FormControl(false),
+        dateOfBirth: new FormControl('', [
+          Validators.required
+        ]),
+        idCard: new FormControl('', [
+          Validators.required,
+          Validators.pattern('[0-9]{9,11}')
+        ]),
+        phoneNumber: new FormControl('', [
+          Validators.required,
+          Validators.pattern(/^([\+84]|[\+091]|[\+090])[0-9]{9,11}$/)
+        ]),
+        email: new FormControl('', [
+          Validators.required,
+          Validators.pattern('[a-z0-9]+@[a-z]+\\.[a-z]{2,3}')
+        ]),
+        address: new FormControl(),
+        customerType: new FormControl()
+      });
+      this.customerUpdateForm.patchValue(customer);
+      this.customerUpdateForm.patchValue({customerType: customer.customerType.id});
+    });
+  }
+
+  updateSubmit(id) {
     const customer = this.customerUpdateForm.value;
-    this.customerService.editCustomer(customer);
-    this.router.navigate(['../customer/list']);
-    this.toastr.success('Sửa Thông Tin Thành Công !', 'Thông Báo!');
+    this.customerService.editCustomer(id, customer).subscribe(() => {
+      this.router.navigate(['../customer/list']);
+      this.toastr.success('Sửa Thông Tin Thành Công !', 'Thông Báo!');
+    });
   }
 }

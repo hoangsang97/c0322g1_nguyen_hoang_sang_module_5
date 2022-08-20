@@ -6,34 +6,20 @@ import {AppRoutingModule} from './app-routing.module';
 import {AppComponent} from './app.component';
 import {HeaderComponent} from './header/header.component';
 import {FooterComponent} from './footer/footer.component';
-import {CustomerCreateComponent} from './customer/customer-create/customer-create.component';
-import {CustomerListComponent} from './customer/customer-list/customer-list.component';
-import {CustomerUpdateComponent} from './customer/customer-update/customer-update.component';
 import {HomeComponent} from './home/home.component';
-import {FacilityListComponent} from './facility/facility-list/facility-list.component';
-import {ContractListComponent} from './contract/contract-list/contract-list.component';
-import {FacilityCreateComponent} from './facility/facility-create/facility-create.component';
-import {FacilityUpdateComponent} from './facility/facility-update/facility-update.component';
 import {ToastrModule} from 'ngx-toastr';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
-import { ContractCreateComponent } from './contract/contract-create/contract-create.component';
-import { ContractUpdateComponent } from './contract/contract-update/contract-update.component';
+import {CustomerModule} from './customer/customer.module';
+import {HttpClientModule} from '@angular/common/http';
+import {FacilityModule} from './facility/facility.module';
+import {ContractModule} from './contract/contract.module';
 
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
     FooterComponent,
-    CustomerCreateComponent,
-    CustomerListComponent,
-    CustomerUpdateComponent,
     HomeComponent,
-    FacilityListComponent,
-    ContractListComponent,
-    FacilityCreateComponent,
-    FacilityUpdateComponent,
-    ContractCreateComponent,
-    ContractUpdateComponent
   ],
   imports: [
     BrowserModule,
@@ -41,6 +27,10 @@ import { ContractUpdateComponent } from './contract/contract-update/contract-upd
     FormsModule,
     ReactiveFormsModule,
     BrowserAnimationsModule,
+    HttpClientModule,
+    CustomerModule,
+    FacilityModule,
+    ContractModule,
     ToastrModule.forRoot()
   ],
   providers: [],

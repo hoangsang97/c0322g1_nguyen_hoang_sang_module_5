@@ -16,30 +16,40 @@ export class FacilityListComponent implements OnInit {
   facilityById: Facility;
   facilityType = 0;
 
-  constructor(private facility: FacilityService,
+  constructor(private facilityService: FacilityService,
               private activatedRoute: ActivatedRoute,
               private toastr: ToastrService,
-              private router: Router) { }
+              private router: Router) {
+  }
 
   ngOnInit(): void {
-    this.facilityById = this.facility.facilityList[0];
-    this.facilityS = this.facility.getAll();
+    this.getFacility(1);
     this.activatedRoute.paramMap.subscribe((paramMap: ParamMap) => {
       this.facilityType = +paramMap.get('id');
-      this.facilityList = [];
-      for (const item of this.facilityS) {
-        if (this.facilityType === 0) {
-          this.facilityList = this.facilityS;
-        } else if (item.facilityType.id === this.facilityType) {
-          this.facilityList.push(item);
+      this.facilityService.getAll().subscribe(facility => {
+        this.facilityS = facility;
+        this.facilityList = [];
+        for (const item of this.facilityS) {
+          if (this.facilityType === 0) {
+            this.facilityList = this.facilityS;
+          } else if (item.facilityType.id === this.facilityType) {
+            this.facilityList.push(item);
+          }
         }
-      }
+      });
     });
     // this.facilityType = Number(this.activatedRoute.snapshot.params.id);
   }
+  getFacility(id) {
+    this.facilityService.getById(id).subscribe(facility => {
+      this.facilityById = facility;
+    });
+  }
 
   facilityDetail(id: number) {
-    this.facilityById = this.facility.getById(id);
+    this.facilityService.getById(id).subscribe(facility => {
+      this.facilityById = facility;
+    });
   }
 
   valueDelete(id: number, name: string) {
@@ -48,10 +58,10 @@ export class FacilityListComponent implements OnInit {
   }
 
   deleteFacility(id: number) {
-    this.facility.delete(id);
+    this.facilityService.delete(id);
     this.toastr.success('Xoá thông tin thành công', 'Thông Báo');
     this.valueD = [];
-    this.facilityList = this.facility.getAll();
+    // this.facilityList = this.facility.getAll();
     this.router.navigateByUrl('facility/list/0');
   }
 

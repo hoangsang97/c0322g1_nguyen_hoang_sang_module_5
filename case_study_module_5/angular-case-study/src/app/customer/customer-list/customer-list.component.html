@@ -35,7 +35,7 @@
       </thead>
       <tbody>
       <tr *ngFor="let item of customerList, index as i">
-        <td>{{i + 1}}</td>
+        <td>{{item.id}}</td>
         <td>{{item.name}}</td>
         <td>{{item.dateOfBirth | date :'MM/dd/yyyy'}}</td>
         <td *ngIf="item.gender === true">Nam</td>

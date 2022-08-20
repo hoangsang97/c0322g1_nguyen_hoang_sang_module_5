@@ -50,7 +50,6 @@ export class ContractService {
       }
     }
     this.contractList.push(contract);
-    console.log(this.contractList);
   }
 
   findById(id: number) {

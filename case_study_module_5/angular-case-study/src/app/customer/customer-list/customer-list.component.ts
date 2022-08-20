@@ -20,7 +20,7 @@ export class CustomerListComponent implements OnInit {
   }
 
   getAll() {
-    this.customerList = this.customerService.customerList;
+    this.customerService.getAll().subscribe(customers => this.customerList = customers);
   }
 
   elementDelete(id: number, name: string) {
@@ -34,8 +34,9 @@ export class CustomerListComponent implements OnInit {
   }
 
   deleteCustomer(id: number) {
-    this.customerService.removeCustomer(id);
-    this.toastr.success('Xoá thông tin thành công', 'Thông báo!');
-    this.valueDelete = [];
+    this.customerService.removeCustomer(id).subscribe(() => {
+      this.toastr.success('Xoá thông tin thành công', 'Thông báo!');
+      this.valueDelete = [];
+    });
   }
 }
