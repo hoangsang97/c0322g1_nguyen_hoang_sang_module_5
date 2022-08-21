@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {FormControl, FormGroup} from '@angular/forms';
+import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {CustomerService} from '../../service/customer.service';
 import {Customer} from '../../module/customer';
 import {Facility} from '../../module/facility';
@@ -8,6 +8,7 @@ import {ContractService} from '../../service/contract.service';
 import {Router} from '@angular/router';
 import {ToastrService} from 'ngx-toastr';
 import {Contract} from '../../module/contract';
+import {checkPoolAreaAndFloors} from '../../validator/checkPoolAreaAndFloors';
 
 @Component({
   selector: 'app-contract-create',
@@ -19,6 +20,14 @@ export class ContractCreateComponent implements OnInit {
   customerList: Customer[] = [];
   facilityList: Facility[] = [];
   contract: Contract;
+  validationMessages = {
+    startDate: [
+      {type: 'required', message: 'Vui lòng nhập ngày bắt đầu'}
+    ],
+    endDate: [
+      {type: 'required', message: 'Vui lòng nhập ngày kết thúc'}
+    ]
+  };
 
   constructor(private customerService: CustomerService,
               private facilityService: FacilityService,
@@ -36,9 +45,9 @@ export class ContractCreateComponent implements OnInit {
   ngOnInit(): void {
     this.contractForm = new FormGroup({
       id: new FormControl(),
-      startDate: new FormControl(),
-      endDate: new FormControl(),
-      deposit: new FormControl(),
+      startDate: new FormControl('', [Validators.required]),
+      endDate: new FormControl('', [Validators.required]),
+      deposit: new FormControl('', [checkPoolAreaAndFloors]),
       customer: new FormControl(),
       facility: new FormControl(),
     });

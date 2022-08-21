@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {FormControl, FormGroup} from '@angular/forms';
+import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {CustomerService} from '../../service/customer.service';
 import {FacilityService} from '../../service/facility.service';
 import {ContractService} from '../../service/contract.service';
@@ -7,6 +7,7 @@ import {ActivatedRoute, ParamMap, Router} from '@angular/router';
 import {ToastrService} from 'ngx-toastr';
 import {Customer} from '../../module/customer';
 import {Facility} from '../../module/facility';
+import {checkPoolAreaAndFloors} from '../../validator/checkPoolAreaAndFloors';
 
 @Component({
   selector: 'app-contract-update',
@@ -18,6 +19,14 @@ export class ContractUpdateComponent implements OnInit {
   customerList: Customer[] = [];
   facilityList: Facility[] = [];
   id: number;
+  validationMessages = {
+    startDate: [
+      {type: 'required', message: 'Vui lòng nhập ngày bắt đầu'}
+    ],
+    endDate: [
+      {type: 'required', message: 'Vui lòng nhập ngày kết thúc'}
+    ]
+  };
 
   constructor(private customerService: CustomerService,
               private facilityService: FacilityService,
@@ -36,9 +45,9 @@ export class ContractUpdateComponent implements OnInit {
   ngOnInit(): void {
     this.contractForm = new FormGroup({
       id: new FormControl(),
-      startDate: new FormControl(),
-      endDate: new FormControl(),
-      deposit: new FormControl(),
+      startDate: new FormControl('', [Validators.required]),
+      endDate: new FormControl('', [Validators.required]),
+      deposit: new FormControl('', [checkPoolAreaAndFloors]),
       customer: new FormControl(),
       facility: new FormControl(),
     });
@@ -52,9 +61,9 @@ export class ContractUpdateComponent implements OnInit {
     this.contractService.findById(id).subscribe(contract => {
       this.contractForm = new FormGroup({
         id: new FormControl(),
-        startDate: new FormControl(),
-        endDate: new FormControl(),
-        deposit: new FormControl(),
+        startDate: new FormControl('', [Validators.required]),
+        endDate: new FormControl('', [Validators.required]),
+        deposit: new FormControl('', [checkPoolAreaAndFloors]),
         customer: new FormControl(),
         facility: new FormControl(),
       });

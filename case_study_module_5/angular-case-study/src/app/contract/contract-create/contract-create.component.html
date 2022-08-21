@@ -14,16 +14,27 @@
     <div class="col-md-6">
       <label class="form-label">Ngày Thuê<span class="text-danger">*</span></label>
       <input type="date" class="form-control" name="startDate" formControlName="startDate">
+      <div class="text-danger" *ngFor="let validation of validationMessages.startDate">
+        <div class="error-message"
+             *ngIf="contractForm.get('startDate').hasError(validation.type) && (contractForm.get('startDate').dirty || contractForm.get('startDate').touched)">
+          {{validation.message}}</div>
+      </div>
     </div>
 
     <div class="col-md-6">
       <label class="form-label">Ngày Trả<span class="text-danger">*</span></label>
       <input type="date" class="form-control" name="endDate" formControlName="endDate">
+      <div class="text-danger" *ngFor="let validation of validationMessages.endDate">
+        <div class="error-message"
+             *ngIf="contractForm.get('endDate').hasError(validation.type) && (contractForm.get('endDate').dirty || contractForm.get('endDate').touched)">
+          {{validation.message}}</div>
+      </div>
     </div>
 
     <div class="col-12">
       <label class="form-label">Tiền Trả Trước</label>
       <input type="text" class="form-control" name="deposit" formControlName="deposit">
+      <span class="text-danger" *ngIf="contractForm.get('deposit').hasError('checkNumber')">Số tiền trả trước phải là số nguyên dương</span>
     </div>
 
     <div class="col-3">

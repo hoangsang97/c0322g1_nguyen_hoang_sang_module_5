@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {DictionaryService} from '../../service/dictionary.service';
 import {ActivatedRoute, ParamMap} from '@angular/router';
 import {IWord} from '../../model/iword';
@@ -10,8 +10,10 @@ import {IWord} from '../../model/iword';
 })
 export class DictionaryDetailComponent implements OnInit {
   dictionary: IWord;
+
   constructor(private dictionaryService: DictionaryService,
-              private activatedRoute: ActivatedRoute) { }
+              private activatedRoute: ActivatedRoute) {
+  }
 
   ngOnInit(): void {
     this.activatedRoute.paramMap.subscribe((pramMap: ParamMap) => {

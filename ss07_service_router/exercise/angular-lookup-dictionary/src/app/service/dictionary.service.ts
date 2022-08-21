@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import {Injectable} from '@angular/core';
 import {IWord} from '../model/iword';
 
 @Injectable({
@@ -6,6 +6,7 @@ import {IWord} from '../model/iword';
 })
 export class DictionaryService {
   iWordList: IWord[] = [];
+
   constructor() {
     this.iWordList.push({
       word: 'Toán',
@@ -21,10 +22,12 @@ export class DictionaryService {
       mean: 'disciple',
     });
   }
+
   getAll() {
     return this.iWordList;
   }
-  getByMean(mean) {
+
+  getByMean(mean: string) {
     return this.iWordList.find(dictionary => dictionary.mean === mean);
   }
 }

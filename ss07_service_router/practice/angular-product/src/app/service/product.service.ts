@@ -39,11 +39,11 @@ export class ProductService {
     return this.products;
   }
 
-  saveProduct(product) {
+  saveProduct(product: Product) {
     this.products.push(product);
   }
 
-  updateById(product) {
+  updateById(product: Product) {
     for (let i = 0; i < this.products.length; i++) {
       if (this.products[i].id === product.id) {
         this.products[i] = product;
@@ -56,7 +56,7 @@ export class ProductService {
     return this.products.find(product => product.id === id);
   }
 
-  delete(id) {
+  delete(id: number) {
     const index = this.products.findIndex(product => product.id === id);
     this.products.splice(index, 1);
   }

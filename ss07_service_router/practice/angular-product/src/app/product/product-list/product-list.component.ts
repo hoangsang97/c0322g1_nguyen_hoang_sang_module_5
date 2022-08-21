@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {Product} from '../../model/product';
 import {ProductService} from '../../service/product.service';
 
@@ -9,13 +9,30 @@ import {ProductService} from '../../service/product.service';
 })
 export class ProductListComponent implements OnInit {
   products: Product[] = [];
-  constructor(private productService: ProductService) { }
+  valueDelete = [];
+
+  constructor(private productService: ProductService) {
+  }
 
   ngOnInit(): void {
     this.getAll();
   }
+
   getAll() {
     this.products = this.productService.getAll();
   }
 
+  selDelete(id: number, name: string) {
+    this.valueDelete.push(id);
+    this.valueDelete.push(name);
+  }
+
+  deleteProduct(id: number) {
+    this.productService.delete(id);
+    this.valueDelete = [];
+  }
+
+  resetValue() {
+    this.valueDelete = [];
+  }
 }

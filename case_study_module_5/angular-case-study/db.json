@@ -128,21 +128,21 @@
   "contract": [
     {
       "id": 1,
-      "startDate": "2020-12-08",
+      "startDate": "2022-08-27",
       "endDate": "2020-12-08",
-      "deposit": 0,
+      "deposit": "3131233333",
       "customer": {
-        "id": 1,
-        "name": "Nguyễn Văn A",
-        "gender": false,
-        "dateOfBirth": "1998-08-09",
-        "idCard": "9894739372",
-        "phoneNumber": "0903131313",
-        "email": "hoang@gmail.com",
-        "address": "ĐN",
+        "id": 3,
+        "name": "Trương Đình Nghệ",
+        "dateOfBirth": "1990-02-27",
+        "gender": true,
+        "idCard": "488645199",
+        "phoneNumber": "373213122",
+        "email": "nghenhan2702@gmail.com",
+        "address": "K323/12 Ông Ích Khiêm, Vinh",
         "customerType": {
           "id": 1,
-          "name": "Vip"
+          "name": "Diamond"
         }
       },
       "facility": {
@@ -152,10 +152,10 @@
         "cost": 10000000,
         "maxPeople": 10,
         "standardRoom": "vip",
-        "descriptionOtherConvenience": "Có hồ bơi",
-        "poolArea": 500,
-        "numberOfFloors": 4,
-        "facilityFree": "Có Điện Thoại",
+        "descriptionOtherConvenience": "có hồ bơi",
+        "poolArea": 1000,
+        "numberOfFloors": 1,
+        "facilityFree": null,
         "rentType": {
           "id": 1,
           "name": "year"
@@ -290,39 +290,79 @@
       "id": 5,
       "startDate": "2022-08-19",
       "endDate": "2022-08-25",
-      "deposit": "12312312",
+      "deposit": "13323",
       "customer": {
-        "name": "nguyen hoang sang",
-        "gender": true,
-        "dateOfBirth": "1995-07-13",
-        "idCard": "212313112",
-        "phoneNumber": "0774564457",
-        "email": "sangnguyenjp97@gmail.com",
-        "address": "67 Lê Kim Lăng.Phường Hòa Thọ Đông",
+        "id": 5,
+        "name": "Hoàng Trần Nhi Nhi",
+        "dateOfBirth": "1995-12-09",
+        "gender": false,
+        "idCard": "795453345",
+        "phoneNumber": "312345678",
+        "email": "nhinhi123@gmail.com",
+        "address": "224 Lý Thái Tổ, Gia Lai",
         "customerType": {
-          "id": 2,
-          "name": "Normal"
-        },
-        "id": 3
+          "id": 4,
+          "name": "Silver"
+        }
       },
       "facility": {
-        "id": 1,
-        "name": "Villa Beach Front",
+        "id": 2,
+        "name": "House Princess 01",
         "area": 25000,
         "cost": 10000000,
         "maxPeople": 10,
-        "standardRoom": "vip",
+        "standardRoom": "normal",
         "descriptionOtherConvenience": "có hồ bơi",
-        "poolArea": 1000,
-        "numberOfFloors": 1,
+        "poolArea": 0,
+        "numberOfFloors": 10,
         "facilityFree": null,
         "rentType": {
-          "id": 1,
-          "name": "year"
+          "id": 2,
+          "name": "month"
         },
         "facilityType": {
+          "id": 2,
+          "name": "House"
+        }
+      }
+    },
+    {
+      "id": 6,
+      "startDate": "2022-08-14",
+      "endDate": "2022-08-19",
+      "deposit": "100000",
+      "customer": {
+        "id": 3,
+        "name": "Trương Đình Nghệ",
+        "dateOfBirth": "1990-02-27",
+        "gender": true,
+        "idCard": "488645199",
+        "phoneNumber": "373213122",
+        "email": "nghenhan2702@gmail.com",
+        "address": "K323/12 Ông Ích Khiêm, Vinh",
+        "customerType": {
           "id": 1,
-          "name": "Villa"
+          "name": "Diamond"
+        }
+      },
+      "facility": {
+        "id": 2,
+        "name": "House Princess 01",
+        "area": 25000,
+        "cost": 10000000,
+        "maxPeople": 10,
+        "standardRoom": "normal",
+        "descriptionOtherConvenience": "có hồ bơi",
+        "poolArea": 0,
+        "numberOfFloors": 10,
+        "facilityFree": null,
+        "rentType": {
+          "id": 2,
+          "name": "month"
+        },
+        "facilityType": {
+          "id": 2,
+          "name": "House"
         }
       }
     }
