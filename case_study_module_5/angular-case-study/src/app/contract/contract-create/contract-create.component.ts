@@ -39,8 +39,16 @@ export class ContractCreateComponent implements OnInit {
       startDate: new FormControl(),
       endDate: new FormControl(),
       deposit: new FormControl(),
-      customer: new FormControl(1),
-      facility: new FormControl(1),
+      customer: new FormControl(),
+      facility: new FormControl(),
+    });
+    this.customerService.getAll().subscribe(customer => {
+      this.customerList = customer;
+      this.contractForm.patchValue({customer: this.customerList[0]});
+    });
+    this.facilityService.getAll().subscribe(facility => {
+      this.facilityList = facility;
+      this.contractForm.patchValue({facility: this.facilityList[0]});
     });
   }
 

@@ -9,7 +9,6 @@ import {ActivatedRoute, ParamMap, Router} from '@angular/router';
 import {Facility} from '../../module/facility';
 import {ToastrService} from 'ngx-toastr';
 import {checkPoolAreaAndFloors} from '../../validator/checkPoolAreaAndFloors';
-import {parse} from '@angular/compiler/src/render3/view/style_parser';
 
 @Component({
   selector: 'app-facility-update',
@@ -64,6 +63,58 @@ export class FacilityUpdateComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.formFacility();
+    this.activatedRoute.paramMap.subscribe((paramMap: ParamMap) => {
+      this.id = +paramMap.get('id');
+      this.getFacility(this.id);
+    });
+  }
+
+  getFacility(id) {
+    this.facilityService.getById(id).subscribe(facility => {
+      this.formFacility();
+      this.facilityTypeId = facility.facilityType.id + '';
+      this.facilityForm.patchValue(facility);
+      this.facilityForm.patchValue({facilityType: facility.facilityType.id});
+      this.facilityForm.patchValue({rentType: facility.rentType.id});
+      if (this.facilityTypeId === '1') {
+        this.facilityForm.patchValue({facilityFree: NaN});
+      } else if (this.facilityTypeId === '2') {
+        this.facilityForm.patchValue({poolArea: 0});
+        this.facilityForm.patchValue({facilityFree: NaN});
+      } else if (this.facilityTypeId === '3') {
+        this.facilityForm.patchValue({poolArea: 0});
+        this.facilityForm.patchValue({numberOfFloors: 0});
+        this.facilityForm.patchValue({descriptionOtherConvenience: NaN});
+        this.facilityForm.patchValue({standardRoom: NaN});
+      }
+    });
+  }
+
+  selFacility(event) {
+    this.facilityTypeId = event.target.value;
+    if (this.facilityTypeId === '0: 1') {
+      this.facilityForm.patchValue({facilityFree: NaN});
+    } else if (this.facilityTypeId === '1: 2') {
+      this.facilityForm.patchValue({poolArea: 0});
+      this.facilityForm.patchValue({facilityFree: NaN});
+    } else if (this.facilityTypeId === '2: 3') {
+      this.facilityForm.patchValue({poolArea: 0});
+      this.facilityForm.patchValue({numberOfFloors: 0});
+      this.facilityForm.patchValue({descriptionOtherConvenience: NaN});
+      this.facilityForm.patchValue({standardRoom: NaN});
+    }
+  }
+
+  submit(id) {
+    const facility = this.facilityForm.value;
+    this.facilityService.edit(id, facility).subscribe(() => {
+      this.router.navigate(['facility/list/0']);
+      this.toastr.success('Sửa thông tin thành công', 'Thông Báo!');
+    });
+  }
+
+  formFacility() {
     this.facilityForm = new FormGroup({
       id: new FormControl(),
       name: new FormControl('', [
@@ -97,75 +148,6 @@ export class FacilityUpdateComponent implements OnInit {
       ]),
       rentType: new FormControl(),
       facilityType: new FormControl(),
-    });
-    this.activatedRoute.paramMap.subscribe((paramMap: ParamMap) => {
-      this.id = +paramMap.get('id');
-      this.getFacility(this.id);
-    });
-  }
-  getFacility(id) {
-    this.facilityService.getById(id).subscribe(facility => {
-      this.facilityForm = new FormGroup({
-        id: new FormControl(),
-        name: new FormControl('', [
-          Validators.required
-        ]),
-        area: new FormControl('', [
-          Validators.required
-        ]),
-        cost: new FormControl('', [
-          Validators.required
-        ]),
-        maxPeople: new FormControl('', [
-          Validators.required
-        ]),
-        standardRoom: new FormControl('', [
-          Validators.required
-        ]),
-        descriptionOtherConvenience: new FormControl('', [
-          Validators.required
-        ]),
-        poolArea: new FormControl('', [
-          Validators.required,
-          checkPoolAreaAndFloors
-        ]),
-        numberOfFloors: new FormControl('', [
-          Validators.required,
-          checkPoolAreaAndFloors
-        ]),
-        facilityFree: new FormControl('', [
-          Validators.required
-        ]),
-        rentType: new FormControl(),
-        facilityType: new FormControl(),
-      });
-      this.facilityTypeId = facility.facilityType.id + '';
-      this.facilityForm.patchValue(facility);
-      this.facilityForm.patchValue({facilityType: facility.facilityType.id});
-      this.facilityForm.patchValue({rentType: facility.rentType.id});
-    });
-  }
-
-  selFacility(event) {
-    this.facilityTypeId = event.target.value;
-    if (this.facilityTypeId === '0: 1') {
-      this.facilityForm.patchValue({facilityFree: NaN});
-    } else if (this.facilityTypeId === '1: 2') {
-      this.facilityForm.patchValue({poolArea: 0});
-      this.facilityForm.patchValue({facilityFree: NaN});
-    } else if (this.facilityTypeId === '2: 3') {
-      this.facilityForm.patchValue({poolArea: 0});
-      this.facilityForm.patchValue({numberOfFloors: 0});
-      this.facilityForm.patchValue({descriptionOtherConvenience: NaN});
-      this.facilityForm.patchValue({standardRoom: NaN});
-    }
-  }
-
-  submit(id) {
-    const facility = this.facilityForm.value;
-    this.facilityService.edit(id, facility).subscribe(() => {
-      this.router.navigate(['facility/list/0']);
-      this.toastr.success('Sửa thông tin thành công', 'Thông Báo!');
     });
   }
 }

@@ -9,7 +9,7 @@
       </svg>
     </a>
   </div>
-  <form class="row g-3" [formGroup]="contractForm" (ngSubmit)="submit()">
+  <form class="row g-3" [formGroup]="contractForm" (ngSubmit)="submit(id)">
 
     <div class="col-md-6">
       <label class="form-label">Ngày Thuê<span class="text-danger">*</span></label>
@@ -29,14 +29,14 @@
     <div class="col-3">
       <label class="form-label">Tên Dịch vụ<span class="text-danger">*</span></label>
       <select class="form-select" aria-label="Default select example" name="customer" formControlName="facility">
-        <option *ngFor="let item of facilityList" [ngValue]="item.id">{{item.name}}</option>
+        <option *ngFor="let item of facilityList" [ngValue]="item">{{item.name}}</option>
       </select>
     </div>
 
     <div class="col-3">
       <label class="form-label">Tên Khách Hàng<span class="text-danger">*</span></label>
       <select class="form-select" aria-label="Default select example" name="facility" formControlName="customer">
-        <option *ngFor="let item of customerList" [ngValue]="item.id">{{item.name}}</option>
+        <option *ngFor="let item of customerList" [ngValue]="item">{{item.name}}</option>
       </select>
     </div>
 

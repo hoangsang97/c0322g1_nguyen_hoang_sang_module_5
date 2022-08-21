@@ -5,7 +5,7 @@ import {environment} from '../../environments/environment';
 import {HttpClient} from '@angular/common/http';
 import {Observable} from 'rxjs';
 
-const API_URL = `${environment.apiUrl}`;
+const SERVICE_URL = `${environment.serviceUrl}`;
 
 @Injectable({
   providedIn: 'root'
@@ -18,7 +18,7 @@ export class CustomerService {
   }
 
   getAll(): Observable<Customer[]> {
-    return this.httpClient.get<Customer[]>(API_URL + '/customers');
+    return this.httpClient.get<Customer[]>(SERVICE_URL + '/customer/list');
   }
 
   saveCustomer(customer): Observable<Customer> {
@@ -27,15 +27,15 @@ export class CustomerService {
     } else if (customer.customerType === 2) {
       customer.customerType = this.customerTypeService.customerTypeList[1];
     }
-    return this.httpClient.post<Customer>(API_URL + '/customers', customer);
+    return this.httpClient.post<Customer>(SERVICE_URL + '/customers', customer);
   }
 
   findById(id: number): Observable<Customer> {
-    return this.httpClient.get<Customer>(`${API_URL}/customers/${id}`);
+    return this.httpClient.get<Customer>(`${SERVICE_URL}/customers/${id}`);
   }
 
   removeCustomer(id): Observable<Customer> {
-    return this.httpClient.delete<Customer>(`${API_URL}/customers/${id}`);
+    return this.httpClient.delete<Customer>(`${SERVICE_URL}/customers/${id}`);
   }
 
   editCustomer(id, customer): Observable<Customer> {
@@ -44,7 +44,7 @@ export class CustomerService {
     } else if (customer.customerType === 2) {
       customer.customerType = this.customerTypeService.customerTypeList[1];
     }
-    return this.httpClient.put<Customer>(`${API_URL}/customers/${id}`, customer);
+    return this.httpClient.put<Customer>(`${SERVICE_URL}/customers/${id}`, customer);
   }
 }
 

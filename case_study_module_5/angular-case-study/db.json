@@ -2,11 +2,11 @@
   "customers": [
     {
       "id": 1,
-      "name": "Nguyễn Văn A",
-      "gender": false,
-      "dateOfBirth": "1998-08-09",
+      "name": "Nguyễn Văn B",
+      "gender": true,
+      "dateOfBirth": "1998-08-19",
       "idCard": "9894739372",
-      "phoneNumber": "0903131313",
+      "phoneNumber": "0903131123",
       "email": "hoang@gmail.com",
       "address": "ĐN",
       "customerType": {
@@ -27,6 +27,20 @@
         "id": 1,
         "name": "Normal"
       }
+    },
+    {
+      "name": "nguyen hoang sang",
+      "gender": true,
+      "dateOfBirth": "1995-07-13",
+      "idCard": "212313112",
+      "phoneNumber": "0774564457",
+      "email": "sangnguyenjp97@gmail.com",
+      "address": "67 Lê Kim Lăng.Phường Hòa Thọ Đông",
+      "customerType": {
+        "id": 2,
+        "name": "Normal"
+      },
+      "id": 3
     }
   ],
   "facility": [
@@ -37,10 +51,10 @@
       "cost": 10000000,
       "maxPeople": 10,
       "standardRoom": "vip",
-      "descriptionOtherConvenience": "Có hồ bơi",
-      "poolArea": 500,
-      "numberOfFloors": 4,
-      "facilityFree": "Có Điện Thoại",
+      "descriptionOtherConvenience": "có hồ bơi",
+      "poolArea": 1000,
+      "numberOfFloors": 1,
+      "facilityFree": null,
       "rentType": {
         "id": 1,
         "name": "year"
@@ -56,11 +70,11 @@
       "area": 25000,
       "cost": 10000000,
       "maxPeople": 10,
-      "standardRoom": "vip",
-      "descriptionOtherConvenience": "Có hồ bơi",
-      "poolArea": 500,
-      "numberOfFloors": 4,
-      "facilityFree": "Có Điện Thoại",
+      "standardRoom": "normal",
+      "descriptionOtherConvenience": "có hồ bơi",
+      "poolArea": 0,
+      "numberOfFloors": 10,
+      "facilityFree": null,
       "rentType": {
         "id": 2,
         "name": "month"
@@ -76,10 +90,10 @@
       "area": 5000,
       "cost": 1000000,
       "maxPeople": 2,
-      "standardRoom": "normal",
-      "descriptionOtherConvenience": "Có tivi",
-      "poolArea": 500,
-      "numberOfFloors": 4,
+      "standardRoom": null,
+      "descriptionOtherConvenience": null,
+      "poolArea": 0,
+      "numberOfFloors": 0,
       "facilityFree": "Có Điện Thoại",
       "rentType": {
         "id": 3,
@@ -88,6 +102,26 @@
       "facilityType": {
         "id": 3,
         "name": "Room"
+      }
+    },
+    {
+      "id": 4,
+      "name": "House Vip",
+      "area": 27000,
+      "cost": 1,
+      "maxPeople": 20,
+      "standardRoom": "normal",
+      "descriptionOtherConvenience": "có hồ bơi",
+      "poolArea": 0,
+      "numberOfFloors": 5,
+      "facilityFree": null,
+      "rentType": {
+        "id": 2,
+        "name": "month"
+      },
+      "facilityType": {
+        "id": 2,
+        "name": "House"
       }
     }
   ],
@@ -178,18 +212,18 @@
       "endDate": "2021-01-18",
       "deposit": 100000,
       "customer": {
-        "name": "nguyen hoang sang",
-        "gender": true,
-        "dateOfBirth": "2022-08-14",
-        "idCard": "3131313131",
-        "phoneNumber": "0774564457",
-        "email": "sangnguyenjp97@gmail.com",
-        "address": "67 Lê Kim Lăng.Phường Hòa Thọ Đông",
+        "id": 1,
+        "name": "Nguyễn Văn A",
+        "gender": false,
+        "dateOfBirth": "1998-08-09",
+        "idCard": "9894739372",
+        "phoneNumber": "0903131313",
+        "email": "hoang@gmail.com",
+        "address": "ĐN",
         "customerType": {
-          "id": 2,
-          "name": "Normal"
-        },
-        "id": 3
+          "id": 1,
+          "name": "Vip"
+        }
       },
       "facility": {
         "id": 3,
@@ -209,6 +243,46 @@
         "facilityType": {
           "id": 3,
           "name": "Room"
+        }
+      }
+    },
+    {
+      "id": 4,
+      "startDate": "2022-08-11",
+      "endDate": "2022-08-07",
+      "deposit": "100000",
+      "customer": {
+        "id": 2,
+        "name": "Nguyễn Văn Binh",
+        "dateOfBirth": "1998-08-09",
+        "gender": false,
+        "idCard": "9894739372",
+        "phoneNumber": "3184434343",
+        "email": "hoang@gmail.com",
+        "address": "ĐN",
+        "customerType": {
+          "id": 1,
+          "name": "Normal"
+        }
+      },
+      "facility": {
+        "id": 2,
+        "name": "House Princess 01",
+        "area": 25000,
+        "cost": 10000000,
+        "maxPeople": 10,
+        "standardRoom": "vip",
+        "descriptionOtherConvenience": "Có hồ bơi",
+        "poolArea": 500,
+        "numberOfFloors": 4,
+        "facilityFree": "Có Điện Thoại",
+        "rentType": {
+          "id": 2,
+          "name": "month"
+        },
+        "facilityType": {
+          "id": 2,
+          "name": "House"
         }
       }
     }
