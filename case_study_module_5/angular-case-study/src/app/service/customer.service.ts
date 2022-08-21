@@ -18,7 +18,7 @@ export class CustomerService {
   }
 
   getAll(): Observable<Customer[]> {
-    return this.httpClient.get<Customer[]>(SERVICE_URL + '/customer/list');
+    return this.httpClient.get<Customer[]>(SERVICE_URL + '/customers');
   }
 
   saveCustomer(customer): Observable<Customer> {

@@ -285,6 +285,46 @@
           "name": "House"
         }
       }
+    },
+    {
+      "id": 5,
+      "startDate": "2022-08-19",
+      "endDate": "2022-08-25",
+      "deposit": "12312312",
+      "customer": {
+        "name": "nguyen hoang sang",
+        "gender": true,
+        "dateOfBirth": "1995-07-13",
+        "idCard": "212313112",
+        "phoneNumber": "0774564457",
+        "email": "sangnguyenjp97@gmail.com",
+        "address": "67 Lê Kim Lăng.Phường Hòa Thọ Đông",
+        "customerType": {
+          "id": 2,
+          "name": "Normal"
+        },
+        "id": 3
+      },
+      "facility": {
+        "id": 1,
+        "name": "Villa Beach Front",
+        "area": 25000,
+        "cost": 10000000,
+        "maxPeople": 10,
+        "standardRoom": "vip",
+        "descriptionOtherConvenience": "có hồ bơi",
+        "poolArea": 1000,
+        "numberOfFloors": 1,
+        "facilityFree": null,
+        "rentType": {
+          "id": 1,
+          "name": "year"
+        },
+        "facilityType": {
+          "id": 1,
+          "name": "Villa"
+        }
+      }
     }
   ]
 }
