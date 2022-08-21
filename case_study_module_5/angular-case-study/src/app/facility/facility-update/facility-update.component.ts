@@ -22,6 +22,7 @@ export class FacilityUpdateComponent implements OnInit {
   facilityTypeList: FacilityType[] = [];
   facility: Facility;
   facilityTypeId = '';
+  id: number;
   validationMessages = {
     name: [
       {type: 'required', message: 'Vui lòng nhập tên'}
@@ -98,12 +99,50 @@ export class FacilityUpdateComponent implements OnInit {
       facilityType: new FormControl(),
     });
     this.activatedRoute.paramMap.subscribe((paramMap: ParamMap) => {
-      const id = +paramMap.get('id');
-      this.facility = this.facilityService.getById(id);
-      this.facilityTypeId = this.facility.facilityType.id + '';
-      this.facilityForm.patchValue(this.facility);
-      this.facilityForm.patchValue({facilityType: this.facility.facilityType.id});
-      this.facilityForm.patchValue({rentType: this.facility.rentType.id});
+      this.id = +paramMap.get('id');
+      this.getFacility(this.id);
+    });
+  }
+  getFacility(id) {
+    this.facilityService.getById(id).subscribe(facility => {
+      this.facilityForm = new FormGroup({
+        id: new FormControl(),
+        name: new FormControl('', [
+          Validators.required
+        ]),
+        area: new FormControl('', [
+          Validators.required
+        ]),
+        cost: new FormControl('', [
+          Validators.required
+        ]),
+        maxPeople: new FormControl('', [
+          Validators.required
+        ]),
+        standardRoom: new FormControl('', [
+          Validators.required
+        ]),
+        descriptionOtherConvenience: new FormControl('', [
+          Validators.required
+        ]),
+        poolArea: new FormControl('', [
+          Validators.required,
+          checkPoolAreaAndFloors
+        ]),
+        numberOfFloors: new FormControl('', [
+          Validators.required,
+          checkPoolAreaAndFloors
+        ]),
+        facilityFree: new FormControl('', [
+          Validators.required
+        ]),
+        rentType: new FormControl(),
+        facilityType: new FormControl(),
+      });
+      this.facilityTypeId = facility.facilityType.id + '';
+      this.facilityForm.patchValue(facility);
+      this.facilityForm.patchValue({facilityType: facility.facilityType.id});
+      this.facilityForm.patchValue({rentType: facility.rentType.id});
     });
   }
 
@@ -122,10 +161,11 @@ export class FacilityUpdateComponent implements OnInit {
     }
   }
 
-  submit() {
+  submit(id) {
     const facility = this.facilityForm.value;
-    this.facilityService.edit(facility);
-    this.router.navigate(['facility/list/0']);
-    this.toastr.success('Sửa thông tin thành công', 'Thông Báo!');
+    this.facilityService.edit(id, facility).subscribe(() => {
+      this.router.navigate(['facility/list/0']);
+      this.toastr.success('Sửa thông tin thành công', 'Thông Báo!');
+    });
   }
 }

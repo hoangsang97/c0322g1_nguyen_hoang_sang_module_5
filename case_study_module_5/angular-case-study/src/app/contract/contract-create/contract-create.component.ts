@@ -1,12 +1,13 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {FormControl, FormGroup} from '@angular/forms';
 import {CustomerService} from '../../service/customer.service';
 import {Customer} from '../../module/customer';
 import {Facility} from '../../module/facility';
 import {FacilityService} from '../../service/facility.service';
 import {ContractService} from '../../service/contract.service';
-import {ActivatedRoute, ParamMap, Router} from '@angular/router';
+import {Router} from '@angular/router';
 import {ToastrService} from 'ngx-toastr';
+import {Contract} from '../../module/contract';
 
 @Component({
   selector: 'app-contract-create',
@@ -17,14 +18,19 @@ export class ContractCreateComponent implements OnInit {
   contractForm: FormGroup;
   customerList: Customer[] = [];
   facilityList: Facility[] = [];
+  contract: Contract;
 
   constructor(private customerService: CustomerService,
               private facilityService: FacilityService,
               private contractService: ContractService,
               private router: Router,
               private toastr: ToastrService) {
-    this.customerList = this.customerService.customerList;
-    this.facilityList = this.facilityService.facilityList;
+    this.customerService.getAll().subscribe(customer => {
+      this.customerList = customer;
+    });
+    this.facilityService.getAll().subscribe(facility => {
+      this.facilityList = facility;
+    });
   }
 
   ngOnInit(): void {
@@ -39,9 +45,10 @@ export class ContractCreateComponent implements OnInit {
   }
 
   submit() {
-    const contract = this.contractForm.value;
-    this.contractService.save(contract);
-    this.router.navigateByUrl('contract/list');
-    this.toastr.success('Thêm mới thông tin thành công', 'Thông Báo!');
+    this.contract = this.contractForm.value;
+    this.contractService.save(this.contract).subscribe(() => {
+      this.router.navigateByUrl('contract/list');
+      this.toastr.success('Thêm mới thông tin thành công', 'Thông Báo!');
+    });
   }
 }

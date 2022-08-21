@@ -97,9 +97,10 @@ export class FacilityCreateComponent implements OnInit {
 
   submit() {
     const facility = this.facilityForm.value;
-    this.facility.save(facility);
-    this.router.navigate(['../facility/list/0']);
-    this.toastr.success('Thêm mới thông tin thành công', 'Thông Báo!');
+    this.facility.save(facility).subscribe(() => {
+      this.router.navigate(['../facility/list/0']);
+      this.toastr.success('Thêm mới thông tin thành công', 'Thông Báo!');
+    });
   }
 
   selFacility(event) {

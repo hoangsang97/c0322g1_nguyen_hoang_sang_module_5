@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {Contract} from '../../module/contract';
 import {ContractService} from '../../service/contract.service';
 import {ToastrService} from 'ngx-toastr';
@@ -11,12 +11,19 @@ import {ToastrService} from 'ngx-toastr';
 export class ContractListComponent implements OnInit {
   contractList: Contract[] = [];
   valueDelete = [];
+
   constructor(private contractService: ContractService,
               private toastr: ToastrService) {
-    this.contractList = this.contractService.contractList;
   }
 
   ngOnInit(): void {
+    this.getAll();
+  }
+
+  getAll() {
+    this.contractService.getAll().subscribe(contract => {
+      this.contractList = contract;
+    });
   }
 
   elementDelete(id: number, name: string) {
@@ -25,9 +32,11 @@ export class ContractListComponent implements OnInit {
   }
 
   deleteContract(id) {
-    this.contractService.delete(id);
-    this.toastr.success('Xóa thông tin thành công', 'Thông Báo!');
-    this.valueDelete = [];
+    this.contractService.delete(id).subscribe(() => {
+      this.toastr.success('Xóa thông tin thành công', 'Thông Báo!');
+      this.getAll();
+      this.valueDelete = [];
+    });
   }
 
   resetModal() {

@@ -13,7 +13,26 @@ export class FacilityListComponent implements OnInit {
   valueD = [];
   facilityList: Facility[] = [];
   facilityS: Facility[] = [];
-  facilityById: Facility;
+  facilityById: Facility = {
+    id: 1,
+    name: 'Villa Beach Front',
+    area: 25000,
+    cost: 10000000,
+    maxPeople: 10,
+    standardRoom: 'vip',
+    descriptionOtherConvenience: 'Có hồ bơi',
+    poolArea: 500,
+    numberOfFloors: 4,
+    facilityFree: 'Có Điện Thoại',
+    rentType: {
+      id: 1,
+      name: 'year'
+    },
+    facilityType: {
+      id: 1,
+      name: 'Villa'
+    }
+  };
   facilityType = 0;
 
   constructor(private facilityService: FacilityService,
@@ -23,7 +42,6 @@ export class FacilityListComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.getFacility(1);
     this.activatedRoute.paramMap.subscribe((paramMap: ParamMap) => {
       this.facilityType = +paramMap.get('id');
       this.facilityService.getAll().subscribe(facility => {
@@ -47,9 +65,7 @@ export class FacilityListComponent implements OnInit {
   }
 
   facilityDetail(id: number) {
-    this.facilityService.getById(id).subscribe(facility => {
-      this.facilityById = facility;
-    });
+    this.getFacility(id);
   }
 
   valueDelete(id: number, name: string) {
@@ -58,11 +74,14 @@ export class FacilityListComponent implements OnInit {
   }
 
   deleteFacility(id: number) {
-    this.facilityService.delete(id);
-    this.toastr.success('Xoá thông tin thành công', 'Thông Báo');
-    this.valueD = [];
-    // this.facilityList = this.facility.getAll();
-    this.router.navigateByUrl('facility/list/0');
+    this.facilityService.delete(id).subscribe(() => {
+      this.valueD = [];
+      this.facilityService.getAll().subscribe(facility => {
+        this.facilityList = facility;
+      });
+      this.router.navigateByUrl('facility/list/0');
+      this.toastr.success('Xoá thông tin thành công', 'Thông Báo');
+    });
   }
 
   resetModal() {

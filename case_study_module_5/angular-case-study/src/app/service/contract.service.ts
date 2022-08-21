@@ -2,58 +2,37 @@ import {Injectable} from '@angular/core';
 import {Contract} from '../module/contract';
 import {CustomerService} from './customer.service';
 import {FacilityService} from './facility.service';
+import {environment} from '../../environments/environment';
+import {HttpClient} from '@angular/common/http';
+import {Facility} from '../module/facility';
+import {Customer} from '../module/customer';
+
+const API_URL = `${environment.apiUrl}`;
 
 @Injectable({
   providedIn: 'root'
 })
 export class ContractService {
   contractList: Contract[] = [];
+  facility: Facility;
+  customer: Customer;
 
   constructor(private customerService: CustomerService,
-              private facilityService: FacilityService) {
-    this.contractList.push({
-      id: 1,
-      startDate: '2020-12-08',
-      endDate: '2020-12-08',
-      deposit: 0,
-      customer: this.customerService.customerList[0],
-      facility: this.facilityService.facilityList[0]
-    }, {
-      id: 2,
-      startDate: '2020-07-14',
-      endDate: '2020-07-21',
-      deposit: 200000,
-      customer: this.customerService.customerList[1],
-      facility: this.facilityService.facilityList[2]
-    }, {
-      id: 3,
-      startDate: '2021-01-14',
-      endDate: '2021-01-18',
-      deposit: 100000,
-      customer: this.customerService.customerList[0],
-      facility: this.facilityService.facilityList[1]
-    });
+              private facilityService: FacilityService,
+              private httpClient: HttpClient) {
   }
 
   getAll() {
-    return this.contractList;
+    return this.httpClient.get<Contract[]>(API_URL + '/contract');
   }
 
   save(contract) {
-    contract.id = this.contractList.length + 1;
-    for (const item of this.contractList) {
-      if (contract.facility === item.facility.id) {
-        contract.facility = item.facility;
-      }
-      if (contract.customer === item.customer.id) {
-        contract.customer = item.customer;
-      }
-    }
-    this.contractList.push(contract);
+    this.setValueContract(contract);
+    return this.httpClient.post<Contract>(API_URL + '/contract', contract);
   }
 
   findById(id: number) {
-    return this.contractList.find(contract => contract.id === id);
+    return this.httpClient.get<Contract>(`${API_URL}/contract/${id}`);
   }
 
   edit(contract) {
@@ -75,7 +54,25 @@ export class ContractService {
   }
 
   delete(id) {
-    const index = this.contractList.findIndex(contract => contract.id === id);
-    this.contractList.splice(index, 1);
+    return this.httpClient.delete<Contract>(`${API_URL}/contract/${id}`);
+  }
+
+  setValueContract(contract) {
+    this.customerService.getAll().subscribe(customer => {
+      for (const item of customer) {
+        if (contract.customer === item.id) {
+          this.customer = item;
+        }
+      }
+    });
+    this.facilityService.getAll().subscribe(facility => {
+      for (const item of facility) {
+        if (contract.facility === item.id) {
+          this.facility = item;
+        }
+      }
+    });
+    contract.facility = this.facility;
+    contract.customer = this.customer;
   }
 }
