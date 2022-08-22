@@ -57,4 +57,11 @@ public class CustomerController {
         customerService.remove(id);
         return new ResponseEntity<>(HttpStatus.OK);
     }
+
+    @GetMapping("/search")
+    public ResponseEntity<List<Customer>> searchCustomer(@RequestParam String nameCustomer,
+                                                         @RequestParam int customerTypeId) {
+        List<Customer> customers = customerService.search(nameCustomer, customerTypeId);
+        return new ResponseEntity<>(customers, HttpStatus.OK);
+    }
 }

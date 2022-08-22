@@ -46,5 +46,9 @@ export class CustomerService {
       }
     }
   }
+
+  search(nameCustomer: string, customerTypeId: number): Observable<Customer[]> {
+    return this.httpClient.get<Customer[]>(`${SERVICE_URL}/customers/search?nameCustomer=${nameCustomer}&customerTypeId=${customerTypeId}`);
+  }
 }
 

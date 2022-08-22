@@ -13,6 +13,7 @@ export class FacilityListComponent implements OnInit {
   valueD = [];
   facilityList: Facility[] = [];
   facilityS: Facility[] = [];
+  p = 1;
   facilityById: Facility = {
     id: 1,
     name: 'Villa Beach Front',

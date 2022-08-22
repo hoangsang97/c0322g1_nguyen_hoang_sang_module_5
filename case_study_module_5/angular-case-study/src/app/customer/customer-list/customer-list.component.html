@@ -17,6 +17,24 @@
     </div>
   </div>
   <div class="container-fluid" style="font-size: 13px; padding: 75px">
+
+    <form class="mb-3" style="position: relative" [formGroup]="searchForm" (ngSubmit)="search()">
+      <div class="row">
+        <div class="col-2">
+          <input class="form-control me-2" type="search" placeholder="Tên Khách Hàng" aria-label="Search" formControlName="nameSearch">
+        </div>
+        <div class="col-2">
+          <select class="form-select" aria-label="Default select example" formControlName="customerTypeId">
+            <option [ngValue]="0" disabled>Chọn Loại Khách Hàng</option>
+            <option *ngFor="let item of customerTypeList" [ngValue]="item.id">{{item.name}}</option>
+          </select>
+        </div>
+        <div class="col-2">
+          <button class="btn btn-outline-primary">Tìm Kiếm</button>
+        </div>
+      </div>
+    </form>
+
     <table class="table table-bordered">
       <thead class="bg-primary text-center text-light">
       <tr>
@@ -35,7 +53,7 @@
       </thead>
       <tbody>
       <tr *ngFor="let item of customerList | paginate: { itemsPerPage: 4, currentPage: p }, index as i">
-        <td>{{i + 1}}</td>
+        <td>{{(i + 1) + 4 * (p - 1)}}</td>
         <td>{{item.name}}</td>
         <td>{{item.dateOfBirth | date :'MM/dd/yyyy'}}</td>
         <td *ngIf="item.gender === true">Nam</td>
@@ -83,7 +101,9 @@
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" (click)="resetModal()">Đóng</button>
-          <button type="button" class="btn btn-outline-danger" (click)="deleteCustomer(valueDelete[0])" data-bs-dismiss="modal">Xoá</button>
+          <button type="button" class="btn btn-outline-danger" (click)="deleteCustomer(valueDelete[0])"
+                  data-bs-dismiss="modal">Xoá
+          </button>
         </div>
       </div>
     </div>

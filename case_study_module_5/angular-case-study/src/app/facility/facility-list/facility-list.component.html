@@ -21,7 +21,7 @@
   <div class="container-fluid" style="font-size: 13px; padding: 75px">
     <div class="container">
       <div class="row">
-        <div class="col-4 mb-4" *ngFor="let item of facilityList">
+        <div class="col-4 mb-4" *ngFor="let item of facilityList | paginate: { itemsPerPage: 6, currentPage: p }">
           <div class="card">
             <img src="../../../assets/image/facility-1.jpeg" class="card-img-top" alt="...">
             <div class="card-body" style="background-color: #F7F7F7">
@@ -70,6 +70,7 @@
           </div>
         </div>
       </div>
+      <pagination-controls (pageChange)="p = $event" class="d-flex justify-content-end"></pagination-controls>
     </div>
   </div>
 

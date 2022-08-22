@@ -123,6 +123,66 @@
         "id": 2,
         "name": "House"
       }
+    },
+    {
+      "name": "House Vip",
+      "area": 27000,
+      "cost": 1,
+      "maxPeople": 20,
+      "standardRoom": "normal",
+      "descriptionOtherConvenience": "có hồ bơi",
+      "poolArea": 0,
+      "numberOfFloors": 4,
+      "facilityFree": null,
+      "rentType": {
+        "id": 2,
+        "name": "month"
+      },
+      "facilityType": {
+        "id": 2,
+        "name": "House"
+      },
+      "id": 6
+    },
+    {
+      "name": "Villa Vip",
+      "area": 27000,
+      "cost": 1,
+      "maxPeople": 20,
+      "standardRoom": "normal",
+      "descriptionOtherConvenience": "có hồ bơi",
+      "poolArea": 500,
+      "numberOfFloors": 4,
+      "facilityFree": null,
+      "rentType": {
+        "id": 1,
+        "name": "year"
+      },
+      "facilityType": {
+        "id": 1,
+        "name": "Villa"
+      },
+      "id": 7
+    },
+    {
+      "name": "Room Vip",
+      "area": 27000,
+      "cost": 1,
+      "maxPeople": 20,
+      "standardRoom": null,
+      "descriptionOtherConvenience": null,
+      "poolArea": 0,
+      "numberOfFloors": 0,
+      "facilityFree": "Co Ti vi",
+      "rentType": {
+        "id": 1,
+        "name": "year"
+      },
+      "facilityType": {
+        "id": 3,
+        "name": "Room"
+      },
+      "id": 8
     }
   ],
   "contract": [
