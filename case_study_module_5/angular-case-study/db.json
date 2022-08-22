@@ -50,9 +50,9 @@
       "area": 25000,
       "cost": 10000000,
       "maxPeople": 10,
-      "standardRoom": "vip",
-      "descriptionOtherConvenience": "có hồ bơi",
-      "poolArea": 1000,
+      "standardRoom": "Vip",
+      "descriptionOtherConvenience": "Co ti vi",
+      "poolArea": 10000,
       "numberOfFloors": 1,
       "facilityFree": null,
       "rentType": {
@@ -105,15 +105,15 @@
       }
     },
     {
-      "id": 4,
-      "name": "House Vip",
+      "id": 5,
+      "name": "House",
       "area": 27000,
-      "cost": 1,
+      "cost": 20000000,
       "maxPeople": 20,
-      "standardRoom": "normal",
-      "descriptionOtherConvenience": "có hồ bơi",
+      "standardRoom": "Vip",
+      "descriptionOtherConvenience": "Co ti vi",
       "poolArea": 0,
-      "numberOfFloors": 5,
+      "numberOfFloors": 1,
       "facilityFree": null,
       "rentType": {
         "id": 2,
@@ -132,37 +132,37 @@
       "endDate": "2020-12-08",
       "deposit": "3131233333",
       "customer": {
-        "id": 3,
-        "name": "Trương Đình Nghệ",
-        "dateOfBirth": "1990-02-27",
-        "gender": true,
-        "idCard": "488645199",
-        "phoneNumber": "373213122",
-        "email": "nghenhan2702@gmail.com",
-        "address": "K323/12 Ông Ích Khiêm, Vinh",
+        "id": 7,
+        "name": "Nguyễn Mỹ Kim",
+        "dateOfBirth": "1984-04-08",
+        "gender": false,
+        "idCard": "856453123",
+        "phoneNumber": "912345698",
+        "email": "kimcuong84@gmail.com",
+        "address": "K123/45 Lê Lợi, Hồ Chí Minh",
         "customerType": {
           "id": 1,
           "name": "Diamond"
         }
       },
       "facility": {
-        "id": 1,
-        "name": "Villa Beach Front",
-        "area": 25000,
-        "cost": 10000000,
-        "maxPeople": 10,
-        "standardRoom": "vip",
-        "descriptionOtherConvenience": "có hồ bơi",
-        "poolArea": 1000,
-        "numberOfFloors": 1,
-        "facilityFree": null,
+        "id": 3,
+        "name": "Room Twin 01",
+        "area": 5000,
+        "cost": 1000000,
+        "maxPeople": 2,
+        "standardRoom": null,
+        "descriptionOtherConvenience": null,
+        "poolArea": 0,
+        "numberOfFloors": 0,
+        "facilityFree": "Có Điện Thoại",
         "rentType": {
-          "id": 1,
-          "name": "year"
+          "id": 3,
+          "name": "day"
         },
         "facilityType": {
-          "id": 1,
-          "name": "Villa"
+          "id": 3,
+          "name": "Room"
         }
       }
     },
@@ -328,41 +328,41 @@
     },
     {
       "id": 6,
-      "startDate": "2022-08-14",
-      "endDate": "2022-08-19",
+      "startDate": "2022-08-27",
+      "endDate": "2022-08-31",
       "deposit": "100000",
       "customer": {
-        "id": 3,
-        "name": "Trương Đình Nghệ",
-        "dateOfBirth": "1990-02-27",
-        "gender": true,
-        "idCard": "488645199",
-        "phoneNumber": "373213122",
-        "email": "nghenhan2702@gmail.com",
-        "address": "K323/12 Ông Ích Khiêm, Vinh",
+        "id": 5,
+        "name": "Hoàng Trần Nhi Nhi",
+        "dateOfBirth": "1995-12-09",
+        "gender": false,
+        "idCard": "795453345",
+        "phoneNumber": "312345678",
+        "email": "nhinhi123@gmail.com",
+        "address": "224 Lý Thái Tổ, Gia Lai",
         "customerType": {
-          "id": 1,
-          "name": "Diamond"
+          "id": 4,
+          "name": "Silver"
         }
       },
       "facility": {
-        "id": 2,
-        "name": "House Princess 01",
-        "area": 25000,
-        "cost": 10000000,
-        "maxPeople": 10,
-        "standardRoom": "normal",
-        "descriptionOtherConvenience": "có hồ bơi",
+        "id": 3,
+        "name": "Room Twin 01",
+        "area": 5000,
+        "cost": 1000000,
+        "maxPeople": 2,
+        "standardRoom": null,
+        "descriptionOtherConvenience": null,
         "poolArea": 0,
-        "numberOfFloors": 10,
-        "facilityFree": null,
+        "numberOfFloors": 0,
+        "facilityFree": "Có Điện Thoại",
         "rentType": {
-          "id": 2,
-          "name": "month"
+          "id": 3,
+          "name": "day"
         },
         "facilityType": {
-          "id": 2,
-          "name": "House"
+          "id": 3,
+          "name": "Room"
         }
       }
     }

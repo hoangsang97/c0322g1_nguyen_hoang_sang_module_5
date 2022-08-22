@@ -11,6 +11,7 @@ import {ToastrService} from 'ngx-toastr';
 export class CustomerListComponent implements OnInit {
   valueDelete = [];
   customerList: Customer[] = [];
+  p = 1;
 
   constructor(private customerService: CustomerService,
               private toastr: ToastrService) { }

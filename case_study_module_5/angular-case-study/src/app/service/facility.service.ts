@@ -23,16 +23,16 @@ export class FacilityService {
     return this.httpClient.get<Facility[]>(API_URL + '/facility');
   }
 
-  save(facility) {
+  save(facility: Facility) {
     this.setValueFacility(facility);
     return this.httpClient.post<Facility>(`${API_URL}/facility`, facility);
   }
 
-  getById(id): Observable<Facility> {
+  getById(id: number): Observable<Facility> {
     return this.httpClient.get<Facility>(`${API_URL}/facility/${id}`);
   }
 
-  edit(id, facility) {
+  edit(id: number, facility: Facility) {
     this.setValueFacility(facility);
     return this.httpClient.put<Facility>(`${API_URL}/facility/${id}`, facility);
   }
@@ -41,7 +41,7 @@ export class FacilityService {
     return this.httpClient.delete<Facility>(`${API_URL}/facility/${id}`);
   }
 
-  setValueFacility(facility) {
+  setValueFacility(facility: Facility) {
     for (const item of this.facilityType.facilityTypeList) {
       if (facility.facilityType === item.id) {
         facility.facilityType = item;

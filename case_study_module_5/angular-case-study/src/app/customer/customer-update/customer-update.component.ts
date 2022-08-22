@@ -51,6 +51,22 @@ export class CustomerUpdateComponent implements OnInit {
 
   ngOnInit(): void {
     this.customerTypeList = this.customerTypeService.customerTypeList;
+    this.customerForm();
+    this.activatedRoute.paramMap.subscribe((paramMap: ParamMap) => {
+      this.id = +paramMap.get('id');
+      this.getCustomer(this.id);
+    });
+  }
+
+  getCustomer(id) {
+    this.customerService.findById(id).subscribe(customer => {
+      this.customerForm();
+      this.customerUpdateForm.patchValue(customer);
+      this.customerUpdateForm.patchValue({customerType: customer.customerType.id});
+    });
+  }
+
+  customerForm() {
     this.customerUpdateForm = new FormGroup({
       id: new FormControl(),
       name: new FormControl('', [
@@ -75,42 +91,6 @@ export class CustomerUpdateComponent implements OnInit {
       ]),
       address: new FormControl(),
       customerType: new FormControl()
-    });
-    this.activatedRoute.paramMap.subscribe((paramMap: ParamMap) => {
-      this.id = +paramMap.get('id');
-      this.getCustomer(this.id);
-    });
-  }
-
-  getCustomer(id) {
-    this.customerService.findById(id).subscribe(customer => {
-      this.customerUpdateForm = new FormGroup({
-        id: new FormControl(),
-        name: new FormControl('', [
-          Validators.required,
-          Validators.pattern('^[a-zA-Zàáạảãâầấậẩẫăằắặẳẵèéẹẻẽêềếệểễìíịỉĩòóọỏõôồốộổỗơờớợởỡùúụủũưừứựửữỳýỵỷỹđ]+(\\s[a-zA-Zàáạảãâầấậẩẫăằắặẳẵèéẹẻẽêềếệểễìíịỉĩòóọỏõôồốộổỗơờớợởỡùúụủũưừứựửữỳýỵỷỹđ]+)*$')
-        ]),
-        gender: new FormControl(false),
-        dateOfBirth: new FormControl('', [
-          Validators.required
-        ]),
-        idCard: new FormControl('', [
-          Validators.required,
-          Validators.pattern('[0-9]{9,11}')
-        ]),
-        phoneNumber: new FormControl('', [
-          Validators.required,
-          Validators.pattern(/^([\+84]|[\+091]|[\+090])[0-9]{9,11}$/)
-        ]),
-        email: new FormControl('', [
-          Validators.required,
-          Validators.pattern('[a-z0-9]+@[a-z]+\\.[a-z]{2,3}')
-        ]),
-        address: new FormControl(),
-        customerType: new FormControl()
-      });
-      this.customerUpdateForm.patchValue(customer);
-      this.customerUpdateForm.patchValue({customerType: customer.customerType.id});
     });
   }
 

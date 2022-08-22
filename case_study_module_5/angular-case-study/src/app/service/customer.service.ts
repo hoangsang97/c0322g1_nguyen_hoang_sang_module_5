@@ -21,12 +21,8 @@ export class CustomerService {
     return this.httpClient.get<Customer[]>(SERVICE_URL + '/customers');
   }
 
-  saveCustomer(customer): Observable<Customer> {
-    if (customer.customerType === 1) {
-      customer.customerType = this.customerTypeService.customerTypeList[0];
-    } else if (customer.customerType === 2) {
-      customer.customerType = this.customerTypeService.customerTypeList[1];
-    }
+  saveCustomer(customer: Customer): Observable<Customer> {
+    this.setValueCustomerType(customer);
     return this.httpClient.post<Customer>(SERVICE_URL + '/customers', customer);
   }
 
@@ -34,17 +30,21 @@ export class CustomerService {
     return this.httpClient.get<Customer>(`${SERVICE_URL}/customers/${id}`);
   }
 
-  removeCustomer(id): Observable<Customer> {
+  removeCustomer(id: number): Observable<Customer> {
     return this.httpClient.delete<Customer>(`${SERVICE_URL}/customers/${id}`);
   }
 
-  editCustomer(id, customer): Observable<Customer> {
-    if (customer.customerType === 1) {
-      customer.customerType = this.customerTypeService.customerTypeList[0];
-    } else if (customer.customerType === 2) {
-      customer.customerType = this.customerTypeService.customerTypeList[1];
-    }
+  editCustomer(id: number, customer: Customer): Observable<Customer> {
+    this.setValueCustomerType(customer);
     return this.httpClient.put<Customer>(`${SERVICE_URL}/customers/${id}`, customer);
+  }
+
+  setValueCustomerType(customer) {
+    for (const item of this.customerTypeService.customerTypeList) {
+      if (item.id === customer.customerType) {
+        customer.customerType = item;
+      }
+    }
   }
 }
 

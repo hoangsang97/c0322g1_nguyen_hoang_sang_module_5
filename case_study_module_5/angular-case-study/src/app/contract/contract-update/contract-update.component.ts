@@ -57,7 +57,7 @@ export class ContractUpdateComponent implements OnInit {
     });
   }
 
-  getContract(id) {
+  getContract(id: number) {
     this.contractService.findById(id).subscribe(contract => {
       this.contractForm = new FormGroup({
         id: new FormControl(),
@@ -79,7 +79,7 @@ export class ContractUpdateComponent implements OnInit {
     });
   }
 
-  submit(id) {
+  submit(id: number) {
     const contract = this.contractForm.value;
     this.contractService.edit(id, contract).subscribe(() => {
       this.router.navigateByUrl('contract/list');

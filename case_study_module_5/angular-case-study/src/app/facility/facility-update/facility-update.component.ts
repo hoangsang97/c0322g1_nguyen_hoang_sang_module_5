@@ -70,7 +70,7 @@ export class FacilityUpdateComponent implements OnInit {
     });
   }
 
-  getFacility(id) {
+  getFacility(id: number) {
     this.facilityService.getById(id).subscribe(facility => {
       this.formFacility();
       this.facilityTypeId = facility.facilityType.id + '';
@@ -106,7 +106,7 @@ export class FacilityUpdateComponent implements OnInit {
     }
   }
 
-  submit(id) {
+  submit(id: number) {
     const facility = this.facilityForm.value;
     this.facilityService.edit(id, facility).subscribe(() => {
       this.router.navigate(['facility/list/0']);

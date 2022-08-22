@@ -1,10 +1,6 @@
-import { NgModule } from '@angular/core';
-import { Routes, RouterModule } from '@angular/router';
+import {NgModule} from '@angular/core';
+import {Routes, RouterModule} from '@angular/router';
 import {HomeComponent} from './home/home.component';
-import {ContractListComponent} from './contract/contract-list/contract-list.component';
-import {ContractCreateComponent} from './contract/contract-create/contract-create.component';
-import {ContractUpdateComponent} from './contract/contract-update/contract-update.component';
-
 
 const routes: Routes = [{
   path: '',
@@ -24,4 +20,5 @@ const routes: Routes = [{
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {
+}

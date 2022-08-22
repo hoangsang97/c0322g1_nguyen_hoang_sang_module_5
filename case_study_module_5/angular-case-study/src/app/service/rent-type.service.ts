@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import {Injectable} from '@angular/core';
 import {RentType} from '../module/rent-type';
 
 @Injectable({
@@ -6,6 +6,7 @@ import {RentType} from '../module/rent-type';
 })
 export class RentTypeService {
   rentTypeList: RentType[] = [];
+
   constructor() {
     this.rentTypeList.push({
       id: 1,

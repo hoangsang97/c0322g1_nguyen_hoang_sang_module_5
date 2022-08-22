@@ -58,7 +58,8 @@ export class FacilityListComponent implements OnInit {
     });
     // this.facilityType = Number(this.activatedRoute.snapshot.params.id);
   }
-  getFacility(id) {
+
+  getFacility(id: number) {
     this.facilityService.getById(id).subscribe(facility => {
       this.facilityById = facility;
     });

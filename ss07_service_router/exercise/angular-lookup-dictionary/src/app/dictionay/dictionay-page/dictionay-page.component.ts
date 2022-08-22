@@ -16,5 +16,4 @@ export class DictionayPageComponent implements OnInit {
   ngOnInit(): void {
     this.dictionaryList = this.dictionaryService.getAll();
   }
-
 }

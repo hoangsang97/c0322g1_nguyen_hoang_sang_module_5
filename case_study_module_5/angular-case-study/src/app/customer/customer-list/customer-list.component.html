@@ -34,7 +34,7 @@
       </tr>
       </thead>
       <tbody>
-      <tr *ngFor="let item of customerList, index as i">
+      <tr *ngFor="let item of customerList | paginate: { itemsPerPage: 4, currentPage: p }, index as i">
         <td>{{i + 1}}</td>
         <td>{{item.name}}</td>
         <td>{{item.dateOfBirth | date :'MM/dd/yyyy'}}</td>
@@ -69,6 +69,7 @@
       </tr>
       </tbody>
     </table>
+    <pagination-controls (pageChange)="p = $event" class="d-flex justify-content-end"></pagination-controls>
   </div>
 
   <div class="modal fade" id="modelId" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">

@@ -24,7 +24,10 @@ export class CustomerCreateComponent implements OnInit {
     ],
     phoneNumber: [
       {type: 'required', message: 'Vui lòng nhập số điện thoại'},
-      {type: 'pattern', message: 'Vui lòng nhập số địa thoại đúng định dạng 090xxxxxxx hoặc 091xxxxxxx hoặc (84)+90xxxxxxx hoặc (84)+91xxxxxxx'}
+      {
+        type: 'pattern',
+        message: 'Vui lòng nhập số địa thoại đúng định dạng 090xxxxxxx hoặc 091xxxxxxx hoặc (84)+90xxxxxxx hoặc (84)+91xxxxxxx'
+      }
     ],
     idCard: [
       {type: 'required', message: 'Vui lòng nhập CMND'},

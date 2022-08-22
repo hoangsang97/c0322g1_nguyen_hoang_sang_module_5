@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import {Injectable} from '@angular/core';
 import {FacilityType} from '../module/facility-type';
 
 @Injectable({
@@ -6,10 +6,11 @@ import {FacilityType} from '../module/facility-type';
 })
 export class FacilityTypeService {
   facilityTypeList: FacilityType[] = [];
+
   constructor() {
     this.facilityTypeList.push({
       id: 1,
-        name: 'Villa'
+      name: 'Villa'
     }, {
       id: 2,
       name: 'House'

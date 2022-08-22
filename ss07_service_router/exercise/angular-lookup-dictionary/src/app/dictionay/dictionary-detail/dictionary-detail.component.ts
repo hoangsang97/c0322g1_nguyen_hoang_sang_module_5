@@ -21,5 +21,4 @@ export class DictionaryDetailComponent implements OnInit {
       this.dictionary = this.dictionaryService.getByMean(mean);
     });
   }
-
 }

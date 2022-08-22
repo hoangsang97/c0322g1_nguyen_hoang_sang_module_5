@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {RentTypeService} from '../../service/rent-type.service';
 import {FacilityTypeService} from '../../service/facility-type.service';

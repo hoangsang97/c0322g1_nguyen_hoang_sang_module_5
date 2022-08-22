@@ -7,7 +7,12 @@
     <li (click)="toggleTodo(i)"
         [class.complete]="todo.complete"
         *ngFor="let todo of todos; index as i">
-      {{todo.content}}
+      <ul>
+        <li>id: {{i + 1}}</li>
+        <li>content: {{todo.content}}</li>
+        <li><button class="btn btn-danger" (click)="deleteTodo(todo.id)">delete</button></li>
+        <li><button class="btn btn-primary mt-2" [routerLink]="['edit', todo.id]">edit</button></li>
+      </ul>
     </li>
   </ul>
 </div>
