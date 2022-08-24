@@ -4,7 +4,7 @@ import {RentType} from '../../module/rent-type';
 import {FacilityType} from '../../module/facility-type';
 import {RentTypeService} from '../../service/rent-type.service';
 import {FacilityTypeService} from '../../service/facility-type.service';
-import {FacilityService} from '../../service/facility.service';
+import {FacilityService} from '../facility.service';
 import {ActivatedRoute, ParamMap, Router} from '@angular/router';
 import {Facility} from '../../module/facility';
 import {ToastrService} from 'ngx-toastr';

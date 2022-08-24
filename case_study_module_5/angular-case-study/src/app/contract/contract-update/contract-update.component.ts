@@ -1,8 +1,8 @@
 import {Component, OnInit} from '@angular/core';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
-import {CustomerService} from '../../service/customer.service';
-import {FacilityService} from '../../service/facility.service';
-import {ContractService} from '../../service/contract.service';
+import {CustomerService} from '../../customer/customer.service';
+import {FacilityService} from '../../facility/facility.service';
+import {ContractService} from '../contract.service';
 import {ActivatedRoute, ParamMap, Router} from '@angular/router';
 import {ToastrService} from 'ngx-toastr';
 import {Customer} from '../../module/customer';
@@ -70,7 +70,7 @@ export class ContractUpdateComponent implements OnInit {
       this.contractForm.patchValue(contract);
       this.customerService.getAll().subscribe(customer => {
         this.customerList = customer;
-        this.contractForm.patchValue({customer: this.customerList[contract.customer.id - 1]});
+        this.contractForm.patchValue({customer: this.customerList[contract.customer.id - 2]});
       });
       this.facilityService.getAll().subscribe(facility => {
         this.facilityList = facility;

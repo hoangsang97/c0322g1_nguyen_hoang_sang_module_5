@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {Contract} from '../../module/contract';
-import {ContractService} from '../../service/contract.service';
+import {ContractService} from '../contract.service';
 import {ToastrService} from 'ngx-toastr';
 
 @Component({

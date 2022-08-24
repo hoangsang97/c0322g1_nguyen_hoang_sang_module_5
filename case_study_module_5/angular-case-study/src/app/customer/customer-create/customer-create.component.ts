@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {FormGroup, FormControl, Validators} from '@angular/forms';
 import {CustomerType} from '../../module/customer-type';
-import {CustomerService} from '../../service/customer.service';
+import {CustomerService} from '../customer.service';
 import {CustomerTypeService} from '../../service/customer-type.service';
 import {Router} from '@angular/router';
 import {ToastrService} from 'ngx-toastr';

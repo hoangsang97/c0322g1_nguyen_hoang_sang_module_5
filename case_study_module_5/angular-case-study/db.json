@@ -190,19 +190,19 @@
       "id": 1,
       "startDate": "2022-08-27",
       "endDate": "2020-12-08",
-      "deposit": "3131233333",
+      "deposit": "100000",
       "customer": {
-        "id": 7,
-        "name": "Nguyễn Mỹ Kim",
-        "dateOfBirth": "1984-04-08",
+        "id": 8,
+        "name": "Nguyễn Thị Hào",
+        "dateOfBirth": "1999-04-08",
         "gender": false,
-        "idCard": "856453123",
-        "phoneNumber": "912345698",
-        "email": "kimcuong84@gmail.com",
-        "address": "K123/45 Lê Lợi, Hồ Chí Minh",
+        "idCard": "965656433",
+        "phoneNumber": "763212345",
+        "email": "haohao99@gmail.com",
+        "address": "55 Nguyễn Văn Linh, Kon Tum",
         "customerType": {
-          "id": 1,
-          "name": "Diamond"
+          "id": 3,
+          "name": "Gold"
         }
       },
       "facility": {
@@ -223,126 +223,6 @@
         "facilityType": {
           "id": 3,
           "name": "Room"
-        }
-      }
-    },
-    {
-      "id": 2,
-      "startDate": "2020-07-14",
-      "endDate": "2020-07-21",
-      "deposit": 200000,
-      "customer": {
-        "id": 2,
-        "name": "Nguyễn Văn Binh",
-        "dateOfBirth": "1998-08-09",
-        "gender": false,
-        "idCard": "9894739372",
-        "phoneNumber": "3184434343",
-        "email": "hoang@gmail.com",
-        "address": "ĐN",
-        "customerType": {
-          "id": 1,
-          "name": "Normal"
-        }
-      },
-      "facility": {
-        "id": 2,
-        "name": "House Princess 01",
-        "area": 25000,
-        "cost": 10000000,
-        "maxPeople": 10,
-        "standardRoom": "vip",
-        "descriptionOtherConvenience": "Có hồ bơi",
-        "poolArea": 500,
-        "numberOfFloors": 4,
-        "facilityFree": "Có Điện Thoại",
-        "rentType": {
-          "id": 2,
-          "name": "month"
-        },
-        "facilityType": {
-          "id": 2,
-          "name": "House"
-        }
-      }
-    },
-    {
-      "id": 3,
-      "startDate": "2021-01-14",
-      "endDate": "2021-01-18",
-      "deposit": 100000,
-      "customer": {
-        "id": 1,
-        "name": "Nguyễn Văn A",
-        "gender": false,
-        "dateOfBirth": "1998-08-09",
-        "idCard": "9894739372",
-        "phoneNumber": "0903131313",
-        "email": "hoang@gmail.com",
-        "address": "ĐN",
-        "customerType": {
-          "id": 1,
-          "name": "Vip"
-        }
-      },
-      "facility": {
-        "id": 3,
-        "name": "Room Twin 01",
-        "area": 5000,
-        "cost": 1000000,
-        "maxPeople": 2,
-        "standardRoom": "normal",
-        "descriptionOtherConvenience": "Có tivi",
-        "poolArea": 500,
-        "numberOfFloors": 4,
-        "facilityFree": "Có Điện Thoại",
-        "rentType": {
-          "id": 3,
-          "name": "day"
-        },
-        "facilityType": {
-          "id": 3,
-          "name": "Room"
-        }
-      }
-    },
-    {
-      "id": 4,
-      "startDate": "2022-08-11",
-      "endDate": "2022-08-07",
-      "deposit": "100000",
-      "customer": {
-        "id": 2,
-        "name": "Nguyễn Văn Binh",
-        "dateOfBirth": "1998-08-09",
-        "gender": false,
-        "idCard": "9894739372",
-        "phoneNumber": "3184434343",
-        "email": "hoang@gmail.com",
-        "address": "ĐN",
-        "customerType": {
-          "id": 1,
-          "name": "Normal"
-        }
-      },
-      "facility": {
-        "id": 2,
-        "name": "House Princess 01",
-        "area": 25000,
-        "cost": 10000000,
-        "maxPeople": 10,
-        "standardRoom": "vip",
-        "descriptionOtherConvenience": "Có hồ bơi",
-        "poolArea": 500,
-        "numberOfFloors": 4,
-        "facilityFree": "Có Điện Thoại",
-        "rentType": {
-          "id": 2,
-          "name": "month"
-        },
-        "facilityType": {
-          "id": 2,
-          "name": "House"
         }
       }
     },
@@ -423,6 +303,86 @@
         "facilityType": {
           "id": 3,
           "name": "Room"
+        }
+      }
+    },
+    {
+      "id": 7,
+      "startDate": "2022-08-25",
+      "endDate": "2022-08-19",
+      "deposit": "200000",
+      "customer": {
+        "id": 6,
+        "name": "Tôn Nữ Mộc Châu",
+        "dateOfBirth": "2005-12-06",
+        "gender": false,
+        "idCard": "732434215",
+        "phoneNumber": "988888844",
+        "email": "tonnuchau@gmail.com",
+        "address": "37 Yên Thế, Đà Nẵng",
+        "customerType": {
+          "id": 4,
+          "name": "Silver"
+        }
+      },
+      "facility": {
+        "id": 1,
+        "name": "Villa Beach Front",
+        "area": 25000,
+        "cost": 10000000,
+        "maxPeople": 10,
+        "standardRoom": "Vip",
+        "descriptionOtherConvenience": "Co ti vi",
+        "poolArea": 10000,
+        "numberOfFloors": 1,
+        "facilityFree": null,
+        "rentType": {
+          "id": 1,
+          "name": "year"
+        },
+        "facilityType": {
+          "id": 1,
+          "name": "Villa"
+        }
+      }
+    },
+    {
+      "id": 8,
+      "startDate": "2022-08-12",
+      "endDate": "2022-08-04",
+      "deposit": "100000",
+      "customer": {
+        "id": 9,
+        "name": "Tran Dai danh",
+        "dateOfBirth": "1994-07-01",
+        "gender": true,
+        "idCard": "432341235",
+        "phoneNumber": "0903131313",
+        "email": "danhhai99@gmail.com",
+        "address": "24 Lý Thường Kiệt, Quảng Ngãi",
+        "customerType": {
+          "id": 1,
+          "name": "Diamond"
+        }
+      },
+      "facility": {
+        "id": 2,
+        "name": "House Princess 01",
+        "area": 25000,
+        "cost": 10000000,
+        "maxPeople": 10,
+        "standardRoom": "normal",
+        "descriptionOtherConvenience": "có hồ bơi",
+        "poolArea": 0,
+        "numberOfFloors": 10,
+        "facilityFree": null,
+        "rentType": {
+          "id": 2,
+          "name": "month"
+        },
+        "facilityType": {
+          "id": 2,
+          "name": "House"
         }
       }
     }

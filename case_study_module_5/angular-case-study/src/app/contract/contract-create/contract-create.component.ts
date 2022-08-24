@@ -1,10 +1,10 @@
 import {Component, OnInit} from '@angular/core';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
-import {CustomerService} from '../../service/customer.service';
+import {CustomerService} from '../../customer/customer.service';
 import {Customer} from '../../module/customer';
 import {Facility} from '../../module/facility';
-import {FacilityService} from '../../service/facility.service';
-import {ContractService} from '../../service/contract.service';
+import {FacilityService} from '../../facility/facility.service';
+import {ContractService} from '../contract.service';
 import {Router} from '@angular/router';
 import {ToastrService} from 'ngx-toastr';
 import {Contract} from '../../module/contract';

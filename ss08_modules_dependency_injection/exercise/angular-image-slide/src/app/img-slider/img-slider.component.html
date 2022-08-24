@@ -1,1 +1,7 @@
-<p>img-slider works!</p>
+<div class="gallery-container">
+  <div class="gallery-item" *ngFor="let img of listImage | paginate: { itemsPerPage: 1, currentPage: p }"
+       [style.max-width.%]="itemWidth" [style.flex-basis.%]="itemWidth">
+    <app-img-slide [src]="img"></app-img-slide>
+  </div>
+</div>
+<pagination-controls (pageChange)="p = $event" class="d-flex justify-content-end"></pagination-controls>

@@ -1,6 +1,6 @@
 import {Injectable} from '@angular/core';
 import {Customer} from '../module/customer';
-import {CustomerTypeService} from './customer-type.service';
+import {CustomerTypeService} from '../service/customer-type.service';
 import {environment} from '../../environments/environment';
 import {HttpClient} from '@angular/common/http';
 import {Observable} from 'rxjs';

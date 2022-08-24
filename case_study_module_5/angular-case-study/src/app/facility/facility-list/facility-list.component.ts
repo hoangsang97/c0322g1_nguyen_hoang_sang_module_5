@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {Facility} from '../../module/facility';
-import {FacilityService} from '../../service/facility.service';
+import {FacilityService} from '../facility.service';
 import {ActivatedRoute, ParamMap, Router} from '@angular/router';
 import {ToastrService} from 'ngx-toastr';
 

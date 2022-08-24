@@ -1,16 +1,21 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ImageCardComponent } from './image-card/image-card.component';
-
-
+import {ImageGalleryComponent} from './image-gallery.component';
+import {RouterModule} from '@angular/router';
 
 @NgModule({
-  declarations: [ImageCardComponent],
+  declarations: [
+    ImageCardComponent,
+    ImageGalleryComponent,
+  ],
   exports: [
-    ImageCardComponent
+    ImageCardComponent,
+    ImageGalleryComponent,
   ],
   imports: [
-    CommonModule
+    CommonModule,
+    RouterModule
   ]
 })
 export class ImageGalleryModule { }

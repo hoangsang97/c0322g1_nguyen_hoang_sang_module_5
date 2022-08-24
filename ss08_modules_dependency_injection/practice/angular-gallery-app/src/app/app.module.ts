@@ -3,19 +3,17 @@ import { NgModule } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { ImgageGalleryComponent } from './image-gallery/imgage-gallery/imgage-gallery.component';
 import {ImageGalleryModule} from './image-gallery/image-gallery.module';
 import {GalleryConfig} from './image-gallery/token';
 
 @NgModule({
   declarations: [
     AppComponent,
-    ImgageGalleryComponent
   ],
     imports: [
         BrowserModule,
         AppRoutingModule,
-        ImageGalleryModule
+        ImageGalleryModule,
     ],
   providers: [{provide: GalleryConfig, useValue: 3}],
   bootstrap: [AppComponent]

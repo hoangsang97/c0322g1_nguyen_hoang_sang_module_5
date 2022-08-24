@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {CustomerService} from '../../service/customer.service';
+import {CustomerService} from '../customer.service';
 import {ActivatedRoute, ParamMap, Router} from '@angular/router';
 import {Customer} from '../../module/customer';
 import {FormControl, FormGroup, Validators} from '@angular/forms';

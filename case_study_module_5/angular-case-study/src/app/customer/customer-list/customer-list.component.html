@@ -20,10 +20,10 @@
 
     <form class="mb-3" style="position: relative" [formGroup]="searchForm" (ngSubmit)="search()">
       <div class="row">
-        <div class="col-2">
+        <div class="col-3">
           <input class="form-control me-2" type="search" placeholder="Tên Khách Hàng" aria-label="Search" formControlName="nameSearch">
         </div>
-        <div class="col-2">
+        <div class="col-3">
           <select class="form-select" aria-label="Default select example" formControlName="customerTypeId">
             <option [ngValue]="0" disabled>Chọn Loại Khách Hàng</option>
             <option *ngFor="let item of customerTypeList" [ngValue]="item.id">{{item.name}}</option>

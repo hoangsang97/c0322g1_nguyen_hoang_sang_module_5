@@ -4,7 +4,7 @@ import {RentTypeService} from '../../service/rent-type.service';
 import {FacilityTypeService} from '../../service/facility-type.service';
 import {RentType} from '../../module/rent-type';
 import {FacilityType} from '../../module/facility-type';
-import {FacilityService} from '../../service/facility.service';
+import {FacilityService} from '../facility.service';
 import {Router} from '@angular/router';
 import {ToastrService} from 'ngx-toastr';
 import {checkPoolAreaAndFloors} from '../../validator/checkPoolAreaAndFloors';

@@ -1,12 +1,12 @@
 import {Component, Inject, OnInit, Optional} from '@angular/core';
-import {GalleryConfig} from '../token';
+import {GalleryConfig} from './token';
 
 @Component({
   selector: 'app-imgage-gallery',
-  templateUrl: './imgage-gallery.component.html',
-  styleUrls: ['./imgage-gallery.component.css']
+  templateUrl: './image-gallery.component.html',
+  styleUrls: ['./image-gallery.component.css']
 })
-export class ImgageGalleryComponent implements OnInit {
+export class ImageGalleryComponent implements OnInit {
   listImage = [
     'https://via.placeholder.com/1280x420/e91e63/ffffff?text=1',
     'https://via.placeholder.com/1280x420/e91e63/ffffff?text=2',
