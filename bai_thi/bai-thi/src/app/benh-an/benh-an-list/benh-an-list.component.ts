@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import {ToastrService} from 'ngx-toastr';
 import {BenhAn} from '../module/benh-an';
 import {BenhAnService} from '../service/benh-an.service';
-import {Observable} from 'rxjs';
 
 @Component({
   selector: 'app-benh-an-list',
@@ -11,7 +10,7 @@ import {Observable} from 'rxjs';
 })
 export class BenhAnListComponent implements OnInit {
   valueDelete = [];
-  benhAnList: BenhAn[] = [];
+  patientList: BenhAn[] = [];
   p = 1;
 
   constructor(private benhAnService: BenhAnService,
@@ -23,7 +22,9 @@ export class BenhAnListComponent implements OnInit {
   }
 
   getAll() {
-    this.benhAnService.getAll().subscribe(benhAns => this.benhAnList = benhAns);
+    this.benhAnService.getAll().subscribe(patients => {
+      this.patientList = patients.content;
+    });
   }
 
   elementDelete(id: number, maBenhAn: string) {
@@ -36,7 +37,7 @@ export class BenhAnListComponent implements OnInit {
     this.valueDelete = [];
   }
 
-  deleteCustomer(id: number) {
+  delete(id: number) {
     this.benhAnService.remove(id).subscribe(() => {
       this.toastr.success('Xoá thông tin thành công', 'Thông báo!');
       this.getAll();

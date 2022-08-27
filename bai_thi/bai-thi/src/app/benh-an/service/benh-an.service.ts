@@ -1,10 +1,11 @@
-import { Injectable } from '@angular/core';
+import {Injectable} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {Observable} from 'rxjs';
 import {environment} from '../../../environments/environment';
 import {BenhAn} from '../module/benh-an';
 
 const API_URL = `${environment.API_URl}`;
+
 @Injectable({
   providedIn: 'root'
 })
@@ -14,18 +15,26 @@ export class BenhAnService {
   }
 
   getAll(): Observable<BenhAn[]> {
-    return this.httpClient.get<BenhAn[]>(API_URL + '/benhAns');
+    return this.httpClient.get<BenhAn[]>(API_URL + '/patients');
   }
 
   findById(id: number): Observable<BenhAn> {
-    return this.httpClient.get<BenhAn>(`${API_URL}/benhAns/${id}`);
+    return this.httpClient.get<BenhAn>(`${API_URL}/patients/${id}`);
+  }
+
+  create(patient: BenhAn): Observable<BenhAn> {
+    return this.httpClient.put<BenhAn>(`${API_URL}/patients`, patient);
   }
 
   remove(id: number): Observable<BenhAn> {
-    return this.httpClient.delete<BenhAn>(`${API_URL}/benhAns/${id}`);
+    return this.httpClient.delete<BenhAn>(`${API_URL}/patients/${id}`);
   }
 
-  edit(id: number, benhAn: BenhAn): Observable<BenhAn> {
-    return this.httpClient.put<BenhAn>(`${API_URL}/benhAns/${id}`, benhAn);
+  edit(id: number, patient: BenhAn): Observable<BenhAn> {
+    return this.httpClient.put<BenhAn>(`${API_URL}/patients/${id}`, patient);
+  }
+
+  search(name: string): Observable<BenhAn[]> {
+    return this.httpClient.get<BenhAn[]>(`${API_URL}/patients?name_like=${name}`);
   }
 }

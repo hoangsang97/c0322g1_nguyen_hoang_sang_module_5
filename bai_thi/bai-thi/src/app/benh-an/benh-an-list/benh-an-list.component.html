@@ -3,6 +3,17 @@
     <img src="../../../assets/image/banner01.jpg" style="position: absolute" height="351" width="100%"/>
     <div class="content-header">
       <h3>Danh Sách Bệnh Án</h3>
+      <div class="text-center">
+        <a routerLink="../../benhAn/create" class="btn btn-primary btn-sm">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person-plus"
+               viewBox="0 0 16 16">
+            <path
+              d="M6 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm2-3a2 2 0 1 1-4 0 2 2 0 0 1 4 0zm4 8c0 1-1 1-1 1H1s-1 0-1-1 1-4 6-4 6 3 6 4zm-1-.004c-.001-.246-.154-.986-.832-1.664C9.516 10.68 8.289 10 6 10c-2.29 0-3.516.68-4.168 1.332-.678.678-.83 1.418-.832 1.664h10z"/>
+            <path fill-rule="evenodd"
+                  d="M13.5 5a.5.5 0 0 1 .5.5V7h1.5a.5.5 0 0 1 0 1H14v1.5a.5.5 0 0 1-1 0V8h-1.5a.5.5 0 0 1 0-1H13V5.5a.5.5 0 0 1 .5-.5z"/>
+          </svg>
+        </a>
+      </div>
     </div>
   </div>
   <div class="container-fluid" style="font-size: 13px; padding: 75px">
@@ -23,16 +34,16 @@
       </tr>
       </thead>
       <tbody>
-      <tr *ngFor="let item of benhAnList | paginate: { itemsPerPage: 4, currentPage: p }, index as i">
+      <tr *ngFor="let item of patientList | paginate: { itemsPerPage: 4, currentPage: p }, index as i">
         <td>{{(i + 1) + 4 * (p - 1)}}</td>
-        <td>{{item.maBenhAn.name}}</td>
-        <td>{{item.maBenhNhan.name}}</td>
-        <td>{{item.tenBenhNhan}}</td>
-        <td>{{item.ngayNhapVien | date :'MM/dd/yyyy'}}</td>
-        <td>{{item.ngayRaVien | date :'MM/dd/yyyy'}}</td>
-        <td>{{item.lyDoNhapVien}}</td>
-        <td>{{item.phuongPhap}}</td>
-        <td>{{item.bacSi}}</td>
+        <td>{{item.patientCode.name}}</td>
+        <td>{{item.patientPerson.name}}</td>
+        <td>{{item.name}}</td>
+        <td>{{item.hospitalized | date :'MM/dd/yyyy'}}</td>
+        <td>{{item.discharge | date :'MM/dd/yyyy'}}</td>
+        <td>{{item.reason}}</td>
+        <td>{{item.cure}}</td>
+        <td>{{item.doctor}}</td>
         <td>
           <a [routerLink]="['../../benhAn/update', item.id]" class="btn btn-outline-primary btn-sm">
             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pen"
@@ -45,7 +56,7 @@
         <td>
           <!-- Button trigger modal -->
           <button type="button" class="btn btn-outline-danger btn-sm" data-bs-toggle="modal"
-                  data-bs-target="#modelId" (click)="elementDelete(item.id, item.maBenhAn.name)">
+                  data-bs-target="#modelId" (click)="elementDelete(item.id, item.patientCode.name)">
             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
                  class="bi bi-trash3" viewBox="0 0 16 16">
               <path
@@ -70,7 +81,7 @@
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" (click)="resetModal()">Không</button>
-          <button type="button" class="btn btn-outline-danger" (click)="deleteCustomer(valueDelete[0])"
+          <button type="button" class="btn btn-outline-danger" (click)="delete(valueDelete[0])"
                   data-bs-dismiss="modal">Có
           </button>
         </div>

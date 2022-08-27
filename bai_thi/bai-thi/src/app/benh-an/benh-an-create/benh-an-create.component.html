@@ -1,18 +1,18 @@
 <div class="container p-3">
   <div class="text-center">
-    <h3>Sửa Thông Tin</h3>
+    <h3>Thêm Mới Thông Tin</h3>
   </div>
-  <form class="row g-3" [formGroup]="patientUpdateForm" (ngSubmit)="updateSubmit(id)">
+  <form class="row g-3" [formGroup]="patientCreateForm" (ngSubmit)="createSubmit()">
     <input type="text" hidden formControlName="id">
     <div class="col-12">
       <label class="form-label">Mã Bệnh Án<span class="text-danger">*</span></label>
-      <select class="form-select" aria-label="Default select example" name="patientCode" formControlName="patientCode" disabled>
+      <select class="form-select" aria-label="Default select example" name="patientCode" formControlName="patientCode">
         <option *ngFor="let item of patientCodeList" [ngValue]="item">{{item.name}}</option>
       </select>
     </div>
     <div class="col-12">
       <label class="form-label">Mã Bệnh Nhân<span class="text-danger">*</span></label>
-      <select class="form-select" aria-label="Default select example" name="patientPerson" formControlName="patientPerson" disabled>
+      <select class="form-select" aria-label="Default select example" name="patientPerson" formControlName="patientPerson">
         <option *ngFor="let item of patientPersonList" [ngValue]="item">{{item.name}}</option>
       </select>
     </div>
@@ -21,7 +21,7 @@
       <input type="text" class="form-control" name="name" formControlName="name">
       <div class="text-danger" *ngFor="let validation of validationMessages.name">
         <div class="error-message"
-             *ngIf="patientUpdateForm.get('name').hasError(validation.type) && (patientUpdateForm.get('name').dirty || patientUpdateForm.get('name').touched)">
+             *ngIf="patientCreateForm.get('name').hasError(validation.type) && (patientCreateForm.get('name').dirty || patientCreateForm.get('name').touched)">
           {{validation.message}}</div>
       </div>
     </div>
@@ -30,7 +30,7 @@
       <input type="date" class="form-control" name="hospitalized" formControlName="hospitalized">
       <div class="text-danger" *ngFor="let validation of validationMessages.hospitalized">
         <div class="error-message"
-             *ngIf="patientUpdateForm.get('hospitalized').hasError(validation.type) && (patientUpdateForm.get('hospitalized').dirty || patientUpdateForm.get('hospitalized').touched)">
+             *ngIf="patientCreateForm.get('hospitalized').hasError(validation.type) && (patientCreateForm.get('hospitalized').dirty || patientCreateForm.get('hospitalized').touched)">
           {{validation.message}}</div>
       </div>
     </div>
@@ -39,9 +39,9 @@
       <input type="date" class="form-control" name="discharge" formControlName="discharge">
       <div class="text-danger" *ngFor="let validation of validationMessages.discharge">
         <div class="error-message"
-             *ngIf="patientUpdateForm.get('discharge').hasError(validation.type) && (patientUpdateForm.get('discharge').dirty || patientUpdateForm.get('discharge').touched)">
+             *ngIf="patientCreateForm.get('discharge').hasError(validation.type) && (patientCreateForm.get('discharge').dirty || patientCreateForm.get('discharge').touched)">
           {{validation.message}}</div>
-        <span class="text-danger" *ngIf="patientUpdateForm.get('discharge').hasError('checkDateOut')">Ngày nhập viện phải trước ngày ra viện</span>
+        <span class="text-danger" *ngIf="patientCreateForm.get('discharge').hasError('checkDateOut')">Ngày nhập viện phải trước ngày ra viện</span>
       </div>
     </div>
     <div class="col-12">
@@ -49,7 +49,7 @@
       <textarea class="form-control" name="lyDoNhapVien" formControlName="reason"></textarea>
       <div class="text-danger" *ngFor="let validation of validationMessages.reason">
         <div class="error-message"
-             *ngIf="patientUpdateForm.get('reason').hasError(validation.type) && (patientUpdateForm.get('reason').dirty || patientUpdateForm.get('reason').touched)">
+             *ngIf="patientCreateForm.get('reason').hasError(validation.type) && (patientCreateForm.get('reason').dirty || patientCreateForm.get('reason').touched)">
           {{validation.message}}</div>
       </div>
     </div>
@@ -58,7 +58,7 @@
       <textarea class="form-control" name="cure" formControlName="cure"></textarea>
       <div class="text-danger" *ngFor="let validation of validationMessages.cure">
         <div class="error-message"
-             *ngIf="patientUpdateForm.get('cure').hasError(validation.type) && (patientUpdateForm.get('cure').dirty || patientUpdateForm.get('cure').touched)">
+             *ngIf="patientCreateForm.get('cure').hasError(validation.type) && (patientCreateForm.get('cure').dirty || patientCreateForm.get('cure').touched)">
           {{validation.message}}</div>
       </div>
     </div>
@@ -67,15 +67,16 @@
       <input type="text" class="form-control" name="doctor" formControlName="doctor">
       <div class="text-danger" *ngFor="let validation of validationMessages.doctor">
         <div class="error-message"
-             *ngIf="patientUpdateForm.get('doctor').hasError(validation.type) && (patientUpdateForm.get('doctor').dirty || patientUpdateForm.get('doctor').touched)">
+             *ngIf="patientCreateForm.get('doctor').hasError(validation.type) && (patientCreateForm.get('doctor').dirty || patientCreateForm.get('doctor').touched)">
           {{validation.message}}</div>
       </div>
     </div>
     <div class="col-12">
-      <button class="btn btn-primary me-2" [disabled]="patientUpdateForm.invalid">Sửa</button>
+      <button class="btn btn-primary me-2" [disabled]="patientCreateForm.invalid">Sửa</button>
       <button routerLink="../../list" class="btn btn-primary">Trở Về Danh Sách</button>
     </div>
   </form>
 </div>
+
 
 

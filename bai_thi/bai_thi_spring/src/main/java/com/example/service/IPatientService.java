@@ -13,7 +13,7 @@ public interface IPatientService {
 
     void save(Patient patient);
 
-    void edit(Patient patient);
+    void edit(int id, Patient patient);
 
     void delete(int id);
 

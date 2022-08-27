@@ -110,4 +110,12 @@ public class Patient {
     public void setPatientPerson(PatientPerson patientPerson) {
         this.patientPerson = patientPerson;
     }
+
+    public byte getStatus() {
+        return status;
+    }
+
+    public void setStatus(byte status) {
+        this.status = status;
+    }
 }

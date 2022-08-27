@@ -33,7 +33,7 @@ public class PatientServiceImpl implements IPatientService {
     }
 
     @Override
-    public void edit(Patient patient) {
+    public void edit(int id, Patient patient) {
         patientRepository.update(patient.getName(), patient.getHospitalized(), patient.getDischarge(),
                 patient.getReason(), patient.getCure(), patient.getDoctor());
     }

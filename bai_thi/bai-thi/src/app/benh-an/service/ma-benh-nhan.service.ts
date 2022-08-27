@@ -13,6 +13,6 @@ export class MaBenhNhanService {
   constructor(private httpClient: HttpClient) { }
 
   getAll(): Observable<MaBenhNhan[]> {
-    return this.httpClient.get<MaBenhNhan[]>(API_URL + '/maBenhNhan');
+    return this.httpClient.get<MaBenhNhan[]>(API_URL + '/patients');
   }
 }

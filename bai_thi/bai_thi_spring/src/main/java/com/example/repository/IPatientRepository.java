@@ -22,13 +22,13 @@ public interface IPatientRepository extends JpaRepository<Patient, Integer> {
     Optional<Patient> findById(@Param("id") int id);
 
     @Query(value = "insert into patient (name, hospitalized, discharge, reason, cure, doctor) " +
-            " values (:name, :hospitalized, :discharge, :reason, :cure, :doctor)", nativeQuery = true)
+            " values (:name, :hospitalized, :discharge, :reason, :cure, :doctor) where status = 0", nativeQuery = true)
     void save(@Param("name") String name, @Param("hospitalized") String hospitalized, @Param("discharge") String discharge, @Param("reason") String reason,
               @Param("cure") String cure, @Param("doctor") String doctor);
 
     @Modifying
-    @Query(value = "update patient set name = :name, hospitalized = :hospitalized, discharge = :discharge, " +
-            " reason = :reason, cure = :cure, doctor =: doctor", nativeQuery = true)
+    @Query(value = "update patient set `name` = :name, hospitalized = :hospitalized, discharge = :discharge," +
+            " reason = :reason, cure = :cure, doctor = :doctor", nativeQuery = true)
     void update(@Param("name") String name, @Param("hospitalized") String hospitalized, @Param("discharge") String discharge, @Param("reason") String reason,
                 @Param("cure") String cure, @Param("doctor") String doctor);
 

@@ -1,25 +1,21 @@
 import {Component, OnInit} from '@angular/core';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
-import {ActivatedRoute, ParamMap, Router} from '@angular/router';
-import {ToastrService} from 'ngx-toastr';
-import {BenhAn} from '../module/benh-an';
-import {BenhAnService} from '../service/benh-an.service';
+import {checkDate} from '../../validator/checkDate';
+import {MaBenhAn} from '../module/ma-benh-an';
 import {MaBenhAnService} from '../service/ma-benh-an.service';
 import {MaBenhNhanService} from '../service/ma-benh-nhan.service';
 import {MaBenhNhan} from '../module/ma-benh-nhan';
-import {MaBenhAn} from '../module/ma-benh-an';
-import {checkDate} from '../../validator/checkDate';
+import {BenhAnService} from '../service/benh-an.service';
+import {ToastrService} from 'ngx-toastr';
+import {Router} from '@angular/router';
 
 @Component({
-  selector: 'app-benh-an-update',
-  templateUrl: './benh-an-update.component.html',
-  styleUrls: ['./benh-an-update.component.css']
+  selector: 'app-benh-an-create',
+  templateUrl: './benh-an-create.component.html',
+  styleUrls: ['./benh-an-create.component.css']
 })
-export class BenhAnUpdateComponent implements OnInit {
-  patient: BenhAn;
-  patientPersonList: MaBenhNhan[] = [];
-  patientCodeList: MaBenhAn[] = [];
-  patientUpdateForm: FormGroup = new FormGroup({
+export class BenhAnCreateComponent implements OnInit {
+  patientCreateForm: FormGroup = new FormGroup({
     id: new FormControl(''),
     patientCode: new FormControl(''),
     patientPerson: new FormControl(''),
@@ -44,7 +40,6 @@ export class BenhAnUpdateComponent implements OnInit {
       Validators.required
     ])
   });
-  id: number;
   validationMessages = {
     name: [
       {type: 'required', message: 'Vui lòng nhập tên bệnh nhân'},
@@ -66,49 +61,30 @@ export class BenhAnUpdateComponent implements OnInit {
       {type: 'required', message: 'Vui lòng nhập tên bác sĩ'},
     ]
   };
+  patientCodeList: MaBenhAn[] = [];
+  patientPersonList: MaBenhNhan[] = [];
 
-  constructor(private patientService: BenhAnService,
-              private patientCodeService: MaBenhAnService,
+  constructor(private patientCodeService: MaBenhAnService,
               private patientPersonService: MaBenhNhanService,
-              private activatedRoute: ActivatedRoute,
               private router: Router,
+              private patientService: BenhAnService,
               private toastr: ToastrService) {
+    this.patientCodeService.getAll().subscribe(patientCodes => {
+      this.patientCodeList = patientCodes;
+    });
+    this.patientPersonService.getAll().subscribe(patientPersons => {
+      this.patientPersonList = patientPersons;
+    });
   }
 
   ngOnInit(): void {
-    this.activatedRoute.paramMap.subscribe((paramMap: ParamMap) => {
-      this.id = +paramMap.get('id');
-      this.getPatient(this.id);
-    });
   }
 
-  getPatient(id) {
-    this.patientService.findById(id).subscribe(patient => {
-      this.patientUpdateForm.patchValue(patient);
-      this.patientPersonService.getAll().subscribe(patientPerson => {
-        this.patientPersonList = patientPerson;
-        for (const item of patientPerson) {
-          if (item.id === patient.patientPerson.id) {
-            this.patientUpdateForm.patchValue({patientPerson: item});
-          }
-        }
-      });
-      this.patientCodeService.getAll().subscribe(patientCode => {
-        this.patientCodeList = patientCode;
-        for (const item of patientCode) {
-          if (item.id === patient.patientCode.id) {
-            this.patientUpdateForm.patchValue({patientCode: item});
-          }
-        }
-      });
-    });
-  }
-
-  updateSubmit(id) {
-    const patient = this.patientUpdateForm.value;
-    this.patientService.edit(id, patient).subscribe(() => {
-      this.router.navigate(['../benhAn/list']);
-      this.toastr.success('Sửa Thông Tin Thành Công !', 'Thông Báo!');
+  createSubmit() {
+    const patient = this.patientCreateForm.value;
+    this.patientService.create(patient).subscribe(() => {
+      this.router.navigateByUrl('benhAn/list');
+      this.toastr.success('Thêm mới thông tin thành công', 'Thông Báo!');
     });
   }
 }
