@@ -4,7 +4,7 @@
     <div class="content-header">
       <h3>Danh Sách Bệnh Án</h3>
       <div class="text-center">
-        <a routerLink="../../benhAn/create" class="btn btn-primary btn-sm">
+        <a routerLink="../../../benhAn/create" class="btn btn-primary btn-sm">
           <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person-plus"
                viewBox="0 0 16 16">
             <path
@@ -34,8 +34,8 @@
       </tr>
       </thead>
       <tbody>
-      <tr *ngFor="let item of patientList | paginate: { itemsPerPage: 4, currentPage: p }, index as i">
-        <td>{{(i + 1) + 4 * (p - 1)}}</td>
+      <tr *ngFor="let item of patientList?.content, index as i">
+        <td>{{i + 1}}</td>
         <td>{{item.patientCode.name}}</td>
         <td>{{item.patientPerson.name}}</td>
         <td>{{item.name}}</td>
@@ -45,7 +45,7 @@
         <td>{{item.cure}}</td>
         <td>{{item.doctor}}</td>
         <td>
-          <a [routerLink]="['../../benhAn/update', item.id]" class="btn btn-outline-primary btn-sm">
+          <a [routerLink]="['../../../benhAn/update', item.id]" class="btn btn-outline-primary btn-sm">
             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pen"
                  viewBox="0 0 16 16">
               <path
@@ -67,7 +67,38 @@
       </tr>
       </tbody>
     </table>
-    <pagination-controls (pageChange)="p = $event" class="d-flex justify-content-end"></pagination-controls>
+    <nav aria-label="Page navigation example">
+      <ul class="pagination d-flex justify-content-md-end justify-content-center">
+        <li class="page-item">
+          <button class="page-link" [hidden]="patientList?.pageable.pageNumber === 0" (click)="searchPatient(0)">Đầu</button>
+        </li>
+        <li class="page-item">
+          <button class="page-link" [hidden]="patientList?.pageable.pageNumber === 0"
+                  (click)="searchPatient(patientList?.pageable.pageNumber - 1)">Trang
+            trước
+          </button>
+        </li>
+        <li class="page-item col-md-1 col-2  px-0">
+          <div class="input-group input-group-sm">
+            <input type="number" min="1" max="{{patientList?.totalPages}}"
+                   class="form-control text-right rounded-0" [value]="patientList?.pageable.pageNumber + 1">
+            <div class="input-group-prepend input-group-sm">
+              <span class="input-group-text" id="basic-addon1"> /{{patientList?.totalPages}}</span>
+            </div>
+          </div>
+        </li>
+        <li class="page-item">
+          <button class="page-link" [hidden]="patientList?.pageable.pageNumber >=  patientList?.totalPages - 1"
+                  (click)="searchPatient(patientList?.pageable.pageNumber + 1)">Trang kế
+          </button>
+        </li>
+        <li class="page-item">
+          <button class="page-link" [hidden]="patientList?.pageable.pageNumber >=  patientList?.totalPages - 1 && patientList?.pageable.pageNumber < patientList?.totalPages"
+                  (click)="patientList?.pageable.pageNumber = patientList?.totalPages - 1; searchPatient(patientList?.totalPages -1)">Cuối
+          </button>
+        </li>
+      </ul>
+    </nav>
   </div>
 
   <div class="modal fade" id="modelId" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">

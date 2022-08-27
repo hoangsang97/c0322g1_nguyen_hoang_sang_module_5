@@ -28,8 +28,9 @@ public class PatientServiceImpl implements IPatientService {
 
     @Override
     public void save(Patient patient) {
-        patientRepository.save(patient.getName(), patient.getHospitalized(), patient.getDischarge(),
-                patient.getReason(), patient.getCure(), patient.getDoctor());
+//        patientRepository.save(patient.getName(), patient.getHospitalized(), patient.getDischarge(),
+//                patient.getReason(), patient.getCure(), patient.getDoctor(), patient.getPatientCode().getId(), patient.getPatientPerson().getId());
+        patientRepository.save(patient);
     }
 
     @Override
@@ -40,7 +41,7 @@ public class PatientServiceImpl implements IPatientService {
 
     @Override
     public void delete(int id) {
-        patientRepository.delete(id);
+        patientRepository.deleteById(id);
     }
 
     @Override

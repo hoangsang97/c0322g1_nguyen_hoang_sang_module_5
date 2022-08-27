@@ -1,6 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {ToastrService} from 'ngx-toastr';
-import {BenhAn} from '../module/benh-an';
 import {BenhAnService} from '../service/benh-an.service';
 
 @Component({
@@ -10,20 +9,23 @@ import {BenhAnService} from '../service/benh-an.service';
 })
 export class BenhAnListComponent implements OnInit {
   valueDelete = [];
-  patientList: BenhAn[] = [];
-  p = 1;
+  patientList;
+  patientId = '';
+  name = '';
 
-  constructor(private benhAnService: BenhAnService,
+  constructor(private patientService: BenhAnService,
               private toastr: ToastrService) {
   }
 
   ngOnInit(): void {
-    this.getAll();
+    this.searchPatient(0);
   }
 
-  getAll() {
-    this.benhAnService.getAll().subscribe(patients => {
-      this.patientList = patients.content;
+  getAll(pageable: number) {
+    this.patientId = '';
+    this.name = '';
+    this.patientService.getAll(pageable).subscribe(patients => {
+      this.patientList = patients;
     });
   }
 
@@ -38,10 +40,21 @@ export class BenhAnListComponent implements OnInit {
   }
 
   delete(id: number) {
-    this.benhAnService.remove(id).subscribe(() => {
+    this.patientService.remove(id).subscribe(() => {
       this.toastr.success('Xoá thông tin thành công', 'Thông báo!');
-      this.getAll();
+      this.searchPatient(0);
       this.valueDelete = [];
     });
+  }
+
+  searchPatient(pageable: number) {
+    this.patientId = this.patientId.replace('BN-', '');
+    this.patientId = this.patientId.replace('BN', '');
+    this.patientId = this.patientId.replace('B', '');
+    this.patientId = this.patientId.replace('N-', '');
+    this.patientId = this.patientId.replace('N', '');
+    if (this.patientId === '' && this.name === '') {
+      this.getAll(pageable);
+    }
   }
 }

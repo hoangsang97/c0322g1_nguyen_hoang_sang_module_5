@@ -107,7 +107,7 @@ export class BenhAnUpdateComponent implements OnInit {
   updateSubmit(id) {
     const patient = this.patientUpdateForm.value;
     this.patientService.edit(id, patient).subscribe(() => {
-      this.router.navigate(['../benhAn/list']);
+      this.router.navigate(['../../benhAn/list', 0]);
       this.toastr.success('Sửa Thông Tin Thành Công !', 'Thông Báo!');
     });
   }

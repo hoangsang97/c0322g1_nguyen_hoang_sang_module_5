@@ -3,7 +3,6 @@
     <h3>Thêm Mới Thông Tin</h3>
   </div>
   <form class="row g-3" [formGroup]="patientCreateForm" (ngSubmit)="createSubmit()">
-    <input type="text" hidden formControlName="id">
     <div class="col-12">
       <label class="form-label">Mã Bệnh Án<span class="text-danger">*</span></label>
       <select class="form-select" aria-label="Default select example" name="patientCode" formControlName="patientCode">
@@ -72,8 +71,8 @@
       </div>
     </div>
     <div class="col-12">
-      <button class="btn btn-primary me-2" [disabled]="patientCreateForm.invalid">Sửa</button>
-      <button routerLink="../../list" class="btn btn-primary">Trở Về Danh Sách</button>
+      <button class="btn btn-primary me-2" [disabled]="patientCreateForm.invalid">Thên mới</button>
+      <button [routerLink]="['../../benhAn/list', 0]" class="btn btn-primary">Trở Về Danh Sách</button>
     </div>
   </form>
 </div>

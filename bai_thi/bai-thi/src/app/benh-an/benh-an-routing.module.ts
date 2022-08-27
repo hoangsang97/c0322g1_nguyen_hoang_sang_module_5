@@ -6,7 +6,7 @@ import {BenhAnCreateComponent} from './benh-an-create/benh-an-create.component';
 
 const routes: Routes = [
   {
-    path: 'list',
+    path: 'list/:page',
     component: BenhAnListComponent
   }, {
     path: 'update/:id',

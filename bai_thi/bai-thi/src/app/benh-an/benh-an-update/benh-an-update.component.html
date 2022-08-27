@@ -73,7 +73,7 @@
     </div>
     <div class="col-12">
       <button class="btn btn-primary me-2" [disabled]="patientUpdateForm.invalid">Sửa</button>
-      <button routerLink="../../list" class="btn btn-primary">Trở Về Danh Sách</button>
+      <button [routerLink]="['../../benhAn/list', 0]" class="btn btn-primary">Trở Về Danh Sách</button>
     </div>
   </form>
 </div>

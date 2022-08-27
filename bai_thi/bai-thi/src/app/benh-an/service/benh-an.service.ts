@@ -14,8 +14,8 @@ export class BenhAnService {
   constructor(private httpClient: HttpClient) {
   }
 
-  getAll(): Observable<BenhAn[]> {
-    return this.httpClient.get<BenhAn[]>(API_URL + '/patients');
+  getAll(page: number): Observable<BenhAn[]> {
+    return this.httpClient.get<BenhAn[]>(API_URL + '/patients/list?page=' + page);
   }
 
   findById(id: number): Observable<BenhAn> {
@@ -23,7 +23,7 @@ export class BenhAnService {
   }
 
   create(patient: BenhAn): Observable<BenhAn> {
-    return this.httpClient.put<BenhAn>(`${API_URL}/patients`, patient);
+    return this.httpClient.post<BenhAn>(`${API_URL}/patients`, patient);
   }
 
   remove(id: number): Observable<BenhAn> {

@@ -16,7 +16,6 @@ import {Router} from '@angular/router';
 })
 export class BenhAnCreateComponent implements OnInit {
   patientCreateForm: FormGroup = new FormGroup({
-    id: new FormControl(''),
     patientCode: new FormControl(''),
     patientPerson: new FormControl(''),
     name: new FormControl('', [
@@ -71,9 +70,11 @@ export class BenhAnCreateComponent implements OnInit {
               private toastr: ToastrService) {
     this.patientCodeService.getAll().subscribe(patientCodes => {
       this.patientCodeList = patientCodes;
+      this.patientCreateForm.patchValue({patientCode: patientCodes[0]});
     });
     this.patientPersonService.getAll().subscribe(patientPersons => {
       this.patientPersonList = patientPersons;
+      this.patientCreateForm.patchValue({patientPerson: patientPersons[0]});
     });
   }
 
@@ -83,7 +84,7 @@ export class BenhAnCreateComponent implements OnInit {
   createSubmit() {
     const patient = this.patientCreateForm.value;
     this.patientService.create(patient).subscribe(() => {
-      this.router.navigateByUrl('benhAn/list');
+      this.router.navigate(['../../benhAn/list', 0]);
       this.toastr.success('Thêm mới thông tin thành công', 'Thông Báo!');
     });
   }
