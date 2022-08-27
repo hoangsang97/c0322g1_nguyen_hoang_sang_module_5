@@ -70,11 +70,19 @@ export class ContractUpdateComponent implements OnInit {
       this.contractForm.patchValue(contract);
       this.customerService.getAll().subscribe(customer => {
         this.customerList = customer;
-        this.contractForm.patchValue({customer: this.customerList[contract.customer.id - 2]});
+        for (const item of customer) {
+          if (item.id === contract.customer.id) {
+            this.contractForm.patchValue({customer: item});
+          }
+        }
       });
       this.facilityService.getAll().subscribe(facility => {
         this.facilityList = facility;
-        this.contractForm.patchValue({facility: this.facilityList[contract.facility.id - 1]});
+        for (const item of facility) {
+          if (item.id === contract.facility.id) {
+            this.contractForm.patchValue({facility: item});
+          }
+        }
       });
     });
   }

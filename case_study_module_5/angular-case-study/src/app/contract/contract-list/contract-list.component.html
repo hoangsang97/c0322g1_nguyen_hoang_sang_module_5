@@ -26,6 +26,7 @@
         <th>Ngày Thuê</th>
         <th>Ngày Trả</th>
         <th>Tiền Trả Trước</th>
+        <th>Tổng Tiền</th>
         <th>Sửa</th>
         <th>Xóa</th>
       </tr>
@@ -38,6 +39,7 @@
         <td>{{item.startDate | date :'MM/dd/yyyy'}}</td>
         <td>{{item.endDate | date :'MM/dd/yyyy'}}</td>
         <td>{{item.deposit | currency}}</td>
+        <td></td>
         <td>
           <a [routerLink]="['../../contract/update', item.id]" class="btn btn-outline-primary btn-sm">
             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pen"
