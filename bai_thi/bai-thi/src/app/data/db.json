@@ -1,0 +1,100 @@
+{
+  "benhAns": [
+    {
+      "id": 1,
+      "maBenhAn": {
+        "id": 1,
+        "name": "BA-001"
+      },
+      "maBenhNhan": {
+        "id": 1,
+        "name": "BN-001"
+      },
+      "tenBenhNhan": "Nguyễn Văn An",
+      "ngayNhapVien": "2022-08-13",
+      "ngayRaVien": "2022-08-28",
+      "lyDoNhapVien": "Ung thư999",
+      "phuongPhap": "Mổ9999",
+      "bacSi": "Nguyễn Văn B999"
+    },
+    {
+      "id": 2,
+      "maBenhAn": {
+        "id": 2,
+        "name": "BA-002"
+      },
+      "maBenhNhan": {
+        "id": 2,
+        "name": "BN-002"
+      },
+      "tenBenhNhan": "Nguyễn Văn A",
+      "ngayNhapVien": "2016-07-08",
+      "ngayRaVien": "2019-08-08",
+      "lyDoNhapVien": "Ung thư giai đoạn cuối",
+      "phuongPhap": "Mổ",
+      "bacSi": "Lê Văn B"
+    },
+    {
+      "id": 3,
+      "maBenhAn": {
+        "id": 3,
+        "name": "BA-002"
+      },
+      "maBenhNhan": {
+        "id": 3,
+        "name": "BN-002"
+      },
+      "tenBenhNhan": "Nguyễn Văn A",
+      "ngayNhapVien": "2016-07-08",
+      "ngayRaVien": "2019-08-08",
+      "lyDoNhapVien": "Ung thư giai đoạn cuối",
+      "phuongPhap": "Mổ",
+      "bacSi": "Lê Văn B"
+    },
+    {
+      "id": 4,
+      "maBenhAn": {
+        "id": 2,
+        "name": "BA-002"
+      },
+      "maBenhNhan": {
+        "id": 2,
+        "name": "BN-002"
+      },
+      "tenBenhNhan": "Nguyễn Văn A",
+      "ngayNhapVien": "2016-07-08",
+      "ngayRaVien": "2019-08-08",
+      "lyDoNhapVien": "Ung thư giai đoạn cuối",
+      "phuongPhap": "Mổ",
+      "bacSi": "Lê Văn B"
+    }
+  ],
+  "maBenhAn": [
+    {
+      "id": 1,
+      "name": "BA-001"
+    },
+    {
+      "id": 2,
+      "name": "BA-002"
+    },
+    {
+      "id": 3,
+      "name": "BA-003"
+    }
+  ],
+  "maBenhNhan": [
+    {
+      "id": 1,
+      "name": "BN-001"
+    },
+    {
+      "id": 2,
+      "name": "BN-002"
+    },
+    {
+      "id": 3,
+      "name": "BN-003"
+    }
+  ]
+}
