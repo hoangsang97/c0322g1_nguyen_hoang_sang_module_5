@@ -34,7 +34,7 @@ export class BenhAnService {
     return this.httpClient.put<BenhAn>(`${API_URL}/patients/${id}`, patient);
   }
 
-  search(name: string): Observable<BenhAn[]> {
-    return this.httpClient.get<BenhAn[]>(`${API_URL}/patients?name_like=${name}`);
+  search(page: number, name: string): Observable<BenhAn[]> {
+    return this.httpClient.get<BenhAn[]>(`${API_URL}/patients/search?page=${page}&namePatient=${name}`);
   }
 }

@@ -9,7 +9,7 @@ import java.util.Optional;
 public interface IPatientService {
     Page<Patient> findAll(Pageable pageable);
 
-    Optional<Patient> findById(int id);
+    Patient findById(int id);
 
     void save(Patient patient);
 

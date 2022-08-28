@@ -21,8 +21,8 @@ export class BenhAnUpdateComponent implements OnInit {
   patientCodeList: MaBenhAn[] = [];
   patientUpdateForm: FormGroup = new FormGroup({
     id: new FormControl(''),
-    patientCode: new FormControl(''),
-    patientPerson: new FormControl(''),
+    patientCode: new FormControl({value: '', disabled: true}),
+    patientPerson: new FormControl({value: '', disabled: true}),
     name: new FormControl('', [
       Validators.required,
       Validators.pattern('^[a-zA-Zàáạảãâầấậẩẫăằắặẳẵèéẹẻẽêềếệểễìíịỉĩòóọỏõôồốộổỗơờớợởỡùúụủũưừứựửữỳýỵỷỹđ]+(\\s[a-zA-Zàáạảãâầấậẩẫăằắặẳẵèéẹẻẽêềếệểễìíịỉĩòóọỏõôồốộổỗơờớợởỡùúụủũưừứựửữỳýỵỷỹđ]+)*$')

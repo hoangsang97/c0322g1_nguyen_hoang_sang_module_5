@@ -1,19 +1,23 @@
 package com.example.controller;
 
+import com.example.dto.PatientDto;
 import com.example.model.Patient;
 import com.example.model.PatientCode;
 import com.example.model.PatientPerson;
 import com.example.service.impl.PatientCodeServiceImpl;
 import com.example.service.impl.PatientPersonServiceImpl;
 import com.example.service.impl.PatientServiceImpl;
+import com.example.validation.PatientDtoValidation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.web.PageableDefault;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.List;
 import java.util.Optional;
 
@@ -31,8 +35,11 @@ public class PatientController {
     @Autowired
     private PatientPersonServiceImpl patientPersonService;
 
+    @Autowired
+    private PatientDtoValidation patientDtoValidation;
+
     @GetMapping("/patients/list")
-    public ResponseEntity<Page<Patient>> getAllPatient(@PageableDefault(value = 1) Pageable pageable) {
+    public ResponseEntity<Page<Patient>> getAllPatient(@PageableDefault(value = 2) Pageable pageable) {
         Page<Patient> patients = patientService.findAll(pageable);
         return new ResponseEntity<>(patients, HttpStatus.OK);
     }
@@ -50,11 +57,8 @@ public class PatientController {
     }
 
     @GetMapping("/patients/{id}")
-    public ResponseEntity<Optional<Patient>> getPatient(@PathVariable int id) {
-        Optional<Patient> patient = patientService.findById(id);
-        if (!patient.isPresent()) {
-            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-        }
+    public ResponseEntity<Patient> getPatient(@PathVariable int id) {
+        Patient patient = patientService.findById(id);
         return new ResponseEntity<>(patient, HttpStatus.OK);
     }
 
@@ -65,7 +69,16 @@ public class PatientController {
     }
 
     @PutMapping("patients/{id}")
-    public ResponseEntity<Patient> updatePatient(@PathVariable int id, @RequestBody Patient patient) {
+    public ResponseEntity<?> updatePatient(@RequestBody @Valid PatientDto patientDto, BindingResult bindingResult,
+                                           @PathVariable int id) {
+        Patient patient = patientService.findById(id);
+
+        patientDtoValidation.validate(patientDto, bindingResult);
+
+        if (bindingResult.hasErrors()) {
+            return new ResponseEntity<>(bindingResult.getAllErrors(), HttpStatus.NOT_MODIFIED);
+        }
+
         if (patient == null) {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
@@ -82,7 +95,7 @@ public class PatientController {
 
     @GetMapping("patients/search")
     public ResponseEntity<Page<Patient>> searchPatient(@RequestParam String namePatient,
-                                                       @PageableDefault(value = 4) Pageable pageable) {
+                                                       @PageableDefault(value = 2) Pageable pageable) {
         Page<Patient> patients = patientService.search(namePatient, pageable);
         return new ResponseEntity<>(patients, HttpStatus.OK);
     }

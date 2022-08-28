@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {ToastrService} from 'ngx-toastr';
 import {BenhAnService} from '../service/benh-an.service';
+import {FormControl, FormGroup} from '@angular/forms';
 
 @Component({
   selector: 'app-benh-an-list',
@@ -12,6 +13,9 @@ export class BenhAnListComponent implements OnInit {
   patientList;
   patientId = '';
   name = '';
+  searchForm: FormGroup = new FormGroup({
+    nameSearch: new FormControl()
+  });
 
   constructor(private patientService: BenhAnService,
               private toastr: ToastrService) {
@@ -56,5 +60,12 @@ export class BenhAnListComponent implements OnInit {
     if (this.patientId === '' && this.name === '') {
       this.getAll(pageable);
     }
+  }
+
+  search(page: number) {
+    const nameSearch = this.searchForm.value;
+    this.patientService.search(page, nameSearch.nameSearch).subscribe(patients => {
+      this.patientList = patients;
+    });
   }
 }

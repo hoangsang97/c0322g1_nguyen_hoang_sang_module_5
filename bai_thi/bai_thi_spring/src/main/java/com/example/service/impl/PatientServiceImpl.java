@@ -22,21 +22,20 @@ public class PatientServiceImpl implements IPatientService {
     }
 
     @Override
-    public Optional<Patient> findById(int id) {
+    public Patient findById(int id) {
         return patientRepository.findById(id);
     }
 
     @Override
     public void save(Patient patient) {
-//        patientRepository.save(patient.getName(), patient.getHospitalized(), patient.getDischarge(),
-//                patient.getReason(), patient.getCure(), patient.getDoctor(), patient.getPatientCode().getId(), patient.getPatientPerson().getId());
-        patientRepository.save(patient);
+        patientRepository.save(patient.getName(), patient.getHospitalized(), patient.getDischarge(),
+                patient.getReason(), patient.getCure(), patient.getDoctor(), patient.getPatientCode().getId(), patient.getPatientPerson().getId());
     }
 
     @Override
     public void edit(int id, Patient patient) {
         patientRepository.update(patient.getName(), patient.getHospitalized(), patient.getDischarge(),
-                patient.getReason(), patient.getCure(), patient.getDoctor());
+                patient.getReason(), patient.getCure(), patient.getDoctor(), id);
     }
 
     @Override
@@ -46,6 +45,6 @@ public class PatientServiceImpl implements IPatientService {
 
     @Override
     public Page<Patient> search(String name, Pageable pageable) {
-        return patientRepository.search(name, pageable);
+        return patientRepository.search("%" + name + "%", pageable);
     }
 }

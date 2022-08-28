@@ -2,17 +2,17 @@
   <div class="text-center">
     <h3>Sửa Thông Tin</h3>
   </div>
-  <form class="row g-3" [formGroup]="patientUpdateForm" (ngSubmit)="updateSubmit(id)">
+  <form class="row g-3" [formGroup]="patientUpdateForm">
     <input type="text" hidden formControlName="id">
     <div class="col-12">
       <label class="form-label">Mã Bệnh Án<span class="text-danger">*</span></label>
-      <select class="form-select" aria-label="Default select example" name="patientCode" formControlName="patientCode" disabled>
+      <select class="form-select" aria-label="Default select example" name="patientCode" formControlName="patientCode">
         <option *ngFor="let item of patientCodeList" [ngValue]="item">{{item.name}}</option>
       </select>
     </div>
     <div class="col-12">
       <label class="form-label">Mã Bệnh Nhân<span class="text-danger">*</span></label>
-      <select class="form-select" aria-label="Default select example" name="patientPerson" formControlName="patientPerson" disabled>
+      <select class="form-select" aria-label="Default select example" name="patientPerson" formControlName="patientPerson">
         <option *ngFor="let item of patientPersonList" [ngValue]="item">{{item.name}}</option>
       </select>
     </div>
@@ -72,8 +72,8 @@
       </div>
     </div>
     <div class="col-12">
-      <button class="btn btn-primary me-2" [disabled]="patientUpdateForm.invalid">Sửa</button>
-      <button [routerLink]="['../../benhAn/list', 0]" class="btn btn-primary">Trở Về Danh Sách</button>
+      <button class="btn btn-primary me-2" [disabled]="patientUpdateForm.invalid" (click)="updateSubmit(id)">Sửa</button>
+      <button [routerLink]="['../../../benhAn/list', 0]" class="btn btn-primary">Trở Về Danh Sách</button>
     </div>
   </form>
 </div>
