@@ -19,6 +19,7 @@ export class BenhAnUpdateComponent implements OnInit {
   patient: BenhAn;
   patientPersonList: MaBenhNhan[] = [];
   patientCodeList: MaBenhAn[] = [];
+  number: number;
   patientUpdateForm: FormGroup = new FormGroup({
     id: new FormControl(''),
     patientCode: new FormControl({value: '', disabled: true}),
